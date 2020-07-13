@@ -29,9 +29,13 @@ export class AppComponent {
                 console.log(event.urlAfterRedirects);
             });
 
+
         if (appStorage.getBoolean(this.isNew, true)) {
-            this.routerExtensions.navigate["get-started"];
-        } else
+            this.routerExtensions.navigate(["get-started"]);
+            console.log("THis is sooo not loading from backend😂");
+        } else{
             this.routerExtensions.navigate(["home"]);
+            console.log("This is reading the get started in ap.module.ts☹️ ");
+        }
     }
 }

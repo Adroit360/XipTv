@@ -4,6 +4,7 @@ import { Routes } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import {PlayerComponent} from "./player/player.component";
+import { GetStartedComponent } from "./get-started/get-started.component";
 
 const routes: Routes = [
     // {path:"",redirectTo:"home",pathMatch:'full'},
