@@ -1,0 +1,27 @@
+.link-container{
+    justify-content: center;
+    align-items: center;
+    //flex-wrap: wrap;
+    // background-color: #222;
+    padding: 20;
+    StackLayout{
+        border-width: 1px;
+        border-color: #808080;
+        border-radius: 5;
+        margin: 5;
+        width: 200;
+        .link-item{
+            height: 100;
+            width: 150;
+            margin: 15;
+            
+            padding: 10;
+        }
+        Label{
+            color:black;
+            padding: 10;
+            text-align: center;
+        }
+    }
+    
+}

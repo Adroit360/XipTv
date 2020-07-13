@@ -1,0 +1,79 @@
+
+<RadSideDrawer #sideDrawer >
+    <GridLayout tkDrawerContent rows="auto, *" class="nt-drawer__content">
+        <StackLayout row="0" class="nt-drawer__header">
+            <Image class="nt-drawer__header-image fas t-36" src="font://&#xf2bd;"></Image>
+            <Label class="nt-drawer__header-brand" [text]="'mandarin'"></Label>
+            <Label class="nt-drawer__header-footnote" [text]="'email@email.com'"></Label>
+        </StackLayout>
+    
+        <ScrollView row="1" class="nt-drawer__body">
+            <StackLayout>
+                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/home')" (tap)="onNavItemTap('home')">
+                    <Label col="0" text="&#xf015;" class="nt-icon fas"></Label>
+                    <Label col="1" text="Home" class="p-r-10"></Label>
+                </GridLayout>
+
+                <StackLayout class="hr"></StackLayout>
+
+                <GridLayout columns="auto, *" class="nt-drawer__list-item" (tap)="logout()">
+                    <Label col="0" text="&#xf2f5;" class="nt-icon fas"></Label>
+                    <Label col="1" text="Logout" class="p-r-10"></Label>
+                </GridLayout>
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+    <GridLayout rows="auto,60,*,auto" class="root" tkMainContent>
+            <StackLayout height="35" *ngIf='isAndroid'></StackLayout>
+        
+            <Flexboxlayout row="1" justifyContent="space-between" class="navbar">
+                <StackLayout orientation="horizontal">
+                    <!-- <Label class="fas arrow"
+                        text="&#xf1e3;"></Label> -->
+                        
+                </StackLayout>
+                <Image class="brand" src=""></Image>
+                <Label [ngClass]="{active:route == 'login'}" (tap)="navigate('login')" class="fas navicon"
+                    text="&#xf007;"></Label>
+            </Flexboxlayout>
+        
+            <FlexboxLayout row="2">
+                <router-outlet></router-outlet>
+            </FlexboxLayout>
+            
+        
+            <!-- <GridLayout rows="*,auto,*" rowSpan="2" class="error-page" *ngIf="hasError">
+                <Image rowSpan="3" src="res://player" stretch="aspectFill"></Image>
+                <StackLayout row="1">
+                    <Image height="500" src="res://applogo"></Image>
+                    <Label text="Please check your internet"></Label>
+                    <Button class="action-btn" (tap)="reload()" text="reload"></Button>
+                </StackLayout>
+            </GridLayout> -->
+        
+            <!-- ActivityIndicator -->
+            <!-- <ActivityIndicator borderRadius="50%" backgroundColor="white" *ngIf="isLoading" row="2" color="black"
+                width="100" height="100" [busy]="true">
+            </ActivityIndicator> -->
+         
+            <FlexboxLayout row="3" class="footer-nav">
+                <FlexboxLayout [ngClass]="{active:isComponentSelected('landing')}" (tap)="navigate('landing')" class="nav-box active">
+                    <Label class="fas icon" text="&#xf015;"></Label>
+                    <Label class="text" text="Home"></Label>
+                </FlexboxLayout>
+                <FlexboxLayout [ngClass]="{active:isComponentSelected('search')}" (tap)="navigate('search')" class="nav-box">
+                    <Label class="fas icon" text="&#xf002;"></Label>
+                    <Label class="text" text="Search"></Label>
+                </FlexboxLayout>
+                <FlexboxLayout [ngClass]="{active:isComponentSelected('explore')}" (tap)="navigate('explore')" class="nav-box">
+                    <Label class="fas icon" text="&#xf0ac;"></Label>
+                    <Label class="text" text="Explore"></Label>
+                </FlexboxLayout>
+        
+                <FlexboxLayout [ngClass]="{active:isComponentSelected('categories')}" (tap)="navigate('categories')" class="nav-box">
+                    <Label class="fas icon" text="&#xf03a;"></Label>
+                    <Label class="text" text="Categories"></Label>
+                </FlexboxLayout>
+            </FlexboxLayout>
+    </GridLayout>
+</RadSideDrawer>

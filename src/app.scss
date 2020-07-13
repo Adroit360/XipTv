@@ -1,0 +1,109 @@
+/*
+In NativeScript, the app.css file is where you place CSS rules that
+you would like to apply to your entire application. Check out
+http://docs.nativescript.org/ui/styling for a full list of the CSS
+selectors and properties you can use to style UI components.
+
+/*
+In many cases you may want to use the NativeScript core theme instead
+of writing your own CSS rules. You can learn more about the 
+NativeScript core theme at https://github.com/nativescript/theme
+The imported CSS rules must precede all other types of rules.
+*/
+@import "~@nativescript/theme/css/core.css";
+@import "~@nativescript/theme/css/default.css";
+
+/* Place any CSS rules you want to apply on both iOS and Android here.
+This is where the vast majority of your CSS code goes. */
+
+/*
+The following CSS rule changes the font size of all Buttons that have the
+"-primary" class modifier.
+*/
+$primary-color : rgb(70, 70, 189);
+Button.-primary {
+    font-size: 18;
+}
+
+.group-label{
+    text-transform: uppercase;
+    margin:10 20;
+    font-size: 15;
+    color:#4b71db;
+    font-weight: bold;
+}
+
+.fab {
+    font-family: "Font Awesome 5 Brands", "fa-brands-400";
+    font-weight: 400;
+}
+
+.fas {
+    font-family: "Font Awesome 5 Free", "fa-solid-900";
+    font-weight: 900;
+}
+
+.far {
+    font-family: "Font Awesome 5 Free", "fa-regular-400";
+    font-weight: 400;
+}
+
+// Common page class
+.page__content {
+    &-icon,
+    &-placeholder {
+        color: const(grey);
+        font-size: 20;
+        vertical-align: center;
+        horizontal-align: center;
+    }
+
+    &-icon {
+        font-size: 72;
+        vertical-align: top;
+        margin-top: 20%;
+    }
+}
+
+// Drawer navigation custom styles
+.nt-drawer__header-image {
+    color: #808080;
+}
+
+.action-btn{
+    padding: 10 60;
+    margin:10;
+    background-color: $primary-color;
+    border-radius: 50%;
+    color:white;
+}
+
+.header{
+    font-size: 30%;
+    text-transform: uppercase;
+    color:white;
+    text-align: center;
+}
+
+.sub-header{
+    font-size: 20;
+    text-transform: uppercase;
+    color:orangered;
+    text-align: center;
+}
+
+.sub-sub-header{
+    font-size: 15;
+    text-transform: uppercase;
+    color:orangered;
+    text-align: center;
+}
+
+.flag{
+    text-align: center;
+    border-width: 1;
+    border-color: black;
+    padding: 10 40;
+    background-color: white;
+    margin:10;
+}

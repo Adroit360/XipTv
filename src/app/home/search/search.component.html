@@ -1,0 +1,24 @@
+<GridLayout rows="auto,*">
+    <SearchBar (textChange)="searchStringChanged($event)" 
+    hint="Search all streams" (loaded)="onSearchBarLoaded($event)"
+        >
+    </SearchBar>
+    <ActivityIndicator row="1"  borderRadius="50%" backgroundColor="white" *ngIf="!filteredTvLinks" row="2" color="black" width="100"
+        height="100" [busy]="true">
+    </ActivityIndicator>
+    <ListView row="1" class="link-container" orientation="horizontal" [items]="filteredTvLinks">
+        <ListViewLinearLayout tkListViewLayout></ListViewLinearLayout>
+        <ng-template tkListItemTemplate let-i="index" let-item="item">
+            <GridLayout class="list-item" (tap)="openPlayer(item.name,item.url)" columns="70,*">
+                <Image class="link-image" stretch="aspectFit" [src]='item.logo'></Image>
+                <StackLayout col="1">
+                    <Label class="name" [text]="item.name"></Label>
+                    <FlexboxLayout justifyContent="space-between">
+                        <Label class="category" [text]="item.category"></Label>
+                        <Label class="country" *ngIf="item.country" [text]="item.country.name"></Label>
+                    </FlexboxLayout>
+                </StackLayout>
+            </GridLayout>
+        </ng-template>
+    </ListView>
+</GridLayout>
