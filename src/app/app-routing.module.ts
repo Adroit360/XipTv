@@ -6,7 +6,7 @@ import { HomeComponent } from "./home/home.component";
 import {PlayerComponent} from "./player/player.component";
 
 const routes: Routes = [
-    // {path:"",redirectTo:"home",pathMatch:'full'},
+    {path:"",redirectTo:"get-started",pathMatch:'full'},
     { path: "home", loadChildren: () => import("~/app/home/home.module").then((m) => m.HomeModule) },
     { path: "player", loadChildren: () => import("~/app/player/player.module").then((m) => m.PlayerModule) },
     {path:"register",loadChildren:()=>import("~/app/register/register.module").then((m)=>m.RegisterModule)},

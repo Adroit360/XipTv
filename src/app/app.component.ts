@@ -30,8 +30,9 @@ export class AppComponent {
             });
 
         if (appStorage.getBoolean(this.isNew, true)) {
-            this.routerExtensions.navigate["get-started"];
-        } else
+            this.routerExtensions.navigate(["get-started"]);
+        } else{
             this.routerExtensions.navigate(["home"]);
+        }
     }
 }
