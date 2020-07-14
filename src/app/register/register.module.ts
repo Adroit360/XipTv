@@ -17,7 +17,10 @@ const routes:Route[] = [
     ],
     exports:[
         NativeScriptRouterModule
-    ]
+    ],
+    // schemas:[
+    //     NO_ERRORS_SCHEMA
+    // ]
 })
 export class RegisterModule{
 
