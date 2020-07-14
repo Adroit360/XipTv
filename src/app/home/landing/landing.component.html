@@ -4,10 +4,10 @@
     <StackLayout>
         <GridLayout height="300" background-color="red" style="margin: 0 0 0 0;">
             <Image height="300" loadMode="async" stretch="aspectFill" loadMode="async" src="res://artwork"></Image>
-            <exoplayer [visibility]="showPlayer ? 'visible' : 'collapsed'" #videoplayer
+            <!-- <exoplayer [visibility]="showPlayer ? 'visible' : 'collapsed'" #videoplayer
                 src="http://lemlagroup.com/wp-content/uploads/2020/07/montage2.mp4" (finished)="playerFinished()"
                 (playbackReady)="playbackReady()" controls="false" fill="aspectFill" style="height: 300;" loop="false"
-                autoplay="true"></exoplayer>
+                autoplay="true"></exoplayer> -->
         </GridLayout>
 
         <StackLayout *ngIf="tvListService.tvLinks">

@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
+import { Page } from "tns-core-modules/ui/page";
 
 @Component({
     selector: "app-get-started",
@@ -8,8 +9,9 @@ import { RouterExtensions } from "nativescript-angular/router";
 })
 export class GetStartedComponent {
 
-    constructor(private routerExtensions: RouterExtensions) {
-
+    constructor(private routerExtensions: RouterExtensions,
+        private page:Page) {
+            page.actionBarHidden = true;
     }
 
     login() {

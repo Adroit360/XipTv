@@ -19,6 +19,9 @@ import { PlayerModule } from "./player/player.module";
 import { TvListModalComponent } from "./home/category/tvlist-modal/tvlist-modal.component";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HttpInterceptorService } from "~/interceptors/http.interceptor";
+import { JwtInterceptor } from "~/interceptors/jwt.interceptor";
+import { AuthService } from "~/services/auth.service";
+import { MiscService } from "~/services/misc.service";
 
 @NgModule({
     bootstrap: [
@@ -35,8 +38,9 @@ import { HttpInterceptorService } from "~/interceptors/http.interceptor";
         AppComponent
     ],
     providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         // {provide: HTTP_INTERCEPTORS,useClass: HttpInterceptorService,multi: true},
-        TvListService,UniversalService],
+        TvListService,UniversalService,AuthService,MiscService],
     schemas: [
         NO_ERRORS_SCHEMA
     ],

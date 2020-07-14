@@ -17,20 +17,26 @@ The following CSS rule changes the font size of all Buttons that have the
 
     --violet: #491887;
 }
-
+.br-icon{
+    color:var(--violet);
+}
 $primary-color: rgb(70, 70, 189);
 Button.-primary {
     font-size: 18;
 }
 
-.btn {
+.mybtn {
     background-color: #3ce261;
     border-radius: 20;
     color: white;
     font-weight: bold;
     font-size: larger;
     height: 50;
-    // margin: 10;
+    margin: 10;
+}
+
+.bg-trans{
+    background-color: transparent;
 }
 
 .group-label {

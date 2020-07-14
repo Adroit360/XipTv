@@ -1,12 +1,15 @@
-<GridLayout class="root" rows="auto,auto,*,auto">
-    <StackLayout class="topnavstack" orientation="horizontal">
+<GridLayout class="root" rows="auto,auto,auto,*,auto">
+    <StackLayout height="30">
+
+    </StackLayout>
+    <FlexboxLayout alignItems="center" row="1" class="topnavstack">
         <Label class="fas bloated" text="&#xf053;"></Label>
         <Label text="Back"></Label>
-    </StackLayout>
+    </FlexboxLayout>
 
-    <Label row='1' class="header" text="ALL PLANS"></Label>
+    <Label row='2' class="header" text="ALL PLANS"></Label>
 
-    <ScrollView row="2" orientation="horizontal">
+    <ScrollView row="3" orientation="horizontal">
         <StackLayout orientation="horizontal" class="plan-box-container">
 
             <GridLayout class="plan-box violet" rows="auto,*,auto">
@@ -29,7 +32,7 @@
                         <Label class="text" text="Includes live content from all around the world"></Label>
                     </FlexboxLayout>
                 </FlexboxLayout>
-                <Button row="2" text="GHS 200/mo" class="btn white"></Button>
+                <Button row="2" text="GHS 200/mo" class="mybtn white"></Button>
             </GridLayout>
 
             <GridLayout class="plan-box white" rows="auto,*,auto">
@@ -52,13 +55,13 @@
                         <Label class="text" text="Includes live content from all around the world"></Label>
                     </FlexboxLayout>
                 </FlexboxLayout>
-                <Button row="2" text="GHS 300/mo" class="btn white"></Button>
+                <Button row="2" text="GHS 300/mo" class="mybtn white"></Button>
             </GridLayout>
 
 
         </StackLayout>
     </ScrollView>
 
-    <Button row="3" margin="30" text="Try free for 30 days" class="btn white"></Button>
+    <Button (tap)="try()" row="4" margin="30" text="Try free for 30 days" class="mybtn white"></Button>
 
 </GridLayout>

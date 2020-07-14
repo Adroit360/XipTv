@@ -13,7 +13,7 @@ import { UniversalService } from "~/services/universal.service";
 })
 export class LandingComponent implements OnInit, OnDestroy {
     tvLinks: TvModel[];
-    @ViewChild("videoplayer", { static: true }) videoplayer: ElementRef;
+    //@ViewChild("videoplayer", { static: true }) videoplayer: ElementRef;
     localLinks: TvModel[];
     topLinks: TvModel[];
     topMovies:TvModel[];
@@ -30,12 +30,12 @@ export class LandingComponent implements OnInit, OnDestroy {
         this.router.events
             .pipe(filter((event: any) => event instanceof NavigationEnd))
             .subscribe((event: NavigationEnd) => {
-                if (!event.urlAfterRedirects.includes("landing") && this.videoplayer.nativeElement) {
-                    this.videoplayer.nativeElement.pause();
-                } else {
+                // if (!event.urlAfterRedirects.includes("landing") && this.videoplayer.nativeElement) {
+                //     this.videoplayer.nativeElement.pause();
+                // } else {
                     // if (this.videoplayer.nativeElement)
                     //     this.videoplayer.nativeElement.play();
-                }
+                // }
             });
 
         // if (android) {
@@ -58,7 +58,7 @@ export class LandingComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.videoplayer.nativeElement.play();
+        // this.videoplayer.nativeElement.play();
 
         if(!this.universalService.isMainVideoLoaded){
             this.universalService.isMainVideoLoaded = true;
@@ -100,8 +100,8 @@ export class LandingComponent implements OnInit, OnDestroy {
     }
 
     openPlayer(name, url) {
-        if (this.videoplayer.nativeElement && this.videoplayer.nativeElement["pause"])
-            this.videoplayer.nativeElement.pause();
+        // if (this.videoplayer.nativeElement && this.videoplayer.nativeElement["pause"])
+        //     this.videoplayer.nativeElement.pause();
         this.routerExtensions.navigate(['player'], {
             queryParams: {
                 name,
@@ -111,7 +111,7 @@ export class LandingComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.videoplayer.nativeElement.destroy();
+        //this.videoplayer.nativeElement.destroy();
     }
 
     isLogoPresent(item) {
