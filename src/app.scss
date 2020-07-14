@@ -20,16 +20,36 @@ This is where the vast majority of your CSS code goes. */
 The following CSS rule changes the font size of all Buttons that have the
 "-primary" class modifier.
 */
-$primary-color : rgb(70, 70, 189);
+.ns-root {
+    --border-color: #b6b6b6;
+
+    --light-black-text: #353434;
+
+    --grey-background: #e5e5e5;
+
+    --violet: #491887;
+}
+
+$primary-color: rgb(70, 70, 189);
 Button.-primary {
     font-size: 18;
 }
 
-.group-label{
+.btn {
+    background-color: #3ce261;
+    border-radius: 20;
+    color: white;
+    font-weight: bold;
+    font-size: larger;
+    height: 50;
+    // margin: 10;
+}
+
+.group-label {
     text-transform: uppercase;
-    margin:10 20;
+    margin: 10 20;
     font-size: 15;
-    color:#4b71db;
+    color: #4b71db;
     font-weight: bold;
 }
 
@@ -70,40 +90,40 @@ Button.-primary {
     color: #808080;
 }
 
-.action-btn{
+.action-btn {
     padding: 10 60;
-    margin:10;
+    margin: 10;
     background-color: $primary-color;
     border-radius: 50%;
-    color:white;
+    color: white;
 }
 
-.header{
+.header {
     font-size: 30%;
     text-transform: uppercase;
-    color:white;
+    color: white;
     text-align: center;
 }
 
-.sub-header{
+.sub-header {
     font-size: 20;
     text-transform: uppercase;
-    color:orangered;
+    color: orangered;
     text-align: center;
 }
 
-.sub-sub-header{
+.sub-sub-header {
     font-size: 15;
     text-transform: uppercase;
-    color:orangered;
+    color: orangered;
     text-align: center;
 }
 
-.flag{
+.flag {
     text-align: center;
     border-width: 1;
     border-color: black;
     padding: 10 40;
     background-color: white;
-    margin:10;
+    margin: 10;
 }

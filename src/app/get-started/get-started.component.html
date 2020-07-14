@@ -1,31 +1,29 @@
-<GridLayout rows="*,30,50,50,50,60,100" columns="50,*,50">
-  <!-- <Image src="../"></Image> -->
+<GridLayout rows="150,*,auto,100" columns="50,*">
 
-  <Label class="head" text="Get Started" row="1" col="1"></Label>
+  <StackLayout orientation="horizontal" margin="20" colSpan="2">
+    <Image height="120" src="res://getstart"></Image>
+  </StackLayout>
 
-  <Label
-    class="support"
-    text="All of your favourite stations and more"
-    row="2"
-    col="1"
-  ></Label>
+  <FlexboxLayout row="1" colSpan="2" justifyContent='center'>
+    <Label fontSize="50" color="white" class="fas" text="&#xf042;"></Label>
+  </FlexboxLayout>
 
-  <Label
-    class="support-body"
-    textWrap="true"
-    text="From the very best content developers from around the world"
-    row="3"
-    col="1"
-  ></Label>
+  <StackLayout row="2" colSpan="2" 
+  margin="20"
+  verticalAlignment="center" 
+  horizontalAlignment="center">
+    <Label class="head" text="Get Started"></Label>
 
-  <Label
-    class="support-body-link"
-    textWrap="true"
-    text="Try Now for free"
-    row="4"
-    col="1"
-  ></Label>
+    <Label class="support" text="All of your favourite stations and more"></Label>
 
-  <Button text="Get Started" class="btn" row="5" col="1"></Button>
+    <Label class="support-body" textWrap="true"
+      text="From the very best content developers from around the world"></Label>
+
+    <Label class="support-body-link" textWrap="true" text="Try Now for free"></Label>
+  </StackLayout>
+
+  <StackLayout row="3" colSpan="2" padding="20">
+    <Button height="50" text="Get Started" class="btn"></Button>
+  </StackLayout>
   <!-- <Button class="support-body-link" text="Hello"></Button> -->
 </GridLayout>
