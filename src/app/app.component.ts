@@ -31,7 +31,7 @@ export class AppComponent {
 
 
         if (appStorage.getBoolean(this.isNew, true)) {
-            this.routerExtensions.navigate(["register"]);
+            this.routerExtensions.navigate(["sub-expired"]);
             console.log("THis is sooo not loading from backend😂");
         } else{
             this.routerExtensions.navigate(["home"]);
