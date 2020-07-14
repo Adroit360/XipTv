@@ -31,7 +31,7 @@ export class AppComponent {
 
 
         if (appStorage.getBoolean(this.isNew, true)) {
-            this.routerExtensions.navigate(["login"]);
+            this.routerExtensions.navigate(["register"]);
             console.log("THis is sooo not loading from backend😂");
         } else{
             this.routerExtensions.navigate(["home"]);
