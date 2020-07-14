@@ -1,27 +1,26 @@
-import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { LoginComponent } from "./login.component";
+import { NgModel } from "@angular/forms";
+import { NgModule } from "@angular/core";
+import { SubExpiredComponent } from "./sub-expired.component";
 import { SharedModule } from "../shared/shared.module";
 import { Route } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
-const routes:Route[] = [
-    {path:"",component:LoginComponent}
+const routes :Route[] = [
+    {path:"",component:SubExpiredComponent}
 ]
 
 @NgModule({
     declarations:[
-        LoginComponent,
+        SubExpiredComponent
     ],
-    imports:[SharedModule,
+    imports:[
+        SharedModule,
         NativeScriptRouterModule.forChild(routes)
     ],
     exports:[
         NativeScriptRouterModule
-    ],
-    schemas:[
-        NO_ERRORS_SCHEMA
     ]
 })
-export class LoginModule{
+export class SubExpiredModule{
 
 }
