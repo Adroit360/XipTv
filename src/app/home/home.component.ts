@@ -103,4 +103,8 @@ export class HomeComponent implements OnInit {
                 break;
         }
     }
+
+    gotoProfile(){
+        this.routerExtensions.navigate(["profile"]);
+    }
 }

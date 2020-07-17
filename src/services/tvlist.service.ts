@@ -6,6 +6,7 @@ import { HttpClient } from "@angular/common/http";
 import { timestamp } from "rxjs/operators";
 import { UniversalService } from "./universal.service";
 import { Observable, Subject } from "rxjs";
+import { TopsModel } from "~/data/models/topsModel";
 const currentAppFolder = knownFolders.currentApp();
 
 @Injectable()
@@ -16,11 +17,12 @@ export class TvListService {
     allMovies: TvModel[];
     allSeries: TvModel[];
 
+    topsModel:TopsModel;
 
-    localTvLinks: TvModel[];
-    topTvLinks: TvModel[];
-    topMovies: TvModel[];
-    topSeries: TvModel[];
+    // localTvLinks: TvModel[];
+    // topTvLinks: TvModel[];
+    // topMovies: TvModel[];
+    // topSeries: TvModel[];
 
     currentSource = "server";
 
@@ -53,6 +55,8 @@ export class TvListService {
         return tvModels;
     }
 
+
+
     async getAllLinks(): Promise<TvModel[]> {
         return new Promise((resolve, reject) => {
 
@@ -81,7 +85,7 @@ export class TvListService {
                             this.httpClient.get<TvModel[]>(serverUri)
                                 .subscribe(response => {
                                     this.tvLinks.push(...response);
-                                    resolve(this.topTvLinks);
+                                    resolve(this.tvLinks);
                                 });
                         });
                 } else {
@@ -127,71 +131,89 @@ export class TvListService {
         });
     }
 
-    async getTopLinks(): Promise<TvModel[]> {
+    async getTops(): Promise<TopsModel> {
         return new Promise((resolve, reject) => {
-            if (this.topTvLinks)
-                resolve(this.topTvLinks);
+            if (this.topsModel)
+                resolve(this.topsModel);
 
             if (this.currentSource == 'server') {
-                this.httpClient.get<TvModel[]>(`${settings.baseUri}/tvlist/top`)
+                this.httpClient.get<TopsModel>(`${settings.baseUri}/tvlist/tops`)
                     .subscribe(response => {
-                        this.topTvLinks = response;
+                        this.topsModel = response;
                         resolve(response);
                     });
-            } else if (this.currentSource == 'github') {
-                if (!this.tvLinks) {
-                    this.getAllLinks()
-                        .then(response => {
-                            this.getTopGithubLinks(response)
-                                .then(links => {
-                                    this.topTvLinks = links;
-                                    resolve(links);
-                                });
-                        });
-                } else {
-                    this.getTopGithubLinks(this.tvLinks)
-                        .then(links => {
-                            this.topTvLinks = links;
-                            resolve(links);
-                        });
-                }
-
-            }
+            } 
         });
     }
 
-    async getLocalLinks(): Promise<TvModel[]> {
-        return new Promise((resolve, reject) => {
-            if (this.localTvLinks)
-                resolve(this.localTvLinks);
 
-            if (this.currentSource == 'server') {
-                this.httpClient.get<TvModel[]>(`${settings.baseUri}/tvlist/local`)
-                    .subscribe(response => {
-                        this.localTvLinks = response;
-                        resolve(response);
-                    });
-            } else if (this.currentSource == 'github') {
-                if (!this.tvLinks) {
-                    this.getAllLinks()
-                        .then(response => {
-                            this.getLocalGithubLinks(response)
-                                .then(links => {
-                                    this.localTvLinks = links;
-                                    resolve(links);
-                                });
-                        });
-                } else {
-                    this.getLocalGithubLinks(this.tvLinks)
-                        .then(links => {
-                            this.localTvLinks = links;
-                            resolve(links);
-                        });
-                }
+    // async getTopLinks(): Promise<TvModel[]> {
+    //     return new Promise((resolve, reject) => {
+    //         if (this.topTvLinks)
+    //             resolve(this.topTvLinks);
 
-            }
-        });
-    }
+    //         if (this.currentSource == 'server') {
+    //             this.httpClient.get<TvModel[]>(`${settings.baseUri}/tvlist/top`)
+    //                 .subscribe(response => {
+    //                     this.topTvLinks = response;
+    //                     resolve(response);
+    //                 });
+    //         } else if (this.currentSource == 'github') {
+    //             if (!this.tvLinks) {
+    //                 this.getAllLinks()
+    //                     .then(response => {
+    //                         this.getTopGithubLinks(response)
+    //                             .then(links => {
+    //                                 this.topTvLinks = links;
+    //                                 resolve(links);
+    //                             });
+    //                     });
+    //             } else {
+    //                 this.getTopGithubLinks(this.tvLinks)
+    //                     .then(links => {
+    //                         this.topTvLinks = links;
+    //                         resolve(links);
+    //                     });
+    //             }
+
+    //         }
+    //     });
+    // }
+
+    // async getLocalLinks(): Promise<TvModel[]> {
+    //     return new Promise((resolve, reject) => {
+    //         if (this.localTvLinks)
+    //             resolve(this.localTvLinks);
+
+    //         if (this.currentSource == 'server') {
+    //             this.httpClient.get<TvModel[]>(`${settings.baseUri}/tvlist/local`)
+    //                 .subscribe(response => {
+    //                     this.localTvLinks = response;
+    //                     resolve(response);
+    //                 });
+    //         } else if (this.currentSource == 'github') {
+    //             if (!this.tvLinks) {
+    //                 this.getAllLinks()
+    //                     .then(response => {
+    //                         this.getLocalGithubLinks(response)
+    //                             .then(links => {
+    //                                 this.localTvLinks = links;
+    //                                 resolve(links);
+    //                             });
+    //                     });
+    //             } else {
+    //                 this.getLocalGithubLinks(this.tvLinks)
+    //                     .then(links => {
+    //                         this.localTvLinks = links;
+    //                         resolve(links);
+    //                     });
+    //             }
+
+    //         }
+    //     });
+    // }
+
+
 
     async getLocalGithubLinks(tvModels: TvModel[]): Promise<TvModel[]> {
         return new Promise((resolve, reject) => {

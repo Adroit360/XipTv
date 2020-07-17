@@ -1,4 +1,4 @@
-<GridLayout columns="30,*,50" rows="auto,auto,auto,auto,30,*">
+<GridLayout columns="50,*,50" rows="auto,auto,auto,*,auto,auto,*">
     <StackLayout height="30">
 
     </StackLayout>
@@ -11,15 +11,15 @@
         <Label class="fas br-icon" fontSize="40" margin="10 0" text="&#xf502;"></Label>
              <!-- <Image src="res://Group 19" width="100" horizontalAlignment="left" class="profilePicture"></Image> -->
     </StackLayout>
-    <StackLayout row="3" col="1">
-        <TextField hint="Please enter your username" color="#491887" class="text-field">
+    <StackLayout row="4" col="1">
+        <TextField [(ngModel)]="username" hint="Please enter your username" color="#491887" class="text-field">
         </TextField>
-        <TextField hint="Please enter your password" color="#491887" class="text-field">
+        <TextField [(ngModel)]="email" hint="Please enter your Email" color="#491887" class="text-field">
         </TextField>
-        <TextField hint="Please reenter your password" color="#491887" class="text-field">
+        <TextField secure="true" [(ngModel)]="password" hint="Please enter your password" color="#491887" class="text-field">
         </TextField>
     </StackLayout>
-    <StackLayout row="5" col="1">
+    <StackLayout margin="20" horizontalAlignment="center" row="5" col="1">
         <Button  (tap)="register()" text="SIGN UP" ></Button>
         <Button (tap)="gotoLogin()" class="bg-trans" text="Login Instead"></Button>
     </StackLayout>

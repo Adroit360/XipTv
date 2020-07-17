@@ -20,11 +20,11 @@ export class AuthService {
     }
 
     register(registerDTO: RegisterDTO): Observable<LoginResponseDTO> {
-        return this.httpClient.post<LoginResponseDTO>(`${settings.baseUri}/api/auth/register`, registerDTO);
+        return this.httpClient.post<LoginResponseDTO>(`${settings.baseUri}/auth/register`, registerDTO);
     }
 
     login(loginDTO: LoginDTO): Observable<LoginResponseDTO> {
-        return this.httpClient.post<LoginResponseDTO>(`${settings.baseUri}/api/auth/login`, loginDTO);
+        return this.httpClient.post<LoginResponseDTO>(`${settings.baseUri}/auth/login`, loginDTO);
     }
 
     getCurrentUser():UserForReturnDTO{

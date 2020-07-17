@@ -34,7 +34,6 @@ export class RegisterComponent implements OnInit {
     email: string;
     password: string;
     registerForm: FormControl;
-    productBankSelectedIds: [];
     token: string;
 
     ngOnInit(): void {
@@ -42,29 +41,24 @@ export class RegisterComponent implements OnInit {
     }
 
     register() {
-        this.router.navigate(["payment-plan"],{
-            clearHistory:true
-        });
-
-        return;
+        
         this.isLoading = true;
         var registerDTO: RegisterDTO = {
             "username": this.username,
             "email": this.email,
-            "password": this.password,
-            productsToSell: [],
-            token: ""
+            "password": this.password
         }
         if (!this.validateFields()) {
             this.isLoading = false;
             return;
         }
+
         this.submitRegisteration(registerDTO).subscribe(
             response => {
                 this.isLoading = false;
                 this.saveloginResponse(response.token, response.user);
                 this.miscService.showToast("Registeration Successful");
-                this.router.navigate(["home"], { clearHistory: true });
+                this.router.navigate(["payment-plan"]);
             }, error => {
                 this.isLoading = false;
 
@@ -83,13 +77,13 @@ export class RegisterComponent implements OnInit {
 
     validateFields() {
         if (!this.username) {
-            this.miscService.showToast("Please provide a username");
+            this.miscService.alert("error","Please provide a username");
             return false;
         } else if (!this.email) {
-            this.miscService.showToast("Please provide an email address");
+            this.miscService.alert("error","Please provide an email address");
             return false;
         } else if (!this.password) {
-            this.miscService.showToast("Please provide a password");
+            this.miscService.alert("error","Please provide a password");
             return false;
         }
         return true;

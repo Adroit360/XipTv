@@ -11,12 +11,13 @@ import { TvListModalComponent } from "../home/category/tvlist-modal/tvlist-modal
         TvListModalComponent
     ],
     imports:[
-        NativeScriptCommonModule
+        NativeScriptCommonModule,
+        NativeScriptFormsModule
     ],
     exports:[
         NativeScriptCommonModule,
-        CustomActionBarComponent
-        
+        CustomActionBarComponent,
+        NativeScriptFormsModule
     ],
     providers:[
     ],

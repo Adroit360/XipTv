@@ -1,5 +1,5 @@
 <GridLayout rows="auto,*">
-    <SearchBar (textChange)="searchStringChanged($event)" 
+    <SearchBar *ngIf="filteredTvLinks" (textChange)="searchStringChanged($event)" 
     hint="Search all streams" (loaded)="onSearchBarLoaded($event)"
         >
     </SearchBar>

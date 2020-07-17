@@ -22,6 +22,7 @@ import { HttpInterceptorService } from "~/interceptors/http.interceptor";
 import { JwtInterceptor } from "~/interceptors/jwt.interceptor";
 import { AuthService } from "~/services/auth.service";
 import { MiscService } from "~/services/misc.service";
+import { ErrorInterceptor } from "~/interceptors/error.interceptor";
 
 @NgModule({
     bootstrap: [
@@ -39,7 +40,7 @@ import { MiscService } from "~/services/misc.service";
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        // {provide: HTTP_INTERCEPTORS,useClass: HttpInterceptorService,multi: true},
+        {provide: HTTP_INTERCEPTORS,useClass: ErrorInterceptor,multi: true},
         TvListService,UniversalService,AuthService,MiscService],
     schemas: [
         NO_ERRORS_SCHEMA

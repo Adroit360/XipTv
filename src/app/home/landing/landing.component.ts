@@ -6,6 +6,7 @@ import { TvListService } from "~/services/tvlist.service";
 import { android, AndroidApplication, AndroidActivityBundleEventData } from "tns-core-modules/application";
 import { filter } from "rxjs/operators";
 import { UniversalService } from "~/services/universal.service";
+import { TopsModel } from "~/data/models/topsModel";
 @Component({
     selector: "ns-landing",
     templateUrl: "./landing.component.html",
@@ -13,11 +14,8 @@ import { UniversalService } from "~/services/universal.service";
 })
 export class LandingComponent implements OnInit, OnDestroy {
     tvLinks: TvModel[];
-    //@ViewChild("videoplayer", { static: true }) videoplayer: ElementRef;
-    localLinks: TvModel[];
-    topLinks: TvModel[];
-    topMovies:TvModel[];
-    topSeries:TvModel[];
+
+    topsModel:TopsModel;
 
     showPlayer = true;
     
@@ -68,32 +66,12 @@ export class LandingComponent implements OnInit, OnDestroy {
 
         this.tvListService.getAllLinks()
         .then(response=>{
-
-            this.tvListService.getAllMovies()
-            .then((response:TvModel[])=>{
-                let date = new Date();
-                this.topMovies = response.filter(i=>i.name.includes(date.getFullYear().toString())).slice(0,10);
-            });
-    
-            this.tvListService.getAllSeries()
-            .then((response:TvModel[])=>{
-                this.topSeries = response.filter(i=>i.name.includes("S01 E01")).slice(0,10).map(i=>{
-                    i.name = i.name.replace("S01 E01","");
-                    return i;
-                });
-            });
-            
         });
 
 
-        this.tvListService.getLocalLinks()
+        this.tvListService.getTops()
         .then(response => {
-            this.localLinks = response;
-        });
-
-        this.tvListService.getTopLinks()
-        .then(response => {
-            this.topLinks = response;
+            this.topsModel = response;
         });
 
        
