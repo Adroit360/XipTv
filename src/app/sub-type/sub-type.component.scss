@@ -1,0 +1,31 @@
+.sub{
+    font-size: larger;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30;
+    margin-bottom: 20;
+}
+.primary{
+    background-color: white;
+    border-radius: 10;
+    padding: 10;
+    width: 80%;
+    color: blue;
+    // border: 1px solid purple;
+    font-weight: bold;
+    border-width: 5px;
+    border-color: blue;
+}
+
+.secondary{
+    background-color: blue;
+    border-radius: 10;
+    padding: 10;
+    width: 80%;
+    color: white;
+    font-weight: bold;
+}
+Button{
+    margin: 10 0;
+    padding: 20;
+}

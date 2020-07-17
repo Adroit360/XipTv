@@ -27,7 +27,7 @@
         padding: 20;
         border-radius: 20;
         width: 300;
-        
+
         &.violet{
             background-color: var(--violet);
             color:white;
@@ -42,10 +42,11 @@
         }
         &__info{
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-start;
+            justify-content:center;
             FlexboxLayout{
                 align-items: center;
+                justify-content: left;
                 .fas{
                     margin: 5;
                 }
@@ -54,9 +55,9 @@
                      margin: 5;
                 }
             }
-            
+
         }
-        
+
     }
 }
 

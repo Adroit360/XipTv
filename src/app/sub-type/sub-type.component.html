@@ -1,0 +1,21 @@
+<!-- <GridLayout rows="30,auto,30,*" columns="30,*,30">
+    <Flexbox col="1" row="1">
+        <Label text="Choose Subscription" class=""></Label>
+    </Flexbox>
+    <StackLayout row="4" col="1">
+        <Button text="Trial" class="btn btn-primary"></Button>
+        <Button text="Subscription"></Button>
+        <Button text=""></Button>
+    </StackLayout>
+</GridLayout> -->
+
+<GridLayout col="auto" row="auto">
+    <FlexboxLayout height="500" flexDirection="column" flexWrap="wrap" >
+        <Label class="sub" text="Choose Subscription"></Label>
+        <StackLayout>
+                <Button [nsRouterLink]="['/home']" text="Trial" height="50" class="primary"></Button>
+                <Button [nsRouterLink]="['/payment-plan']" text="Subscription" height="50" class="secondary"></Button>
+                <Button text="Dont have a subscription? Get one now" height="50" color="blue" fontWeight="bold"></Button>
+        </StackLayout>
+    </FlexboxLayout>
+</GridLayout>

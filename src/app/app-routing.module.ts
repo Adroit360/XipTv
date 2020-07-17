@@ -14,7 +14,8 @@ const routes: Routes = [
     {path:"login",loadChildren:()=>import("~/app/login/login.module").then(m=>m.LoginModule)},
     {path:"get-started",loadChildren:()=>import("~/app/get-started/get-started.module").then(m=>m.GetStartedModule)},
     {path:"payment-plan",loadChildren:()=>import("~/app/paymentplans/paymentplans.module").then(m=>m.PaymentPlansModule)},
-    {path:"sub-expired",loadChildren:()=>import("~/app/sub-expired/sub-expired.module").then(m=>m.SubExpiredModule)}
+    {path:"sub-expired",loadChildren:()=>import("~/app/sub-expired/sub-expired.module").then(m=>m.SubExpiredModule)},
+    {path:"sub-type",loadChildren:()=>import("~/app/sub-type/sub-type.module").then(m=>m.SubTypeModule)}
 ];
 
 @NgModule({

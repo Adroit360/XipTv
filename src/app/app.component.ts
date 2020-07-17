@@ -31,7 +31,7 @@ export class AppComponent {
 
 
         if (appStorage.getBoolean(this.isNew, true)) {
-            this.routerExtensions.navigate(["payment-plan"]);
+            this.routerExtensions.navigate(["sub-type"]);
             console.log("THis is sooo not loading from backend😂");
         } else{
             this.routerExtensions.navigate(["home"]);
@@ -39,3 +39,5 @@ export class AppComponent {
         }
     }
 }
+
+
