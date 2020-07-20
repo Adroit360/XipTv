@@ -15,7 +15,7 @@
         <StackLayout>
                 <Button [nsRouterLink]="['/home']" text="Trial" height="50" class="primary"></Button>
                 <Button [nsRouterLink]="['/payment-plan']" text="Subscription" height="50" class="secondary"></Button>
-                <Button text="Dont have a subscription? Get one now" height="50" color="blue" fontWeight="bold"></Button>
+                <Button [nsRouterLink]="['/payment-plan']" text="Dont have a subscription? Get one now" height="50" color="blue" fontWeight="bold"></Button>
         </StackLayout>
     </FlexboxLayout>
 </GridLayout>

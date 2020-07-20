@@ -1,0 +1,60 @@
+<GridLayout rows="auto,auto,auto,auto,*" columns="30,*,30">
+  <StackLayout col="1">
+  <SearchBar row="0" col="1" (textChange)="searchStringChanged($event)"
+        hint="Search all streams" (loaded)="onSearchBarLoaded($event)">
+    </SearchBar>
+  </StackLayout>
+  <StackLayout row="1" col="1">
+    <Label text="Featured Videos"></Label>
+    <FlexboxLayout alignItems="center" justifyContent="space-between">
+      <Label text="blue" backgroundColor="blue" height="100" width="75"></Label>
+
+      <Label text="red" backgroundColor="red" height="80" width="75"></Label>
+
+      <Label
+        text="yellow"
+        backgroundColor="yellow"
+        height="140"
+        width="75"
+      ></Label>
+
+      <Label
+        text="green"
+        backgroundColor="green"
+        height="70"
+        width="75"
+      ></Label>
+    </FlexboxLayout>
+  </StackLayout>
+
+  <StackLayout row="2" col="1">
+    <Label text="Featured Videos"></Label>
+    <FlexboxLayout alignItems="center" justifyContent="space-between">
+      <Label text="blue" backgroundColor="blue" height="100" width="75"></Label>
+
+      <Label text="red" backgroundColor="red" height="80" width="75"></Label>
+
+      <Label
+        text="yellow"
+        backgroundColor="yellow"
+        height="140"
+        width="75"
+      ></Label>
+
+      <Label
+        text="green"
+        backgroundColor="green"
+        height="70"
+        width="75"
+      ></Label>
+    </FlexboxLayout>
+  </StackLayout>
+
+  <ScrollView  row="3" col="1">
+    <GridLayout backgroundColor="pink" rows="*" columns="auto,*,auto">
+      <Label backgroundColor="red" text="I am tired" width="40%"></Label>
+      <Label col="1" text="dsfadsfa"></Label>
+      <Label backgroundColor="green" text="Help" col="2" width="40%"></Label>
+    </GridLayout>
+  </ScrollView>
+</GridLayout>
