@@ -19,6 +19,12 @@ import { PlayerModule } from "./player/player.module";
 import { TvListModalComponent } from "./home/category/tvlist-modal/tvlist-modal.component";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HttpInterceptorService } from "~/interceptors/http.interceptor";
+import { JwtInterceptor } from "~/interceptors/jwt.interceptor";
+import { AuthService } from "~/services/auth.service";
+import { MiscService } from "~/services/misc.service";
+import { ErrorInterceptor } from "~/interceptors/error.interceptor";
+import { SubscriptionService } from "~/services/subscription.service";
+import { PaymentModalComponent } from "./paymentplans/payment-modal/payment-modal.component";
 
 @NgModule({
     bootstrap: [
@@ -35,12 +41,13 @@ import { HttpInterceptorService } from "~/interceptors/http.interceptor";
         AppComponent
     ],
     providers: [
-        // {provide: HTTP_INTERCEPTORS,useClass: HttpInterceptorService,multi: true},
-        TvListService,UniversalService],
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        {provide: HTTP_INTERCEPTORS,useClass: ErrorInterceptor,multi: true},
+        TvListService,UniversalService,AuthService,MiscService,SubscriptionService],
     schemas: [
         NO_ERRORS_SCHEMA
     ],
-    entryComponents:[TvListModalComponent]
+    entryComponents:[TvListModalComponent,PaymentModalComponent]
 })
 /*
 Pass your application module to the bootstrapModule function located in main.ts to start your app

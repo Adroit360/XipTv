@@ -1,14 +1,36 @@
-<GridLayout columns="*" rows="auto,*,auto">
-<StackLayout backgroundColor="white" width="80%">
-    <Label text="Welcome to" height="50" color="#491887"></Label>
-    <Label class="emphasis" text="XIPTV"></Label>
-    <Label text="Please fill in the fields, and get ready to experience a  new viewing experience" textWrap="true" horizontalAlignment="left" width="300" class="support-body"></Label>
-    <Image src="res://Group 19" width="100" class="profilePicture" height="100" horizontalAlignment="left"></Image>
-    <TextField hint="Please enter your username" color="#491887" class="text-field">
-    </TextField>
-    <TextField hint="Enter your password" color="#491887" class="text-field">
-    </TextField>
-    <Button text="LOGIN" class="btn" verticalAlignment="bottom" ></Button>
-    <Button text="SIGN UP" class="btn-empty" verticalAlignment="bottom" ></Button>
-</StackLayout>
+<GridLayout columns="50,*,50" rows="auto,auto,auto,*,auto,auto,*">
+   
+    <StackLayout height="30">
+
+    </StackLayout>
+    <StackLayout backgroundColor="white" width="100%" row="1" horizontalAlignment="left" col="1">
+        <Label text="Welcome to" color="#491887"></Label>
+        <Label class="emphasis" text="XIPTV"></Label>
+        <Label text="Please fill in the fields, and get ready to experience a  new viewing experience" textWrap="true"
+            horizontalAlignment="left" width="300" class="support-body"></Label>
+    </StackLayout>
+    <StackLayout row="2" col="1">
+        <Label class="fas br-icon" fontSize="40" margin="10 0" text="&#xf4fd;"></Label>
+        <!-- <Image src="res://Group 19" width="100" horizontalAlignment="left" class="profilePicture"></Image> -->
+    </StackLayout>
+    <StackLayout row="4" col="1">
+        <TextField [(ngModel)]="loginModel.email" hint="Please enter your email" color="#491887" class="text-field">
+        </TextField>
+        <TextField [(ngModel)]="loginModel.password" secure="true" hint="Please enter your password" color="#491887"
+            class="text-field">
+        </TextField>
+    </StackLayout>
+
+
+
+    <StackLayout margin="30" row="5" col="1">
+        <Button (tap)="login()" text="LOGIN" class="primary"></Button>
+        <Button (tap)="gotoRegister()" class="trans" text="Register Instead"></Button>
+    </StackLayout>
+
+    <GridLayout colSpan="3" rowSpan="7" *ngIf="isLoading">
+        <ActivityIndicator color="black" width="20" height="20" busy="true" class="activity-indicator">
+        </ActivityIndicator>
+    </GridLayout>
+
 </GridLayout>

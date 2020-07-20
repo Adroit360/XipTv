@@ -12,7 +12,8 @@ const routes:Route[] = [
     declarations:[
         RegisterComponent,
     ],
-    imports:[SharedModule,
+    imports:[
+        SharedModule,
         NativeScriptRouterModule.forChild(routes)
     ],
     exports:[

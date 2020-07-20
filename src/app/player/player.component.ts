@@ -5,6 +5,7 @@ import { settings } from "~/helpers/settings";
 import { TvListService } from "~/services/tvlist.service";
 import { Page } from "tns-core-modules/ui/page";
 import { keepAwake, allowSleepAgain } from "nativescript-insomnia";
+import { on } from "tns-core-modules/application";
 
 
 var insomnia = require("nativescript-insomnia");
@@ -27,14 +28,16 @@ export class PlayerComponent implements OnInit, OnDestroy {
     constructor(private activatedRoute: ActivatedRoute
         , private tvListService: TvListService, private page: Page) {
         page.actionBarHidden = false;
+        on("orientationChanged", this.onOrientationChanged);
         this.activatedRoute.queryParams.subscribe(param => {
+            console.log(param.url);
+            
             this.videoName = param.name;
             this.videoSrc = param.url;
             // let url = "";
             // if (param.url)
             //     url = param.url.toString().replace(/\//gi, "*");
-            //this.videoSrc = `${settings.baseUri}/tvlist/getstream/http:**m3ulink.com:7899*live*emmanuelofori26381*Hkc7jrpO/56067.m3u8`;
-            //this.videoSrc = "";
+            // this.videoSrc = `${settings.baseUri}/tvlist/getstream/${url}`;
             console.log(this.videoSrc);
         });
     }
@@ -44,6 +47,13 @@ export class PlayerComponent implements OnInit, OnDestroy {
             console.log("Insomnia is active");
         });
     }
+
+    public onOrientationChanged = (evt) => {
+        console.log("orientation changed");
+        if(evt.newValue == "landscape"){
+            this.page.actionBarHidden = true;
+        } //landscape or portrait
+      };
 
     ngOnDestroy() {
         this.videoplayer.nativeElement.destroy();
@@ -71,5 +81,16 @@ export class PlayerComponent implements OnInit, OnDestroy {
             this.showLoader = false;
             this.loaderText = "could not play video";
         }
+    }
+
+    pageTapped(){
+        if(this.page.actionBarHidden)
+            this.page.actionBarHidden = false;
+        else
+            this.page.actionBarHidden = true;
+
+        setTimeout(()=>{
+            this.page.actionBarHidden = true;
+        },5000)
     }
 }

@@ -1,36 +1,38 @@
-<ns-action-bar [showBackButton]="true" [header]="videoName"></ns-action-bar>
+<GridLayout (tap)="pageTapped()" rows="auto,*">
+    <ns-action-bar [showBackButton]="true" [header]="videoName"></ns-action-bar>
 
-<GridLayout rows="auto,*">
+    <GridLayout row="1"ows="auto,*">
+        
     
-
-    <FlexboxLayout *ngIf="showLoader" justifyContent="center" alignItems="center"
-     height="50" width="100%">
-        <ActivityIndicator width="20" height="20" busy="true" class="activity-indicator"></ActivityIndicator>
-        <Label style="margin: 0 10;" [text]="loaderText"></Label>
-    </FlexboxLayout>
-
-    <FlexboxLayout *ngIf="showInfo" justifyContent="center" alignItems="center"
-     height="50" width="100%">
-        <Label style="margin: 0 10;" [text]="infoText"></Label>
-    </FlexboxLayout>
-
-    <exoplayer #videoplayer
-    fill="aspect"
-    controls="true"
-    [src]="videoSrc"
-    (playbackReady)="playbackReady()"
-    (error)="onPlayerError()"
-    (paused)="onPlayerPaused()"
-    autoplay="true"
-    row="1"
-    ></exoplayer>
-
-    <!-- <exoplayer row="2" #videoplayer
-    [src]="videoSrc" 
-    (playbackReady)="playbackReady()"
-    (error)="onPlayerError()"
-    (paused)="onPlayerPaused()"
-    autoplay="true"
-    ></exoplayer> -->
-
+        <FlexboxLayout *ngIf="showLoader" justifyContent="center" alignItems="center"
+         height="50" width="100%">
+            <ActivityIndicator width="20" height="20" busy="true" class="activity-indicator"></ActivityIndicator>
+            <Label style="margin: 0 10;" [text]="loaderText"></Label>
+        </FlexboxLayout>
+    
+        <FlexboxLayout *ngIf="showInfo" justifyContent="center" alignItems="center"
+         height="50" width="100%">
+            <Label style="margin: 0 10;" [text]="infoText"></Label>
+        </FlexboxLayout>
+    
+        <exoplayer #videoplayer
+        fill="aspect"
+        controls="true"
+        [src]="videoSrc"
+        (playbackReady)="playbackReady()"
+        (error)="onPlayerError()"
+        (paused)="onPlayerPaused()"
+        autoplay="true"
+        row="1"
+        ></exoplayer>
+    
+        <!-- <exoplayer row="2" #videoplayer
+        [src]="videoSrc" 
+        (playbackReady)="playbackReady()"
+        (error)="onPlayerError()"
+        (paused)="onPlayerPaused()"
+        autoplay="true"
+        ></exoplayer> -->
+    
+    </GridLayout>
 </GridLayout>

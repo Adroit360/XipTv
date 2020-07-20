@@ -3,6 +3,7 @@ import { SharedModule } from "../shared/shared.module";
 import { Route } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { PaymentPlansComponent } from "./paymentplans.component";
+import { PaymentModalComponent } from "./payment-modal/payment-modal.component";
 
 const routes:Route[] = [
     {path:"",component:PaymentPlansComponent}
@@ -10,7 +11,7 @@ const routes:Route[] = [
 
 @NgModule({
     declarations:[
-        PaymentPlansComponent,
+        PaymentPlansComponent
     ],
     imports:[SharedModule,
         NativeScriptRouterModule.forChild(routes)

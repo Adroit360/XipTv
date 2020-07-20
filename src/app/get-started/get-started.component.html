@@ -1,20 +1,18 @@
-<GridLayout rows="150,*,auto,100" columns="50,*">
+<GridLayout rows="auto,150,*,auto,auto" columns="50,*">
 
-<<<<<<< HEAD
-  <StackLayout orientation="horizontal" margin="20" colSpan="2">
+  <StackLayout height="20">
+
+  </StackLayout>
+
+  <StackLayout row="1" orientation="horizontal" margin="20" colSpan="2">
     <Image height="120" src="res://getstart"></Image>
   </StackLayout>
-=======
 
-
-  <Label class="head" text="Get Started" row="1" col="1"></Label>
->>>>>>> 70c3a327d36556c5cdd7c0fa23ce8ea368e7cc9a
-
-  <FlexboxLayout row="1" colSpan="2" justifyContent='center'>
+  <FlexboxLayout row="2" colSpan="2" justifyContent='center'>
     <Label fontSize="50" color="white" class="fas" text="&#xf042;"></Label>
   </FlexboxLayout>
 
-  <StackLayout row="2" colSpan="2" 
+  <StackLayout row="3" colSpan="2" 
   margin="20"
   verticalAlignment="center" 
   horizontalAlignment="center">
@@ -28,8 +26,8 @@
     <Label class="support-body-link" textWrap="true" text="Try Now for free"></Label>
   </StackLayout>
 
-  <StackLayout row="3" colSpan="2" padding="20">
-    <Button height="50" text="Get Started" class="btn"></Button>
+  <StackLayout row="4" colSpan="2" padding="20">
+    <Button (tap)="login()" height="50" text="Get Started" class="primary"></Button>
   </StackLayout>
   <!-- <Button class="support-body-link" text="Hello"></Button> -->
 </GridLayout>

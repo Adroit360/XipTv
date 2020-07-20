@@ -46,7 +46,7 @@
             justify-content:center;
             FlexboxLayout{
                 align-items: center;
-                justify-content: left;
+                justify-content: flex-start;
                 .fas{
                     margin: 5;
                 }
@@ -61,7 +61,7 @@
     }
 }
 
-.btn{
+.mybtn{
     &.white{
         background-color: white;
         color:var(--violet);

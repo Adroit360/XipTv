@@ -6,5 +6,4 @@ import { Component } from "@angular/core";
     styleUrls:["./sub-expired.component.scss"]
 })
 export class SubExpiredComponent{
-
 }
