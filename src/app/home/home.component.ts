@@ -13,6 +13,8 @@ import { UniversalService } from "~/services/universal.service";
 import { isAndroid } from "tns-core-modules/platform";
 import * as connectivity from "tns-core-modules/connectivity";
 import { Page } from "tns-core-modules/ui/page";
+import { Subscription } from "~/data/models/subscriptions";
+import { PackageType } from "~/data/models/packagetype";
 
 @Component({
     selector: "ns-home",
@@ -20,7 +22,8 @@ import { Page } from "tns-core-modules/ui/page";
     templateUrl: "./home.component.html"
 })
 export class HomeComponent implements OnInit {
-
+    packageType = PackageType;
+    
     sideDrawerTransition: DrawerTransitionBase;
     private _activatedUrl: string;
 
@@ -30,6 +33,8 @@ export class HomeComponent implements OnInit {
     canGoForward = false;
     route = 'landing';
     isAndroid = isAndroid;
+
+    currentSubscription:Subscription;
 
     @ViewChild("sideDrawer", { static: true }) sideDrawer: RadSideDrawerComponent;
     //firstEightLinks:TvModel[];
@@ -49,8 +54,13 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.currentSubscription = this.tvListService.currentSubscription;
         this.sideDrawerTransition = new SlideInOnTopTransition();
         this.universalService.setSideDrawer(this.sideDrawer);
+
+        this.tvListService.getAllLinks()
+        .then(response=>{
+        });
     }
 
     isComponentSelected(url: string): boolean {
@@ -106,5 +116,9 @@ export class HomeComponent implements OnInit {
 
     gotoProfile(){
         this.routerExtensions.navigate(["profile"]);
+    }
+
+    switchSubscription(){
+        this.routerExtensions.navigate(["sub-type"])
     }
 }

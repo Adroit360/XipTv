@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild, ElementRef } from "@angular/core";
 import { ModalDialogParams } from "nativescript-angular/common";
 import { TvModel } from "~/data/models/tvModel";
 import { TvListService } from "~/services/tvlist.service";
@@ -18,6 +18,11 @@ export class TvListModalComponent{
     filterCount = 0;
     category;
     isAndroid = isAndroid;
+
+    showSearchCancel = false;
+
+    @ViewChild("SearchBar", { static: true }) SearchBar: ElementRef;
+
     constructor(page:Page,private tvListService:TvListService,
         private routerExtensions:RouterExtensions,
         private modalParams:ModalDialogParams){
@@ -41,11 +46,22 @@ export class TvListModalComponent{
 
     }
 
+    cancelSearchBar() {
+        var searchBar = this.SearchBar.nativeElement;
+
+        if (searchBar.ios) {
+            searchBar.ios.endEditing(true);
+        } else if (searchBar.android) {
+            searchBar.android.clearFocus();
+        }
+
+        this.showSearchCancel = false;
+    }
+
+
     searchStringChanged(event){
-        // this.filterCount ++;
-        // if(this.filterCount == 3){
+        this.showSearchCancel = true;
             this.searchString = event.value.toLowerCase();
-           // this.filterCount = 0;
             this.filterTvList(this.searchString);
         //}
     }

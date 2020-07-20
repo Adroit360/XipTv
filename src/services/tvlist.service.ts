@@ -3,14 +3,19 @@ import { knownFolders, Folder, File } from "tns-core-modules/file-system";
 import { TvModel } from "~/data/models/tvModel";
 import { settings } from "~/helpers/settings";
 import { HttpClient } from "@angular/common/http";
-import { timestamp } from "rxjs/operators";
+import { timestamp, subscribeOn } from "rxjs/operators";
 import { UniversalService } from "./universal.service";
 import { Observable, Subject } from "rxjs";
 import { TopsModel } from "~/data/models/topsModel";
+import { Subscription } from "~/data/models/subscriptions";
 const currentAppFolder = knownFolders.currentApp();
 
 @Injectable()
 export class TvListService {
+
+    currentSubscription:Subscription;
+
+    oldSubscription:Subscription;
 
     tvListFile: File;
     tvLinks: TvModel[];
@@ -55,8 +60,6 @@ export class TvListService {
         return tvModels;
     }
 
-
-
     async getAllLinks(): Promise<TvModel[]> {
         return new Promise((resolve, reject) => {
 
@@ -65,7 +68,7 @@ export class TvListService {
             let githubUri;
 
             if (this.currentSource.includes('server')) {
-                uri = `${settings.baseUri}/tvlist/all`;
+                uri = `${settings.baseUri}/tvlist/all/${this.currentSubscription.package.packageType}`;
                 serverUri = uri;
             }
             else if (this.currentSource.includes('github')) {
@@ -73,7 +76,7 @@ export class TvListService {
                 githubUri = uri;
             }
 
-            if (this.tvLinks)
+            if (this.tvLinks && this.currentSubscription == this.oldSubscription)
                 resolve(this.tvLinks);
             else {
                 if (this.currentSource.includes("github-server")) {
@@ -93,6 +96,7 @@ export class TvListService {
                         .subscribe(response => {
                             this.tvLinks = response;
                             resolve(response);
+                            this.oldSubscription = this.currentSubscription;
                         });
                 }
             }
@@ -133,14 +137,15 @@ export class TvListService {
 
     async getTops(): Promise<TopsModel> {
         return new Promise((resolve, reject) => {
-            if (this.topsModel)
+            if (this.topsModel && this.oldSubscription == this.currentSubscription)
                 resolve(this.topsModel);
 
             if (this.currentSource == 'server') {
-                this.httpClient.get<TopsModel>(`${settings.baseUri}/tvlist/tops`)
+                this.httpClient.get<TopsModel>(`${settings.baseUri}/tvlist/tops/${this.currentSubscription.package.packageType}`)
                     .subscribe(response => {
                         this.topsModel = response;
                         resolve(response);
+                        this.oldSubscription = this.currentSubscription;
                     });
             } 
         });

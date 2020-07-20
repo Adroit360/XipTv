@@ -64,11 +64,6 @@ export class LandingComponent implements OnInit, OnDestroy {
             this.showPlayer=false;
         }
 
-        this.tvListService.getAllLinks()
-        .then(response=>{
-        });
-
-
         this.tvListService.getTops()
         .then(response => {
             this.topsModel = response;

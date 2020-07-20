@@ -124,3 +124,50 @@ Button.-primary {
 
 $cPurple: #491887;
 
+.primary{
+    background-color: white;
+    border-radius: 10;
+    padding: 10;
+    width: 80%;
+    color: blue;
+    // border: 1px solid purple;
+    font-weight: bold;
+    border-color: blue;
+}
+
+.trans{
+    background-color: transparent;
+    border-radius: 10;
+    padding: 10;
+    width: 80%;
+    &.blue{
+        color: blue;
+    }
+    // border: 1px solid purple;
+    font-weight: bold;
+    border-color: transparent;
+}
+
+.secondary{
+    background-color: blue;
+    border-radius: 10;
+    padding: 10;
+    width: 80%;
+    color: white;
+    font-weight: bold;
+}
+Button{
+    margin: 10 0;
+    padding: 20;
+    z-index:0;
+    border-width: 1;
+}
+
+TextField{
+    border-width: 1;
+    border-color: rgba(0, 0, 0, 0.4);
+    margin: 15;
+    font-size: smaller;
+    padding: 10 15;
+    border-radius: 6;
+}

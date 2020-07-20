@@ -1,19 +1,21 @@
 <GridLayout rows="auto,*">
     <StackLayout>
         <StackLayout height="35" *ngIf='isAndroid'></StackLayout>
-        <GridLayout verticalAlignment="center" columns="auto,*,auto">
-            <Label margin="0 10" fontWeight="bold" (tap)="closeModal()" [text]="category"></Label>
+        <FlexboxLayout alignItems="center" justifyContent="space-between">
+            <Label width="60" (tap)="closeModal()" margin="0 0 0 10" class="fas bloated" text="&#xf053;"></Label>
     
-            <SearchBar col="1" (textChange)="searchStringChanged($event)" [hint]="'Search ' + category" textFieldHintColor="whitesmoke">
+            <SearchBar #SearchBar (textChange)="searchStringChanged($event)" [hint]="'Search ' + category" textFieldHintColor="whitesmoke">
             </SearchBar>
     
-            <Label margin="0 10" col="2" (tap)="closeModal()" text="close"></Label>
-        </GridLayout>
+            <Label (tap)="cancelSearchBar()" margin="0 10 0 0"
+            color="#444" 
+             width="120" text="cancel"></Label>
+        </FlexboxLayout>
     </StackLayout>
     
 
     <ActivityIndicator row="1" borderRadius="50%" backgroundColor="white" *ngIf="!filteredTvLinks" row="2" color="black"
-        width="100" height="100" [busy]="true">
+        width="20" height="20" [busy]="true">
     </ActivityIndicator>
 
     <ListView row="1" class="link-container" orientation="horizontal" [items]="filteredTvLinks">

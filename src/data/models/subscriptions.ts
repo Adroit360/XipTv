@@ -7,5 +7,5 @@ export class Subscription{
     remainingDays:number;
     userId:string;
     packageId:number;
-    Package:Package;
+    package:Package;
 }

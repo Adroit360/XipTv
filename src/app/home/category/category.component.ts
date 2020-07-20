@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Page, Observable } from "tns-core-modules/ui/page";
 import { TvModel } from "~/data/models/tvModel";
 import { TvListService } from "~/services/tvlist.service";
@@ -15,6 +15,8 @@ import { UniversalService } from "~/services/universal.service";
 export class CategoryComponent implements OnInit {
     objectKeys = Object.keys;
     searchString;
+    @ViewChild("SearchBar", { static: true }) SearchBar: ElementRef;
+    showSearchCancel = false;
     tvLinks: TvModel[];
 
     tvGroups: string[];
@@ -41,13 +43,14 @@ export class CategoryComponent implements OnInit {
     }
 
     searchStringChanged(event) {
+        this.showSearchCancel = true;
         this.searchString = event.value.toLowerCase();
         this.filterTvGroup(this.searchString);
         //}
     }
 
     filterTvGroup(searchString) {
-        this.filteredTvGroups = null;
+        //this.filteredTvGroups = null;
         setTimeout(() => {
             this.filteredTvGroups = this.tvGroups.filter(i => i.toLowerCase().includes(searchString));
         }, 0);
@@ -89,6 +92,18 @@ export class CategoryComponent implements OnInit {
     getColor(): string {
         let darkColors = ["green", "orange", "violet", "orangered"];
         return darkColors[Math.floor(Math.random() * darkColors.length)];
+    }
+
+    cancelSearchBar() {
+        var searchBar = this.SearchBar.nativeElement;
+
+        if (searchBar.ios) {
+            searchBar.ios.endEditing(true);
+        } else if (searchBar.android) {
+            searchBar.android.clearFocus();
+        }
+
+        this.showSearchCancel = false;
     }
 
 }

@@ -31,11 +31,13 @@ export class AppComponent {
 
 
         if (appStorage.getBoolean(this.isNew, true)) {
-            this.routerExtensions.navigate(["payment-plan"]);
+            this.routerExtensions.navigate(["get-started"]);
             console.log("THis is sooo not loading from backend😂");
         } else{
-            this.routerExtensions.navigate(["home"]);
+            this.routerExtensions.navigate(["login"]);
             console.log("This is reading the get started in ap.module.ts☹️ ");
         }
     }
 }
+
+

@@ -1,12 +1,20 @@
 <GridLayout rows="auto,*">
-    <SearchBar *ngIf="filteredTvLinks" (textChange)="searchStringChanged($event)" 
-    hint="Search all streams" (loaded)="onSearchBarLoaded($event)"
-        >
-    </SearchBar>
-    <ActivityIndicator row="1"  borderRadius="50%" backgroundColor="white" *ngIf="!filteredTvLinks" row="2" color="black" width="100"
-        height="100" [busy]="true">
+    <!-- *ngIf="filteredTvLinks" -->
+    <FlexboxLayout [visibility]="filteredTvLinks ? 'visible' : 'collapsed'" alignItems="center" justifyContent="center">
+        <SearchBar #SearchBar (textChange)="searchStringChanged($event)" 
+        hint="Search all streams" (loaded)="onSearchBarLoaded($event)"
+        ></SearchBar>
+        
+        <Label (tap)="cancelSearchBar()" margin="0 10 0 0"
+            color="#444"
+            backgroundColor="blue"
+         width="120" text="cancel"></Label>
+    </FlexboxLayout>
+    <ActivityIndicator row="1"  borderRadius="50%" backgroundColor="white" 
+        *ngIf="!filteredTvLinks" row="2" color="black" width="20"
+        height="20" [busy]="true">
     </ActivityIndicator>
-    <ListView row="1" class="link-container" orientation="horizontal" [items]="filteredTvLinks">
+    <ListView *ngIf="filteredTvLinks" row="1" class="link-container" orientation="horizontal" [items]="filteredTvLinks">
         <ListViewLinearLayout tkListViewLayout></ListViewLinearLayout>
         <ng-template tkListItemTemplate let-i="index" let-item="item">
             <GridLayout class="list-item" (tap)="openPlayer(item.name,item.url)" columns="70,*">

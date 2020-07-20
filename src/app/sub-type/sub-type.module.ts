@@ -1,28 +1,29 @@
+import { NgModel } from "@angular/forms";
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import { SubTypeComponent } from "./sub-type-component";
 import { SharedModule } from "../shared/shared.module";
 import { Route } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
-import { PaymentPlansComponent } from "./paymentplans.component";
-import { PaymentModalComponent } from "./payment-modal/payment-modal.component";
 
-const routes:Route[] = [
-    {path:"",component:PaymentPlansComponent}
+const routes :Route[] = [
+    {path:"",component:SubTypeComponent}
 ]
 
 @NgModule({
     declarations:[
-        PaymentPlansComponent
+        SubTypeComponent
     ],
-    imports:[SharedModule,
+    imports:[
+        SharedModule,
         NativeScriptRouterModule.forChild(routes)
     ],
     exports:[
         NativeScriptRouterModule
     ],
-    schemas:[
+    schemas: [
         NO_ERRORS_SCHEMA
-    ]
+    ],
 })
-export class PaymentPlansModule{
+export class SubTypeModule{
 
 }

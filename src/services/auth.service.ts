@@ -11,11 +11,25 @@ import { LoginDTO } from "~/data/dtos/loginDTO";
 
 @Injectable()
 export class AuthService {
-    currentUser: UserForReturnDTO;
+    _currentUser:UserForReturnDTO;
+
+    set currentUser(value:UserForReturnDTO){
+        this._currentUser = value;
+    }
+
+    get currentUser(): UserForReturnDTO{
+        if(this._currentUser){
+            return this._currentUser
+        }else{
+            this.getCurrentUser();
+            return this._currentUser;
+        }
+    };
+    
     constructor(private httpClient: HttpClient, private router: RouterExtensions) {
         this.getCurrentUser();
         if (this.currentUser) {
-            this.router.navigate(["home"], { clearHistory: true });
+            this.router.navigate(["sub-type"]);
         }
     }
 
@@ -28,9 +42,6 @@ export class AuthService {
     }
 
     getCurrentUser():UserForReturnDTO{
-        if (this.currentUser)
-            return this.currentUser;
-            
         var userString = appStorage.getString("user");
         if (userString) {
             this.currentUser = JSON.parse(userString);

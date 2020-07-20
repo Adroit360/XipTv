@@ -33,6 +33,7 @@ export class LoginComponent {
     }
 
     login() {
+        this.isLoading = true;
         if (!this.validateFields()) {
             this.isLoading = false;
             return;
@@ -42,7 +43,7 @@ export class LoginComponent {
                 this.isLoading = false;
                 this.miscService.showToast("Login Successful");
                 this.saveloginResponse(response.token, response.user);
-                this.router.navigate(["payment-plan"]);
+                this.router.navigate(["sub-type"]);
             }, error => {
                 this.isLoading = false;
                 this.miscService.alert("Error", error);

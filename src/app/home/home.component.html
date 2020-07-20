@@ -27,11 +27,12 @@
             <StackLayout height="35" *ngIf='isAndroid'></StackLayout>
         
             <Flexboxlayout row="1" justifyContent="space-between" class="navbar">
-                <StackLayout orientation="horizontal">
-                    <!-- <Label class="fas arrow"
-                        text="&#xf1e3;"></Label> -->
-                        
-                </StackLayout>
+                <FlexboxLayout (tap)="switchSubscription()" alignItems="center">
+                    <Label class="fas arrow"
+                        text="&#xf362;"></Label>
+                    
+                    <Label *ngIf="currentSubscription.package" [text]="packageType[currentSubscription.package.packageType]"></Label>
+                </FlexboxLayout>
                 <Image class="brand" src=""></Image>
                 <Label [ngClass]="{active:route == 'profile'}" (tap)="gotoProfile()" class="fas navicon"
                     text="&#xf007;"></Label>
@@ -57,7 +58,7 @@
             </ActivityIndicator> -->
          
             <FlexboxLayout row="3" class="footer-nav">
-                <FlexboxLayout [ngClass]="{active:isComponentSelected('landing')}" (tap)="navigate('landing')" class="nav-box active">
+                <FlexboxLayout [ngClass]="{active:isComponentSelected('landing')}" (tap)="navigate('landing')" class="nav-box">
                     <Label class="fas icon" text="&#xf015;"></Label>
                     <Label class="text" text="Home"></Label>
                 </FlexboxLayout>

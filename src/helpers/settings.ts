@@ -3,6 +3,6 @@ const urls = {
     online:"https://xiptv-api.azurewebsites.net/api"
 }
 export const settings = {
-    baseUri:urls.local,
+    baseUri:urls.online,
     githubUrl:`https://iptv-org.github.io/iptv`
 }

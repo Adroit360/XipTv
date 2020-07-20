@@ -4,11 +4,13 @@ import {NativeScriptFormsModule} from "nativescript-angular/forms";
 import { CustomActionBarComponent } from "./action-bar/action-bar.component";
 import { UniversalService } from "~/services/universal.service";
 import { TvListModalComponent } from "../home/category/tvlist-modal/tvlist-modal.component";
+import { PaymentModalComponent } from "../paymentplans/payment-modal/payment-modal.component";
 
 @NgModule({
     declarations:[
         CustomActionBarComponent,
-        TvListModalComponent
+        TvListModalComponent,
+        PaymentModalComponent
     ],
     imports:[
         NativeScriptCommonModule,

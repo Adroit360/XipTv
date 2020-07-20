@@ -1,4 +1,5 @@
 <GridLayout columns="50,*,50" rows="auto,auto,auto,*,auto,auto,*">
+    
     <StackLayout height="30">
 
     </StackLayout>
@@ -20,7 +21,11 @@
         </TextField>
     </StackLayout>
     <StackLayout margin="20" horizontalAlignment="center" row="5" col="1">
-        <Button  (tap)="register()" text="SIGN UP" ></Button>
-        <Button (tap)="gotoLogin()" class="bg-trans" text="Login Instead"></Button>
+        <Button  (tap)="register()" text="SIGN UP" class="primary"></Button>
+        <Button (tap)="gotoLogin()" class="trans" text="Login Instead"></Button>
     </StackLayout>
+    <GridLayout colSpan="3" *ngIf="isLoading" rowSpan="7">
+        <ActivityIndicator color="black" width="20" height="20" busy="true" class="activity-indicator">
+        </ActivityIndicator>
+    </GridLayout>
     </GridLayout>

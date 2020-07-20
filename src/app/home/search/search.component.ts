@@ -1,4 +1,4 @@
-import { Component,OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Page } from "tns-core-modules/ui/page";
 import { TvModel } from "~/data/models/tvModel";
 import { TvListService } from "~/services/tvlist.service";
@@ -9,39 +9,53 @@ import { RouterExtensions } from "nativescript-angular/router";
     styleUrls: ["./search.component.scss"]
 })
 export class SearchComponent implements OnInit {
-   
+
+    @ViewChild("SearchBar", { static: true }) SearchBar: ElementRef;
+
     searchString;
-    tvLinks:TvModel[];
-    filteredTvLinks:TvModel[];
+    tvLinks: TvModel[];
+    filteredTvLinks: TvModel[];
     filterCount = 0;
 
-    constructor(page:Page,private tvListService:TvListService,
-        private routerExtensions:RouterExtensions){
+    showSearchCancel = false;
+
+    constructor(page: Page, private tvListService: TvListService,
+        private routerExtensions: RouterExtensions) {
         page.actionBarHidden = true;
-        
+
         tvListService.getAllLinks()
-        .then(response=>{
-            this.tvLinks = response;
-            this.filteredTvLinks = response;
-        });
+            .then(response => {
+                this.tvLinks = response;
+                this.filteredTvLinks = response;
+            });
     }
 
-    ngOnInit(){
+    ngOnInit() {
 
     }
 
-    searchStringChanged(event){
-        // this.filterCount ++;
-        // if(this.filterCount == 3){
-            this.searchString = event.value.toLowerCase();
-           // this.filterCount = 0;
-            this.filterTvList(this.searchString);
-        //}
+    cancelSearchBar() {
+        var searchBar = this.SearchBar.nativeElement;
+
+        if (searchBar.ios) {
+            searchBar.ios.endEditing(true);
+        } else if (searchBar.android) {
+            searchBar.android.clearFocus();
+        }
+
+        this.showSearchCancel = false;
     }
 
-    filterTvList(searchString){
+
+    searchStringChanged(event) {
+        this.showSearchCancel = true;
+        this.searchString = event.value.toLowerCase();
+        this.filterTvList(this.searchString);
+    }
+
+    filterTvList(searchString) {
         this.filteredTvLinks = null;
-        this.filteredTvLinks = this.tvLinks.filter(i=>i.name.toLowerCase().includes(searchString)); 
+        this.filteredTvLinks = this.tvLinks.filter(i => i.name.toLowerCase().includes(searchString));
     }
 
     openPlayer(name, url) {
