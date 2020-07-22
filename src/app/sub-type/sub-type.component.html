@@ -9,15 +9,6 @@
     </StackLayout>
 </GridLayout> -->
 
-<<<<<<< HEAD
-<GridLayout col="auto" row="auto">
-    <FlexboxLayout height="500" flexDirection="column" flexWrap="wrap" >
-        <Label class="sub" text="Choose Subscription"></Label>
-        <StackLayout>
-                <Button [nsRouterLink]="['/home']" text="Trial" height="50" class="primary"></Button>
-                <Button [nsRouterLink]="['/payment-plan']" text="Subscription" height="50" class="secondary"></Button>
-                <Button [nsRouterLink]="['/payment-plan']" text="Dont have a subscription? Get one now" height="50" color="blue" fontWeight="bold"></Button>
-=======
 <FlexboxLayout alignItems="center" justifyContent="center" flexDirection="column">
     <Label class="sub" text="Choose Subscription To Watch"></Label>
     <StackLayout>
@@ -26,7 +17,6 @@
             <Button *ngIf="subscription.package" (tap)="chooseSubscription(subscription)"
                 [text]="packageType[subscription.package.packageType]" height="50"
                 [ngClass]="{'primary':subscription.package.packageType != selectedPackageType,'secondary':subscription.package.packageType == selectedPackageType}"></Button>
->>>>>>> 9617ec1f414176489f0dfbf6eafb60b98d6c60f5
         </StackLayout>
         <ActivityIndicator row="1" *ngIf="!userSubscriptions"
             color="black" width="20" height="20" [busy]="true">

@@ -1,60 +1,51 @@
+<ScrollView>
 <GridLayout rows="auto,auto,auto,auto,*" columns="30,*,30">
   <StackLayout col="1">
-  <SearchBar row="0" col="1" (textChange)="searchStringChanged($event)"
-        hint="Search all streams" (loaded)="onSearchBarLoaded($event)">
+  <SearchBar row="0" col="1" hint="Search all streams">
     </SearchBar>
   </StackLayout>
   <StackLayout row="1" col="1">
-    <Label text="Featured Videos"></Label>
-    <FlexboxLayout alignItems="center" justifyContent="space-between">
-      <Label text="blue" backgroundColor="blue" height="100" width="75"></Label>
 
-      <Label text="red" backgroundColor="red" height="80" width="75"></Label>
+      <FlexboxLayout alignItems="center" justifyContent="space-between">
+        <Label class="head" text="Featured Videos"></Label>
+        <Label text="View All" textAlign="right"></Label>
+      </FlexboxLayout>
 
-      <Label
-        text="yellow"
-        backgroundColor="yellow"
-        height="140"
-        width="75"
-      ></Label>
+      <GridLayout columns="auto,auto,auto" rows="auto,auto,auto">
+        <Card:CardView class="cardStyle">
+        <Image class="cardContent" src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,674,1000_AL_.jpg" col="0" row="0" rowSpan="2" width="40%" borderRadius="10" class="image"></Image>
+      </Card:CardView>
+        <Image src="https://d3j2s6hdd6a7rg.cloudfront.net/v2/uploads/media/default/0002/02/thumb_101951_default_news_size_5.jpeg" borderRadius="10" width="40%" col="1" row="0"></Image>
+        <Image src="https://upload.wikimedia.org/wikipedia/en/d/d4/Top_Gear_Series_17_Promo_2011.jpg"  col="2" row="0" width="40%"></Image>
+        <Image src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/toohottohandle-season1-episode7-00-38-13-17r-1587495746.jpg?crop=1.00xw:0.752xh;0,0.0337xh&resize=1200:*" class="image" col="1" row="1" width="40%"></Image>
+        <Image src="https://post.healthline.com/wp-content/uploads/2019/04/Weed_Orange_732x549-thumbnail.jpg"  class="image" col="2" row="1" width="40%"></Image>
 
-      <Label
-        text="green"
-        backgroundColor="green"
-        height="70"
-        width="75"
-      ></Label>
-    </FlexboxLayout>
-  </StackLayout>
+      </GridLayout>
+    </StackLayout>
 
   <StackLayout row="2" col="1">
-    <Label text="Featured Videos"></Label>
     <FlexboxLayout alignItems="center" justifyContent="space-between">
-      <Label text="blue" backgroundColor="blue" height="100" width="75"></Label>
-
-      <Label text="red" backgroundColor="red" height="80" width="75"></Label>
-
-      <Label
-        text="yellow"
-        backgroundColor="yellow"
-        height="140"
-        width="75"
-      ></Label>
-
-      <Label
-        text="green"
-        backgroundColor="green"
-        height="70"
-        width="75"
-      ></Label>
+      <Label class="head" text="Explore"></Label>
+      <Label text="View All" textAlign="right"></Label>
     </FlexboxLayout>
+    <GridLayout class="space" rows="*,auto" columns="auto,*,auto">
+      <Image col="0" src="https://cdn.mos.cms.futurecdn.net/D2dQVx6WGXoPw5fr3jxK4Z.jpg" borderRadius="10" width="47%"></Image>
+      <Image src="https://media.thetab.com/blogs.dir/279/files/2018/01/person-people-human-47.jpg" col="2" width="47%" borderRadius="10"></Image>
+      <Label class="support-light" text="Too Hot To Handle" col="0" row="1" textAlign="center"></Label>
+      <Label class="support-light" text="Bodied" col="2" row="1" textAlign="center"></Label>
+    </GridLayout>
   </StackLayout>
 
-  <ScrollView  row="3" col="1">
-    <GridLayout backgroundColor="pink" rows="*" columns="auto,*,auto">
-      <Label backgroundColor="red" text="I am tired" width="40%"></Label>
-      <Label col="1" text="dsfadsfa"></Label>
-      <Label backgroundColor="green" text="Help" col="2" width="40%"></Label>
-    </GridLayout>
-  </ScrollView>
+  <StackLayout row="4" col="1">
+    <Label textWrap="true" text="Here are some suggestions based on your watching history" fontweight="bold" height="100"></Label>
+    <Scrolllayout scrollDirection="horizontal">
+      <GridLayout>
+        <Button class="butn" text="Magic Mike"></Button>
+        <Button class="butn" text="Magic Mike"></Button>
+        <Button class="butn" text="Magic Mike"></Button>
+      </GridLayout>
+    </Scrolllayout>
+  </StackLayout>
 </GridLayout>
+</ScrollView>
+

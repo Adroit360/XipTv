@@ -31,11 +31,7 @@ export class AppComponent {
 
 
         if (appStorage.getBoolean(this.isNew, true)) {
-<<<<<<< HEAD
             this.routerExtensions.navigate(["explore"]);
-=======
-            this.routerExtensions.navigate(["get-started"]);
->>>>>>> 9617ec1f414176489f0dfbf6eafb60b98d6c60f5
             console.log("THis is sooo not loading from backend😂");
         } else{
             this.routerExtensions.navigate(["login"]);
