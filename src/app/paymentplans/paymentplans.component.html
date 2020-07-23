@@ -1,25 +1,25 @@
-<GridLayout class="root" rows="auto,auto,auto,*,auto">
+<GridLayout class="root" rows="auto,auto,auto,*,auto,auto">
     <StackLayout height="30">
 
     </StackLayout>
-    <FlexboxLayout (tap)="back()" alignItems="center" row="1" class="topnavstack">
+    <FlexboxLayout *ngIf="canGoBack" (tap)="back()" alignItems="center" row="1" class="topnavstack">
         <Label class="fas bloated" text="&#xf053;"></Label>
         <Label text="Back"></Label>
     </FlexboxLayout>
 
     <Label row='2' class="header" text="ALL PLANS"></Label>
 
-    <ScrollView row="3" orientation="horizontal">
+    <ScrollView *ngIf="defaultPackages" row="3" orientation="horizontal">
         <StackLayout orientation="horizontal" class="plan-box-container">
 
-            <GridLayout  class="plan-box violet" rows="auto,*,auto">
+            <GridLayout class="plan-box violet" rows="auto,*,auto">
                 <Label class="small-header" text="Sports Plan"></Label>
                 <FlexboxLayout class="plan-box__info" row="1">
                     <FlexboxLayout orientation="horizontal">
                         <Label class="fas" text="&#xf00c;"></Label>
                         <Label class="text" text="Includes live content from all around the world"></Label>
                     </FlexboxLayout>
-                    <FlexboxLayout orientation="horizontal" >
+                    <FlexboxLayout orientation="horizontal">
                         <Label class="fas" text="&#xf00c;"></Label>
                         <Label class="text" text="All your favourite sporting events at your fingertips"></Label>
                     </FlexboxLayout>
@@ -32,10 +32,10 @@
                         <Label class="text" text="Available in HD viewing"></Label>
                     </FlexboxLayout>
                 </FlexboxLayout>
-                <Button (tap)="subscribe(PackageType.Sports)" row="2" text="GHS 200/mo" class="btn white"></Button>
+                <Button (tap)="subscribe(PackageType.Sports)" row="2" text="GHS 200/mo" class="primary"></Button>
             </GridLayout>
 
-            <GridLayout  class="plan-box white" rows="auto,*,auto">
+            <GridLayout class="plan-box white" rows="auto,*,auto">
                 <Label class="small-header" text="Entertainment Plan"></Label>
                 <FlexboxLayout class="plan-box__info" row="1">
                     <FlexboxLayout orientation="horizontal" horizontalAlignment="left" JustifyContent="flex-start">
@@ -55,7 +55,8 @@
                         <Label class="text" text="Up to 4 screens at a time"></Label>
                     </FlexboxLayout>
                 </FlexboxLayout>
-                <Button (tap)="subscribe(PackageType.Entertainment)" row="2" text="GHS 300/mo" class="btn violet"></Button>
+                <Button (tap)="subscribe(PackageType.Entertainment)" row="2" text="GHS 300/mo"
+                    class="secondary"></Button>
             </GridLayout>
 
             <GridLayout class="plan-box white" rows="auto,*,auto">
@@ -71,20 +72,37 @@
                     </FlexboxLayout>
                     <FlexboxLayout orientation="horizontal">
                         <Label class="fas" text="&#xf00c;"></Label>
-                        <Label class="text" text="Includes both entertainment and sports channels for the whole family"></Label>
+                        <Label class="text"
+                            text="Includes both entertainment and sports channels for the whole family"></Label>
                     </FlexboxLayout>
                     <FlexboxLayout orientation="horizontal">
                         <Label class="fas" text="&#xf00c;"></Label>
                         <Label class="text" text="Available in HD+"></Label>
                     </FlexboxLayout>
                 </FlexboxLayout>
-                <Button (tap)="subscribe(PackageType.Premium)" row="2" text="GHS 300/mo" class="mybtn white"></Button>
+                <Button (tap)="subscribe(PackageType.Premium)" row="2" text="GHS 300/mo" class="secondary"></Button>
             </GridLayout>
 
 
         </StackLayout>
     </ScrollView>
 
-    <Button (tap)="subscribe(PackageType.Trial)" (tap)="try()" row="4" margin="30" text="Try free for 30 days" class="mybtn white"></Button>
+
+    <Button *ngIf="defaultPackages" (tap)="subscribe(PackageType.Trial)" (tap)="try()" row="4" margin="30"
+        text="Try free for 30 days" class="primary"></Button>
+
+    <Button row="5" [nsRouterLink]="'/sub-type'" text="Choose existing subscription" class="trans blue"
+            ></Button>
+
+    <GridLayout class="roller-bg" row="3" rowSpan="2" *ngIf="!defaultPackages" >
+        <ActivityIndicator [busy]="true">
+        </ActivityIndicator>
+    </GridLayout>
+
+
+    <GridLayout class="roller-bg" *ngIf="isLoading" row="3" rowSpan="2">
+        <ActivityIndicator [busy]="true">
+        </ActivityIndicator>
+    </GridLayout>
 
 </GridLayout>

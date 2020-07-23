@@ -171,3 +171,19 @@ TextField{
     padding: 10 15;
     border-radius: 6;
 }
+
+ActivityIndicator{
+    width: 40;
+    height: 40;
+    background-color: rgba(0, 0, 0, 0.42);
+    border-radius: 50%;
+    color:white;
+}
+
+Label{
+    //text-wrap:true;
+}
+
+.roller-bg{
+    background-color: rgba(0, 0, 0, 0.4);
+}

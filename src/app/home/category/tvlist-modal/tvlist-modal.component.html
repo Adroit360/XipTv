@@ -15,7 +15,7 @@
     
 
     <ActivityIndicator row="1" borderRadius="50%" backgroundColor="white" *ngIf="!filteredTvLinks" row="2" color="black"
-        width="20" height="20" [busy]="true">
+       [busy]="true">
     </ActivityIndicator>
 
     <ListView row="1" class="link-container" orientation="horizontal" [items]="filteredTvLinks">

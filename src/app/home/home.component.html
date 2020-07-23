@@ -31,7 +31,7 @@
                     <Label class="fas arrow"
                         text="&#xf362;"></Label>
                     
-                    <Label *ngIf="currentSubscription.package" [text]="packageType[currentSubscription.package.packageType]"></Label>
+                    <Label *ngIf="currentSubscription" [text]="packageType[currentSubscription.package.packageType]"></Label>
                 </FlexboxLayout>
                 <Image class="brand" src=""></Image>
                 <Label [ngClass]="{active:route == 'profile'}" (tap)="gotoProfile()" class="fas navicon"

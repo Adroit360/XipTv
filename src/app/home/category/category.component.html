@@ -1,16 +1,21 @@
 <GridLayout rows="auto,*">
-    <FlexboxLayout [visibility]="filteredTvGroups ? 'visible' : 'collapsed'" alignItems="center" justifyContent="space-between">
+    <FlexboxLayout [visibility]="filteredTvGroups ? 'visible' : 'collapsed'" alignItems="center"
+        justifyContent="space-between">
         <SearchBar flexGrow="1" #SearchBar (textChange)="searchStringChanged($event)" hint="Search categories">
         </SearchBar>
 
-        <Label (tap)="cancelSearchBar()" margin="0 10 0 0"
-            color="#444" 
-         width="110" text="cancel"></Label>
+        <Label (tap)="cancelSearchBar()" margin="0 10 0 0" color="#444" width="110" text="cancel"></Label>
     </FlexboxLayout>
-    <ActivityIndicator row="1" borderRadius="50%" backgroundColor="white" *ngIf="!filteredTvGroups" row="2" color="black"
-        width="20" height="20" [busy]="true">
-    </ActivityIndicator>
-    <ListView *ngIf="filteredTvGroups" row="1" class="link-container" orientation="horizontal" [items]="filteredTvGroups">
+
+    <GridLayout row="2" *ngIf="!filteredTvGroups">
+        <ActivityIndicator
+            color="black" [busy]="true">
+        </ActivityIndicator>
+    </GridLayout>
+
+
+    <ListView *ngIf="filteredTvGroups" row="1" class="link-container" orientation="horizontal"
+        [items]="filteredTvGroups">
         <ListViewLinearLayout tkListViewLayout></ListViewLinearLayout>
         <ng-template tkListItemTemplate let-i="index" let-i="index" let-item="item">
             <GridLayout class="list-item" (tap)="showDialog(item)" columns="70,*">

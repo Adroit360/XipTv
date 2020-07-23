@@ -13,16 +13,16 @@ const currentAppFolder = knownFolders.currentApp();
 @Injectable()
 export class TvListService {
 
-    currentSubscription:Subscription;
+    currentSubscription: Subscription;
 
-    oldSubscription:Subscription;
+    oldSubscription: Subscription;
 
     tvListFile: File;
     tvLinks: TvModel[];
     allMovies: TvModel[];
     allSeries: TvModel[];
 
-    topsModel:TopsModel;
+    topsModel: TopsModel;
 
     // localTvLinks: TvModel[];
     // topTvLinks: TvModel[];
@@ -66,6 +66,10 @@ export class TvListService {
             let uri;
             let serverUri;
             let githubUri;
+
+            if (!this.currentSubscription) {
+                reject("subscription not found");
+            }
 
             if (this.currentSource.includes('server')) {
                 uri = `${settings.baseUri}/tvlist/all/${this.currentSubscription.package.packageType}`;
@@ -115,7 +119,7 @@ export class TvListService {
             if (this.allMovies)
                 resolve(this.allMovies);
             else {
-                resolve(this.tvLinks.filter(i=>i.url.includes("/movie")));
+                resolve(this.tvLinks.filter(i => i.url.includes("/movie")));
             }
         });
     }
@@ -130,15 +134,20 @@ export class TvListService {
             if (this.allSeries)
                 resolve(this.allSeries);
             else {
-                resolve(this.tvLinks.filter(i=>i.url.includes("/series")));
+                resolve(this.tvLinks.filter(i => i.url.includes("/series")));
             }
         });
     }
 
     async getTops(): Promise<TopsModel> {
         return new Promise((resolve, reject) => {
+
             if (this.topsModel && this.oldSubscription == this.currentSubscription)
                 resolve(this.topsModel);
+
+            if (!this.currentSubscription) {
+                reject("subscription not found");
+            }
 
             if (this.currentSource == 'server') {
                 this.httpClient.get<TopsModel>(`${settings.baseUri}/tvlist/tops/${this.currentSubscription.package.packageType}`)
@@ -147,7 +156,7 @@ export class TvListService {
                         resolve(response);
                         this.oldSubscription = this.currentSubscription;
                     });
-            } 
+            }
         });
     }
 

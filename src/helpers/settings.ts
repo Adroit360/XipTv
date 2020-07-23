@@ -4,5 +4,6 @@ const urls = {
 }
 export const settings = {
     baseUri:urls.online,
-    githubUrl:`https://iptv-org.github.io/iptv`
+    githubUrl:`https://iptv-org.github.io/iptv`,
+    reddeCallbackUrlPrefix:"https://checkout.reddeonline.com?token="
 }

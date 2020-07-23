@@ -121,4 +121,5 @@ export class HomeComponent implements OnInit {
     switchSubscription(){
         this.routerExtensions.navigate(["sub-type"])
     }
+    
 }

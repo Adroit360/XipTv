@@ -6,13 +6,12 @@
         ></SearchBar>
         
         <Label (tap)="cancelSearchBar()" margin="0 10 0 0"
-            color="#444"
-            backgroundColor="blue"
+            color="#444" textAlignment="center"
+            padding="0 5"
          width="120" text="cancel"></Label>
     </FlexboxLayout>
     <ActivityIndicator row="1"  borderRadius="50%" backgroundColor="white" 
-        *ngIf="!filteredTvLinks" row="2" color="black" width="20"
-        height="20" [busy]="true">
+        *ngIf="!filteredTvLinks" row="2" color="black" [busy]="true">
     </ActivityIndicator>
     <ListView *ngIf="filteredTvLinks" row="1" class="link-container" orientation="horizontal" [items]="filteredTvLinks">
         <ListViewLinearLayout tkListViewLayout></ListViewLinearLayout>

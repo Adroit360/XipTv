@@ -20,7 +20,9 @@ export class PaymentPlansComponent{
     PackageType = PackageType;
     defaultPackages : Package[];
 
+    isLoading = false;
 
+    canGoBack;
 
     constructor(private routerExtensions:RouterExtensions,
         private authService:AuthService,
@@ -35,6 +37,8 @@ export class PaymentPlansComponent{
         subscriptionService.getDefaultPackages().then(response=>{
             this.defaultPackages = response;
         });
+
+        this.canGoBack = this.routerExtensions.canGoBackToPreviousPage();
     }
 
     try(){
@@ -45,8 +49,9 @@ export class PaymentPlansComponent{
 
 
     subscribe(packageType){
+        this.isLoading = true;
         this.modalDialogService.showModal(PaymentModalComponent,{
-            fullscreen:false,
+            fullscreen:true,
             context:packageType,
             viewContainerRef:this.universalService.rootViewContainerRef
         }).then(response=>{
@@ -56,13 +61,20 @@ export class PaymentPlansComponent{
                     let packageId = this.defaultPackages.filter(i=>i.packageType == packageType)[0].packageId;
                     this.subscriptionService.addSubscripton(userId,packageId)
                     .subscribe(response=>{
+                        this.isLoading = false;
                         this.tvListService.currentSubscription = response;
-                        this.routerExtensions.navigate(["sub-type"]);
+                        this.routerExtensions.navigate(["sub-type"],{
+                            clearHistory:true
+                        });
+                        this.miscService.alert("Info",`You have ${response.remainingDays} days remaining for this subscription`)
                     },error=>{
+                        this.isLoading = false;
                         this.miscService.alert("Error",error);
                     });
                     
                 }, 0);
+            }else{
+                this.isLoading = false;
             }
         });
     }

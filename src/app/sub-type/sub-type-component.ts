@@ -25,6 +25,8 @@ export class SubTypeComponent implements OnInit {
 
     selectedPackageType;
 
+    errorOcurred = false;
+
     constructor(private httpClient: HttpClient,
         private routerExtensions: RouterExtensions,
         private tvListService: TvListService,
@@ -46,10 +48,16 @@ export class SubTypeComponent implements OnInit {
     }
 
     getUserSubscriptions() {
+        this.errorOcurred = false;
+        if (!this.authService.currentUser)
+            return;
         var userId = this.authService.currentUser.id;
         this.httpClient.get<Subscription[]>(`${settings.baseUri}/subscription/getsubscription/${userId}`)
             .subscribe(response => {
                 this.userSubscriptions = response;
+                this.errorOcurred = false;
+            }, error => {
+                this.errorOcurred = true;
             });
     }
 
