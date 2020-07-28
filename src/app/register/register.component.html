@@ -1,31 +1,24 @@
-<GridLayout columns="50,*,50" rows="auto,auto,auto,*,auto,auto,*">
-    
-    <StackLayout height="30">
-
-    </StackLayout>
-    <StackLayout backgroundColor="white" width="100%" row="1" horizontalAlignment="left" col="1">
-        <Label text="Welcome to" color="#491887"></Label>
-        <Label class="emphasis" text="XIPTV"></Label>
-        <Label text="Please fill in the fields, and get ready to experience a  new viewing experience" textWrap="true" horizontalAlignment="left" width="300" class="support-body"></Label>
-    </StackLayout>
-    <StackLayout row="2" col="1">
-        <Label class="fas br-icon" fontSize="40" margin="10 0" text="&#xf502;"></Label>
-             <!-- <Image src="res://Group 19" width="100" horizontalAlignment="left" class="profilePicture"></Image> -->
-    </StackLayout>
-    <StackLayout row="4" col="1">
-        <TextField [(ngModel)]="username" hint="Please enter your username" color="#491887" class="text-field">
-        </TextField>
-        <TextField [(ngModel)]="email" hint="Please enter your Email" color="#491887" class="text-field">
-        </TextField>
-        <TextField secure="true" [(ngModel)]="password" hint="Please enter your password" color="#491887" class="text-field">
-        </TextField>
-    </StackLayout>
-    <StackLayout margin="20" horizontalAlignment="center" row="5" col="1">
-        <Button  (tap)="register()" text="SIGN UP" class="primary"></Button>
-        <Button (tap)="gotoLogin()" class="trans" text="Login Instead"></Button>
-    </StackLayout>
-    <GridLayout colSpan="3" *ngIf="isLoading" rowSpan="7">
-        <ActivityIndicator color="black" busy="true" class="activity-indicator">
-        </ActivityIndicator>
-    </GridLayout>
-    </GridLayout>
+<GridLayout rows="auto,*,auto,auto" columns="30,*,30" backgroundColor="#EA5769">
+    <Image
+      row="0"
+      src="res://airtech_1"
+      width="25%"
+      col="1"
+    ></Image>
+  <FlexboxLayout row="1" col="1">
+      <Gif width="100%" height="auto" src="https://cdn.dribbble.com/users/228367/screenshots/4142078/living-room-dribbble.gif"></Gif>
+  </FlexboxLayout>
+  <StackLayout row="3" col="1">
+      <Label text="Sign Up" class="brand"></Label>
+      <TextField [(ngModel)]="username" hint="Name" class="new-input" style="placeholder-color:white";></TextField>
+      <TextField [(ngModel)]="email" autocapitalizationtype="none" hint="Email Address" class="new-input" style="placeholder-color:white";></TextField>
+      <TextField [(ngModel)]="password" secure="true" hint="Password" class="new-input" style="placeholder-color:white"></TextField>
+      <Button  (tap)="register()" text="Contine" class="newbtn"></Button>
+      <Label textAlignment="center" height="30" (tap)="gotoLogin()">
+        <FormattedString>
+            <Span text="Are you already a user?"></Span>
+            <Span text=" Login Here " fontWeight="bold" color="white"></Span>
+        </FormattedString>
+    </Label>
+  </StackLayout>
+  </GridLayout>

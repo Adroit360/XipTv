@@ -7,7 +7,10 @@ import { filter } from "rxjs/operators";
 import { RouterExtensions } from "nativescript-angular/router";
 import { HttpLoaderService } from "~/services/httploader.service";
 import * as appStorage from "tns-core-modules/application-settings";
+// import { registerElement } from 'nativescript-angular/element-registry';
+import { Gif } from 'nativescript-gif';
 
+registerElement('Gif', () => Gif);
 registerElement("VideoPlayer", () => Video);
 registerElement("exoplayer", () => require("nativescript-exoplayer").Video);
 

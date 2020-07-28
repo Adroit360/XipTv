@@ -25,6 +25,7 @@ import { MiscService } from "~/services/misc.service";
 import { ErrorInterceptor } from "~/interceptors/error.interceptor";
 import { SubscriptionService } from "~/services/subscription.service";
 import { PaymentModalComponent } from "./paymentplans/payment-modal/payment-modal.component";
+// import { GifModule } from 'tns-ng-gif';
 
 @NgModule({
     bootstrap: [
@@ -35,7 +36,8 @@ import { PaymentModalComponent } from "./paymentplans/payment-modal/payment-moda
         HomeModule,
         PlayerModule,
         AppRoutingModule,
-        NativeScriptHttpClientModule
+        NativeScriptHttpClientModule,
+        // GifModule
     ],
     declarations: [
         AppComponent

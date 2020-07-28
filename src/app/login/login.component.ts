@@ -11,7 +11,7 @@ import { LoginResponseDTO } from "~/data/dtos/loginResponseDTO";
 @Component({
     selector: "app-login",
     templateUrl: "./login.component.html",
-    styleUrls: ["../register/register.component.scss"],
+    styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent {
 

@@ -37,8 +37,9 @@
             color: var(--violet);
         }
         .small-header{
-            font-size: 20;
+            font-size: 30;
             margin-bottom: 20;
+            font-weight: bold;
         }
         &__info{
             flex-direction: column;
@@ -66,4 +67,9 @@
         background-color: white;
         color:var(--violet);
     }
+}
+
+.butn{
+    border-radius: 15;
+    border-color: none;
 }

@@ -16,7 +16,7 @@ import { MiscService } from '~/services/misc.service';
 @Component({
     selector: 'ns-register',
     templateUrl: './register.component.html',
-    styleUrls: ['./register.component.scss']
+    styleUrls: ['../login/login.component.scss']
 })
 export class RegisterComponent implements OnInit {
 
@@ -41,7 +41,6 @@ export class RegisterComponent implements OnInit {
     }
 
     register() {
-        
         this.isLoading = true;
         var registerDTO: RegisterDTO = {
             "username": this.username,
