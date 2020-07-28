@@ -26,7 +26,8 @@ export class AuthService {
         }
     };
     
-    constructor(private httpClient: HttpClient, private router: RouterExtensions) {
+    constructor(private httpClient: HttpClient,
+         private router: RouterExtensions) {
         this.getCurrentUser();
         if (this.currentUser) {
             this.router.navigate(["sub-type"]);
@@ -56,5 +57,8 @@ export class AuthService {
         this.currentUser = null;
         appStorage.remove("user");
         appStorage.remove("token");
+        this.router.navigate(["login"],{
+            clearHistory:true
+        })
     }
 }

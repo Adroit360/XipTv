@@ -1,29 +1,6 @@
 .link-container{
+}
 
-}
-.list-item{
-    border-bottom-width: 1;
-    border-color: #808080;
-    padding: 10;
-    .link-Image{
-    }
-    StackLayout{
-        padding:10;
-        FlexboxLayout{
-            margin:5;
-        }
-        .name{
-            font-size: 20;
-            margin:5;
-        }
-        .category{
-            color:#808080;
-        }
-        .country{
-            color: green;
-        }
-    }
-}
 
 .auto-image{
     justify-content: center;

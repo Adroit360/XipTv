@@ -20,7 +20,7 @@ export class PaymentPlansComponent{
     PackageType = PackageType;
     defaultPackages : Package[];
 
-    isLoading = false;
+    isLoading = true;
 
     canGoBack;
 
@@ -33,19 +33,15 @@ export class PaymentPlansComponent{
         private tvListService:TvListService,
         private page:Page) {
         page.actionBarHidden = true;
-
         subscriptionService.getDefaultPackages().then(response=>{
             this.defaultPackages = response;
+            this.isLoading = false;
         });
 
         this.canGoBack = this.routerExtensions.canGoBackToPreviousPage();
     }
 
-    try(){
-        this.routerExtensions.navigate(['home'],{
-            clearHistory:true
-        });
-    }
+   
 
 
     subscribe(packageType){
@@ -57,19 +53,20 @@ export class PaymentPlansComponent{
         }).then(response=>{
             if(response && response.paid){
                 setTimeout(() => {
+                    this.isLoading = true;
                     let userId = this.authService.currentUser.id;
                     let packageId = this.defaultPackages.filter(i=>i.packageType == packageType)[0].packageId;
                     this.subscriptionService.addSubscripton(userId,packageId)
                     .subscribe(response=>{
-                        this.isLoading = false;
                         this.tvListService.currentSubscription = response;
+                        this.miscService.alert("Info",`You have ${response.remainingDays} days remaining for this subscription`)
                         this.routerExtensions.navigate(["sub-type"],{
                             clearHistory:true
                         });
-                        this.miscService.alert("Info",`You have ${response.remainingDays} days remaining for this subscription`)
-                    },error=>{
                         this.isLoading = false;
+                    },error=>{
                         this.miscService.alert("Error",error);
+                        this.isLoading = false;
                     });
                     
                 }, 0);

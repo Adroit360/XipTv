@@ -31,11 +31,21 @@ export class CategoryComponent implements OnInit {
         private modalDialogService: ModalDialogService) {
         page.actionBarHidden = true;
 
-        tvListService.getAllLinks()
-            .then(response => {
-                this.tvLinks = response;
-                this.createGroups(response);
-            });
+        this.tvListService.allLinksLoaded.subscribe(response => {
+            if (!response)
+                return
+
+            this.tvLinks = this.tvListService.tvLinks;
+            this.createGroups(this.tvLinks);
+           
+        });
+
+        
+        // tvListService.getAllLinks()
+        // .then(response => {
+        //     this.tvLinks = response;
+        //     this.createGroups(response);
+        // });
     }
 
     ngOnInit() {
@@ -63,9 +73,9 @@ export class CategoryComponent implements OnInit {
             context: category
         }).then((response: { name, url }) => {
             if (response)
-                setTimeout(()=>{
+                setTimeout(() => {
                     this.openPlayer(response.name, response.url);
-                },0);
+                }, 0);
         });
     }
 

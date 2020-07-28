@@ -4,17 +4,18 @@ import { TvModel } from "~/data/models/tvModel";
 import { TvListService } from "~/services/tvlist.service";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page, isAndroid } from "tns-core-modules/ui/page";
+import { MiscService } from "~/services/misc.service";
 
 
 @Component({
-    selector:`ns-tvlist`,
-    templateUrl:`./tvlist-modal.component.html`,
-    styleUrls:['./tvlist-modal.component.scss']
+    selector: `ns-tvlist`,
+    templateUrl: `./tvlist-modal.component.html`,
+    styleUrls: ['./tvlist-modal.component.scss']
 })
-export class TvListModalComponent{
+export class TvListModalComponent {
     searchString;
-    tvLinks:TvModel[];
-    filteredTvLinks:TvModel[];
+    tvLinks: TvModel[];
+    filteredTvLinks: TvModel[];
     filterCount = 0;
     category;
     isAndroid = isAndroid;
@@ -23,52 +24,63 @@ export class TvListModalComponent{
 
     @ViewChild("SearchBar", { static: true }) SearchBar: ElementRef;
 
-    constructor(page:Page,private tvListService:TvListService,
-        private routerExtensions:RouterExtensions,
-        private modalParams:ModalDialogParams){
+    constructor(page: Page, private tvListService: TvListService,
+        private routerExtensions: RouterExtensions,
+        public misc: MiscService,
+        private modalParams: ModalDialogParams) {
         page.actionBarHidden = true;
-        
+
+
         this.category = this.modalParams.context.toLowerCase();
 
-        tvListService.getAllLinks()
-        .then(response=>{
-            this.tvLinks = response.filter(i=>{
-                if(i.category)
-                    return i.category.toLowerCase() == this.category
-                
-                return false;
-            });
-            this.filteredTvLinks = this.tvLinks;
-        });
+        // this.tvListService.allLinksLoaded.subscribe(response => {
+        //     if (!response)
+        //         return
+
+            tvListService.getAllLinks()
+                .then(response => {
+                    this.tvLinks = response.filter(i => {
+                        if (i.category)
+                            return i.category.toLowerCase() == this.category
+
+                        return false;
+                    });
+                    this.filteredTvLinks = this.tvLinks;
+                });
+        // });
+        
     }
 
-    ngOnInit(){
+    ngOnInit() {
 
     }
 
     cancelSearchBar() {
-        var searchBar = this.SearchBar.nativeElement;
+        try {
+            var searchBar = this.SearchBar.nativeElement;
 
-        if (searchBar.ios) {
-            searchBar.ios.endEditing(true);
-        } else if (searchBar.android) {
-            searchBar.android.clearFocus();
+            if (searchBar.ios) {
+                searchBar.ios.endEditing(true);
+            } else if (searchBar.android) {
+                searchBar.android.clearFocus();
+            }
+            this.showSearchCancel = false;
+        } catch{
+
         }
-
-        this.showSearchCancel = false;
     }
 
 
-    searchStringChanged(event){
+    searchStringChanged(event) {
         this.showSearchCancel = true;
-            this.searchString = event.value.toLowerCase();
-            this.filterTvList(this.searchString);
+        this.searchString = event.value.toLowerCase();
+        this.filterTvList(this.searchString);
         //}
     }
 
-    filterTvList(searchString){
+    filterTvList(searchString) {
         this.filteredTvLinks = null;
-        this.filteredTvLinks = this.tvLinks.filter(i=>i.name.toLowerCase().includes(searchString));
+        this.filteredTvLinks = this.tvLinks.filter(i => i.name.toLowerCase().includes(searchString));
     }
 
     openPlayer(name, url) {
@@ -78,7 +90,7 @@ export class TvListModalComponent{
         });
     }
 
-    closeModal(){
+    closeModal() {
         this.modalParams.closeCallback();
     }
 }

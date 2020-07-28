@@ -16,7 +16,8 @@ const routes: Routes = [
     {path:"payment-plan",loadChildren:()=>import("~/app/paymentplans/paymentplans.module").then(m=>m.PaymentPlansModule)},
     {path:"sub-expired",loadChildren:()=>import("~/app/sub-expired/sub-expired.module").then(m=>m.SubExpiredModule)},
     {path:"profile",loadChildren:()=>import("~/app/profile/profile.module").then(m=>m.ProfileModule)},
-    {path:"sub-type",loadChildren:()=>import("~/app/sub-type/sub-type.module").then(m=>m.SubTypeModule)}
+    {path:"sub-type",redirectTo:"sub-type/true"},
+    {path:"sub-type/:redirect",loadChildren:()=>import("~/app/sub-type/sub-type.module").then(m=>m.SubTypeModule)}
 ];
 
 @NgModule({

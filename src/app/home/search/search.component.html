@@ -17,7 +17,7 @@
         <ListViewLinearLayout tkListViewLayout></ListViewLinearLayout>
         <ng-template tkListItemTemplate let-i="index" let-item="item">
             <GridLayout class="list-item" (tap)="openPlayer(item.name,item.url)" columns="70,*">
-                <Image class="link-image" stretch="aspectFit" [src]='item.logo'></Image>
+                <Image class="link-image" [stretch]="misc.stretch(item.url)" [src]='item.logo'></Image>
                 <StackLayout col="1">
                     <Label class="name" [text]="item.name"></Label>
                     <FlexboxLayout justifyContent="space-between">

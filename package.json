@@ -1,6 +1,6 @@
 {
   "nativescript": {
-    "id": "org.adroit.XipTvPro",
+    "id": "org.adroit.AirtechTv",
     "tns-android": {
       "version": "6.5.3"
     },
@@ -27,6 +27,7 @@
     "nativescript-cardview": "^3.2.0",
     "nativescript-exoplayer": "^4.0.2",
     "nativescript-insomnia": "^1.2.3",
+    "nativescript-status-bar": "^1.2.0",
     "nativescript-toasty": "^3.0.0-alpha.2",
     "nativescript-ui-listview": "^8.2.0",
     "nativescript-ui-sidedrawer": "^8.0.1",

@@ -23,7 +23,7 @@ import { PackageType } from "~/data/models/packagetype";
 })
 export class HomeComponent implements OnInit {
     packageType = PackageType;
-    
+
     sideDrawerTransition: DrawerTransitionBase;
     private _activatedUrl: string;
 
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     route = 'landing';
     isAndroid = isAndroid;
 
-    currentSubscription:Subscription;
+    currentSubscription: Subscription;
 
     @ViewChild("sideDrawer", { static: true }) sideDrawer: RadSideDrawerComponent;
     //firstEightLinks:TvModel[];
@@ -58,9 +58,17 @@ export class HomeComponent implements OnInit {
         this.sideDrawerTransition = new SlideInOnTopTransition();
         this.universalService.setSideDrawer(this.sideDrawer);
 
+        // this.tvListService.allLinksLoaded.subscribe(response => {
+        //     if (!response)
+        //         return
+            
+
+        // });
+
         this.tvListService.getAllLinks()
-        .then(response=>{
-        });
+                .then(response => {
+                });
+
     }
 
     isComponentSelected(url: string): boolean {
@@ -114,12 +122,12 @@ export class HomeComponent implements OnInit {
         }
     }
 
-    gotoProfile(){
+    gotoProfile() {
         this.routerExtensions.navigate(["profile"]);
     }
 
-    switchSubscription(){
-        this.routerExtensions.navigate(["sub-type"])
+    switchSubscription() {
+        this.routerExtensions.navigate(["sub-type/false"])
     }
-    
+
 }

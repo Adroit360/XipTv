@@ -41,10 +41,13 @@ Button.-primary {
 
 .group-label {
     text-transform: uppercase;
-    margin: 10 20;
+    margin: 20 20;
     font-size: 15;
     color: #4b71db;
     font-weight: bold;
+    padding: 10;
+    border-bottom-width: 1;
+    border-color:#4b71db;
 }
 
 .fab {
@@ -180,8 +183,40 @@ ActivityIndicator{
     color:white;
 }
 
+ListView{
+    seperator-color:#b1b1b1;
+}
+
 Label{
     //text-wrap:true;
+}
+
+.list-item{
+    // border-bottom-width: 1;
+    // border-color: #808080;
+    padding: 10;
+    .link-image{
+         border-radius: 20;
+         height: 90;
+        // height: 80;
+    }
+    StackLayout{
+        padding:10;
+        FlexboxLayout{
+            margin:5;
+        }
+        .name{
+            font-size: 17;
+            margin:5;
+        }
+        .category{
+            color:#808080;
+            font-size: 15;
+        }
+        .country{
+            color: green;
+        }
+    }
 }
 
 .roller-bg{

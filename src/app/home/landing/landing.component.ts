@@ -7,6 +7,8 @@ import { android, AndroidApplication, AndroidActivityBundleEventData } from "tns
 import { filter } from "rxjs/operators";
 import { UniversalService } from "~/services/universal.service";
 import { TopsModel } from "~/data/models/topsModel";
+import * as appStorage from "tns-core-modules/application-settings";
+
 @Component({
     selector: "ns-landing",
     templateUrl: "./landing.component.html",
@@ -57,7 +59,7 @@ export class LandingComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         // this.videoplayer.nativeElement.play();
-
+        appStorage.setBoolean("isNew",false);
         if(!this.universalService.isMainVideoLoaded){
             this.universalService.isMainVideoLoaded = true;
         }else{

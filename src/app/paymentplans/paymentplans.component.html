@@ -32,7 +32,7 @@
                         <Label class="text" text="Available in HD viewing"></Label>
                     </FlexboxLayout>
                 </FlexboxLayout>
-                <Button (tap)="subscribe(PackageType.Sports)" row="2" text="GHS 200/mo" class="primary"></Button>
+                <Button (tap)="subscribe(PackageType.Sports)" row="2" text="GHS 40/mo" class="primary"></Button>
             </GridLayout>
 
             <GridLayout class="plan-box white" rows="auto,*,auto">
@@ -55,7 +55,7 @@
                         <Label class="text" text="Up to 4 screens at a time"></Label>
                     </FlexboxLayout>
                 </FlexboxLayout>
-                <Button (tap)="subscribe(PackageType.Entertainment)" row="2" text="GHS 300/mo"
+                <Button (tap)="subscribe(PackageType.Entertainment)" row="2" text="GHS 40/mo"
                     class="secondary"></Button>
             </GridLayout>
 
@@ -80,16 +80,16 @@
                         <Label class="text" text="Available in HD+"></Label>
                     </FlexboxLayout>
                 </FlexboxLayout>
-                <Button (tap)="subscribe(PackageType.Premium)" row="2" text="GHS 300/mo" class="secondary"></Button>
+                <Button (tap)="subscribe(PackageType.Premium)" row="2" text="GHS 60/mo" class="secondary"></Button>
             </GridLayout>
         </StackLayout>
     </ScrollView>
 
 
-    <Button *ngIf="defaultPackages" (tap)="subscribe(PackageType.Trial)" (tap)="try()" row="4" margin="30"
+    <Button *ngIf="defaultPackages" (tap)="subscribe(PackageType.Trial)" row="4" margin="30"
         text="Try free for 30 days" class="primary"></Button>
 
-    <Button row="5" [nsRouterLink]="'/sub-type'" text="Choose existing subscription" class="trans blue"
+    <Button row="5" [nsRouterLink]="'/sub-type/false'" text="Choose existing subscription" class="trans blue"
             ></Button>
 
     <GridLayout class="roller-bg" row="3" rowSpan="2" *ngIf="!defaultPackages" >

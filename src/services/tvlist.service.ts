@@ -5,13 +5,15 @@ import { settings } from "~/helpers/settings";
 import { HttpClient } from "@angular/common/http";
 import { timestamp, subscribeOn } from "rxjs/operators";
 import { UniversalService } from "./universal.service";
-import { Observable, Subject } from "rxjs";
+import { Observable, Subject, BehaviorSubject } from "rxjs";
 import { TopsModel } from "~/data/models/topsModel";
 import { Subscription } from "~/data/models/subscriptions";
 const currentAppFolder = knownFolders.currentApp();
 
 @Injectable()
 export class TvListService {
+
+    allLinksLoaded:BehaviorSubject<boolean> = new BehaviorSubject(false);
 
     currentSubscription: Subscription;
 
@@ -33,6 +35,7 @@ export class TvListService {
 
     constructor(private httpClient: HttpClient, private universalService: UniversalService) {
         //this.tvListFile = currentAppFolder.parent.getFolder('data').getFile("tvlist.txt");
+        // this.getAllLinks().then(response=>{});
     }
 
     generateLinks(rawLinksText: string): TvModel[] {
@@ -101,6 +104,7 @@ export class TvListService {
                             this.tvLinks = response;
                             resolve(response);
                             this.oldSubscription = this.currentSubscription;
+                            this.allLinksLoaded.next(true);
                         });
                 }
             }

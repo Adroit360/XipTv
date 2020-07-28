@@ -16,14 +16,14 @@
             <StackLayout *ngIf="topsModel">
     
                 <Label *ngIf="topsModel.topChannels" class="group-label" text="Top Channels"></Label>
-                <GridLayout *ngIf="topsModel.topChannels" height="200">
+                <GridLayout *ngIf="topsModel.topChannels">
                     
                     <RadListView class="link-container" orientation="horizontal" [items]="topsModel.topChannels">
                         <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
                         <ng-template tkListItemTemplate let-i="index" let-item="item">
                             <StackLayout (tap)="openPlayer(item.name,item.url)">
                                 <Image loadMode="async" class="link-item" *ngIf="isLogoPresent(item)"
-                                    stretch="aspectFit" [src]='item.logo'></Image>
+                                stretch="aspectFit" [src]='item.logo'></Image>
                                 <Label [text]="item.name"></Label>
                             </StackLayout>
                         </ng-template>
@@ -33,13 +33,13 @@
     
     
                 <Label *ngIf="topsModel.localChannels" class="group-label" text="Local Channels"></Label>
-                <GridLayout *ngIf="topsModel.localChannels" height="200">
+                <GridLayout *ngIf="topsModel.localChannels">
                     <RadListView class="link-container" orientation="horizontal" [items]="topsModel.localChannels">
                         <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
                         <ng-template tkListItemTemplate let-i="index" let-item="item">
                             <StackLayout (tap)="openPlayer(item.name,item.url)">
                                 <Image loadMode="async" class="link-item" *ngIf="isLogoPresent(item)"
-                                    stretch="aspectFit" [src]='item.logo'></Image>
+                                stretch="aspectFit" [src]='item.logo'></Image>
                                 <Label [text]="item.name"></Label>
                             </StackLayout>
                         </ng-template>
@@ -47,13 +47,13 @@
                 </GridLayout>
     
                 <Label *ngIf="topsModel.topMovies" class="group-label" text="Top Movies"></Label>
-                <GridLayout *ngIf="topsModel.topMovies" height="200">
-                    <RadListView class="link-container" orientation="horizontal" [items]="topsModel.topMovies">
+                <GridLayout *ngIf="topsModel.topMovies">
+                    <RadListView class="link-container entertainment" orientation="horizontal" [items]="topsModel.topMovies">
                         <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
                         <ng-template tkListItemTemplate let-i="index" let-item="item">
-                            <StackLayout (tap)="openPlayer(item.name,item.url)">
+                            <StackLayout class="entertainment" (tap)="openPlayer(item.name,item.url)">
                                 <Image loadMode="async" class="link-item" *ngIf="isLogoPresent(item)"
-                                    stretch="aspectFit" [src]='item.logo'></Image>
+                                stretch="aspectFill" [src]='item.logo'></Image>
                                 <Label [text]="item.name"></Label>
                             </StackLayout>
                         </ng-template>
@@ -61,13 +61,13 @@
                 </GridLayout>
     
                 <Label *ngIf="topsModel.topSeries" class="group-label" text="Top Series"></Label>
-                <GridLayout *ngIf="topsModel.topSeries" height="200">
-                    <RadListView class="link-container" orientation="horizontal" [items]="topsModel.topSeries">
+                <GridLayout *ngIf="topsModel.topSeries">
+                    <RadListView class="link-container entertainment" orientation="horizontal" [items]="topsModel.topSeries">
                         <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
                         <ng-template tkListItemTemplate let-i="index" let-item="item">
-                            <StackLayout (tap)="openPlayer(item.name,item.url)">
+                            <StackLayout class="entertainment" (tap)="openPlayer(item.name,item.url)">
                                 <Image loadMode="async" class="link-item" *ngIf="isLogoPresent(item)"
-                                    stretch="aspectFit" [src]='item.logo'></Image>
+                                    stretch="aspectFill" [src]='item.logo'></Image>
                                 <Label [text]="item.name"></Label>
                             </StackLayout>
                         </ng-template>

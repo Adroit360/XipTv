@@ -1,7 +1,8 @@
 <GridLayout (tap)="pageTapped()" rows="auto,*">
     <ns-action-bar [showBackButton]="true" [header]="videoName"></ns-action-bar>
 
-    <GridLayout row="1"ows="auto,*">
+    <!-- rows="auto,*" -->
+    <GridLayout row="1" >
         
     
         <FlexboxLayout *ngIf="showLoader" justifyContent="center" alignItems="center"
@@ -16,13 +17,14 @@
         </FlexboxLayout>
     
         <exoplayer #videoplayer
-        fill="aspect"
         controls="true"
+        fill="aspectFill"
         [src]="videoSrc"
         (playbackReady)="playbackReady()"
         (error)="onPlayerError()"
         (paused)="onPlayerPaused()"
         autoplay="true"
+        backroundColor="blue"
         row="1"
         ></exoplayer>
     
@@ -35,4 +37,5 @@
         ></exoplayer> -->
     
     </GridLayout>
+
 </GridLayout>
