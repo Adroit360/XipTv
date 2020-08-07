@@ -17,14 +17,8 @@ $cPurple: #491887;
     // margin-bottom: 20;
 }
 
-TextField{
-    border-width: 0 0 2 0;
-    border-bottom-color: rgba(0, 0, 0, 0.088);
-    margin-top: 50;
-    font-size: smaller;
-}
 
-.btn{
+.mybtn{
     background-color: #3CE261;
     border-radius: 20;
     color: white;
@@ -35,7 +29,7 @@ TextField{
 
 }
 
-.btn-empty{
+.mybtn-empty{
     color: #3CE261;
     font-weight: bold;
     margin-top: 10;

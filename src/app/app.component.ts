@@ -7,7 +7,10 @@ import { filter } from "rxjs/operators";
 import { RouterExtensions } from "nativescript-angular/router";
 import { HttpLoaderService } from "~/services/httploader.service";
 import * as appStorage from "tns-core-modules/application-settings";
+// import { registerElement } from 'nativescript-angular/element-registry';
+import { Gif } from 'nativescript-gif';
 
+registerElement('Gif', () => Gif);
 registerElement("VideoPlayer", () => Video);
 registerElement("exoplayer", () => require("nativescript-exoplayer").Video);
 
@@ -31,11 +34,13 @@ export class AppComponent {
 
 
         if (appStorage.getBoolean(this.isNew, true)) {
-            this.routerExtensions.navigate(["profile"]);
+            this.routerExtensions.navigate(["get-started"]);
             console.log("THis is sooo not loading from backend😂");
         } else{
-            this.routerExtensions.navigate(["home"]);
+            this.routerExtensions.navigate(["login"]);
             console.log("This is reading the get started in ap.module.ts☹️ ");
         }
     }
 }
+
+

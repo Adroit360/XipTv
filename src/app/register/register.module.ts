@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { RegisterComponent } from "./register.component";
 import { SharedModule } from "../shared/shared.module";
 import { Route } from "@angular/router";
@@ -12,15 +12,16 @@ const routes:Route[] = [
     declarations:[
         RegisterComponent,
     ],
-    imports:[SharedModule,
+    imports:[
+        SharedModule,
         NativeScriptRouterModule.forChild(routes)
     ],
     exports:[
         NativeScriptRouterModule
     ],
-    // schemas:[
-    //     NO_ERRORS_SCHEMA
-    // ]
+    schemas:[
+        NO_ERRORS_SCHEMA
+    ]
 })
 export class RegisterModule{
 

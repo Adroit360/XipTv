@@ -1,20 +1,19 @@
-<GridLayout columns="30,*,50" rows="auto,auto,auto,*,auto,">
-<StackLayout backgroundColor="white" width="100%" row="0" horizontalAlignment="left" col="1">
-    <Label text="Welcome to" height="50" color="#491887"></Label>
-    <Label class="emphasis" text="XIPTV"></Label>
-    <Label text="Please fill in the fields, and get ready to experience a  new viewing experience" textWrap="true" horizontalAlignment="left" width="300" class="support-body"></Label>
-</StackLayout>
-<StackLayout row="1" col="1">
-         <Image src="res://Group 19" width="100" horizontalAlignment="left" class="profilePicture"></Image>
-</StackLayout>
-<StackLayout row="2" col="1">
-    <TextField hint="Please enter your username" color="#491887" class="text-field">
-    </TextField>
-    <TextField hint="Please enter your password" color="#491887" class="text-field">
-    </TextField>
-</StackLayout>
-<StackLayout row="4" col="1">
-    <Button text="LOGIN" class="btn" verticalAlignment="bottom" ></Button>
-    <Button text="SIGN UP" class="btn-empty" verticalAlignment="bottom" ></Button>
+<GridLayout rows="auto,*,auto,auto" columns="30,*,30" backgroundColor="#EA5769">
+    <Image row="0" src="res://airtech_1" width="25%" col="1"></Image>
+<FlexboxLayout row="1" col="1">
+    <Gif width="100%" height="auto" src="https://cdn.dribbble.com/users/228367/screenshots/4142078/living-room-dribbble.gif"></Gif>
+</FlexboxLayout>
+<StackLayout row="3" col="1">
+    <Label text="Sign In" class="brand"></Label>
+    <TextField [(ngModel)]="loginModel.email" hint="Email Address" autocapitalizationType="none" class="new-input" style="placeholder-color:rgba(255, 255, 255, 0.507); color:white";></TextField>
+    <TextField [(ngModel)]="loginModel.password" hint="Password" secure="true" class="new-input" style="placeholder-color:rgba(255, 255, 255, 0.507); color:white"></TextField>
+    <Button (tap)="login()" text="Login" class="newbtn"></Button>
+    <!-- <Label textAlignment="center" text="New user?" color="white"></Label> -->
+    <Label textAlignment="center" height="30"  (tap)="gotoRegister()">
+        <FormattedString>
+            <Span text="Are you a new user?" class="fas t-18"></Span>
+            <Span text="  Sign Up Here " fontWeight="bold" color="white"></Span>
+        </FormattedString>
+    </Label>
 </StackLayout>
 </GridLayout>
