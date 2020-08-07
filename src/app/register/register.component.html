@@ -1,24 +1,26 @@
 <GridLayout rows="auto,*,auto,auto" columns="30,*,30" backgroundColor="#EA5769">
-    <Image
-      row="0"
-      src="res://airtech_1"
-      width="25%"
-      col="1"
-    ></Image>
+  <Image margin="30 0 0 0" row="0" src="res://airtech_1" width="25%" col="1"></Image>
   <FlexboxLayout row="1" col="1">
-      <Gif width="100%" height="auto" src="https://cdn.dribbble.com/users/228367/screenshots/4142078/living-room-dribbble.gif"></Gif>
+    <Gif width="100%" height="auto"
+      src="https://cdn.dribbble.com/users/228367/screenshots/4142078/living-room-dribbble.gif"></Gif>
   </FlexboxLayout>
   <StackLayout row="3" col="1">
-      <Label text="Sign Up" class="brand"></Label>
-      <TextField [(ngModel)]="username" hint="Name" class="new-input" style="placeholder-color:white";></TextField>
-      <TextField [(ngModel)]="email" autocapitalizationtype="none" hint="Email Address" class="new-input" style="placeholder-color:white";></TextField>
-      <TextField [(ngModel)]="password" secure="true" hint="Password" class="new-input" style="placeholder-color:white"></TextField>
-      <Button  (tap)="register()" text="Contine" class="newbtn"></Button>
-      <Label textAlignment="center" height="30" (tap)="gotoLogin()">
-        <FormattedString>
-            <Span text="Are you already a user?"></Span>
-            <Span text=" Login Here " fontWeight="bold" color="white"></Span>
-        </FormattedString>
+    <Label text="Sign Up" class="brand"></Label>
+    <TextField [(ngModel)]="username" hint="Name" class="new-input" style="placeholder-color:white" ;></TextField>
+    <TextField [(ngModel)]="email" autocapitalizationtype="none" hint="Email Address" class="new-input"
+      style="placeholder-color:white" ;></TextField>
+    <TextField [(ngModel)]="password" secure="true" hint="Password" class="new-input" style="placeholder-color:white">
+    </TextField>
+    <Button (tap)="register()" text="Contine" class="newbtn"></Button>
+    <Label textAlignment="center" height="30" (tap)="gotoLogin()">
+      <FormattedString>
+        <Span text="Are you already a user?"></Span>
+        <Span text=" Login Here " fontWeight="bold" color="white"></Span>
+      </FormattedString>
     </Label>
   </StackLayout>
+  <GridLayout colSpan="3" rowSpan="4" *ngIf="isLoading">
+    <ActivityIndicator color="black" busy="true" class="activity-indicator">
+    </ActivityIndicator>
   </GridLayout>
+</GridLayout>

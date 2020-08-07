@@ -14,11 +14,10 @@ export class MiscService {
   }
 
   alert(title, message) {
-    alert({
+    return alert({
       title: title,
       message: message,
       okButtonText: "OK"
-    }).then(() => {
     });
   }
 

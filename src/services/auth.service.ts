@@ -28,10 +28,7 @@ export class AuthService {
     
     constructor(private httpClient: HttpClient,
          private router: RouterExtensions) {
-        this.getCurrentUser();
-        if (this.currentUser) {
-            this.router.navigate(["sub-type"]);
-        }
+        
     }
 
     register(registerDTO: RegisterDTO): Observable<LoginResponseDTO> {

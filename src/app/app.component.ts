@@ -9,6 +9,8 @@ import { HttpLoaderService } from "~/services/httploader.service";
 import * as appStorage from "tns-core-modules/application-settings";
 // import { registerElement } from 'nativescript-angular/element-registry';
 import { Gif } from 'nativescript-gif';
+import { TvListService } from "~/services/tvlist.service";
+import { AuthService } from "~/services/auth.service";
 
 registerElement('Gif', () => Gif);
 registerElement("VideoPlayer", () => Video);
@@ -24,6 +26,8 @@ export class AppComponent {
     constructor(universalService: UniversalService,
         private routerExtensions: RouterExtensions,
         public loaderService: HttpLoaderService,
+        private tvListService: TvListService,
+        private authService: AuthService,
         private vcRef: ViewContainerRef, router: Router) {
         universalService.rootViewContainerRef = vcRef;
         router.events
@@ -34,10 +38,16 @@ export class AppComponent {
 
 
         if (appStorage.getBoolean(this.isNew, true)) {
-             this.routerExtensions.navigate(["get-started"]);
-            //  this.routerExtensions.navigate(["home"]);
-        } else{
-            this.routerExtensions.navigate(["login"]);
+            this.routerExtensions.navigate(["get-started"]);
+            //this.routerExtensions.navigate(["home"]);
+        } else {
+
+            this.authService.getCurrentUser();
+            if (this.authService.currentUser) {
+                this.routerExtensions.navigate(["sub-type"]);
+            }else{
+                this.routerExtensions.navigate(["login"]);
+            }
         }
     }
 }

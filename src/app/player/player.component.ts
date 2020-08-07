@@ -77,6 +77,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
         this.showInfo = true;
         this.showLoader = false;
         this.loaderText = "could not play video";
+        console.log("PLAYER ERROR OCCURRED");
     }
 
     onPlayerPaused() {

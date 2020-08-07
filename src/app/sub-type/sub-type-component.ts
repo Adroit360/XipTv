@@ -39,7 +39,8 @@ export class SubTypeComponent implements OnInit {
         private miscService:MiscService,
         private authService: AuthService) {
         this.getUserSubscriptions();
-        let canGoBack = this.routerExtensions.canGoBackToPreviousPage();
+        let canGoBack = false;
+        //let canGoBack = this.routerExtensions.canGoBackToPreviousPage();
         
 
         this.activatedRoute.paramMap.subscribe(param=>{
@@ -89,4 +90,5 @@ export class SubTypeComponent implements OnInit {
             this.miscService.alert("Error","Your subscription has expired, please renew it to continue watching");
         }
     }
+    
 }

@@ -77,7 +77,6 @@ export class PaymentPlansComponent{
     }
 
     back(){
-        this.authService.logout();
         this.routerExtensions.back();
     }
 

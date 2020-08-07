@@ -5,6 +5,7 @@ import { AuthService } from "~/services/auth.service";
 import { PaymentDTO } from "~/data/dtos/paymentDTO";
 import { HttpClient } from "@angular/common/http";
 import { settings } from "~/helpers/settings";
+import { MiscService } from "~/services/misc.service";
 
 @Component({
     selector: "app-payment-modal",
@@ -21,6 +22,7 @@ export class PaymentModalComponent {
 
     constructor(private modalDialogParams: ModalDialogParams,
         private httpClient: HttpClient,
+        private miscService:MiscService,
         private authService: AuthService) {
         this.packageType = modalDialogParams.context;
 
@@ -46,14 +48,21 @@ export class PaymentModalComponent {
 
         this.httpClient.post<{ txRef, paymentToken }>(`${settings.baseUri}/transaction/pay`, paymentDTO)
             .subscribe(response => {
-                let redirectUrl = settings.reddeCallbackUrlPrefix + response.paymentToken;
+                console.log(response);
+                let redirectUrl = settings.tellerCallbackUrlPrefix + response.paymentToken;
                 //this.checkoutUrl = this.sanitizer.bypassSecurityTrustResourceUrl(redirectUrl);
                 this.checkoutUrl = redirectUrl;
                 this.checkoutResponse = response;
             }, error => {
+                console.log(error);
+                this.miscService.alert("Error","Cannot contact payment server at the moment, please try again in a few minutes")
+                .then(response=>{
+                    this.closeModal();
+                });
 
             });
 
+            
 
     }
 
@@ -78,11 +87,11 @@ export class PaymentModalComponent {
 
     webViewLoading(event) {
         this.isLoading = true;
-        if(event.url && event.url.includes("ntoboafailure")){
+        if(event.url && event.url.includes("status=failed")){
             this.modalDialogParams.closeCallback({
                 paid: false
             });
-        }else if(event.url && event.url.includes("ntoboasuccess")){
+        }else if(event.url && event.url.includes("status=successful")){
             this.modalDialogParams.closeCallback({
                 paid: true
             });

@@ -1,7 +1,7 @@
 <GridLayout rows="200,*,auto,20" columns="*" backgroundColor="#EEEFF3">
     <StackLayout row="0" col="1">
         <GridLayout row="auto,auto,auto" col="*" backgroundColor="white" borderRadius="0 0 30 30">
-            <StackLayout width="90%">
+            <StackLayout *ngIf="currentUser" width="90%">
                 <!-- <Label text="caret-down"></Label> -->
                 <Label class="fas br-icon" fontSize="40" margin="10 0" text="&#xf4fd;"></Label>
 

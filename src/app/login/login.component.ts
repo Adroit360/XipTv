@@ -7,6 +7,7 @@ import { LoginDTO } from "~/data/dtos/loginDTO";
 import { Observable } from "rxjs";
 import * as applicationStorage from "tns-core-modules/application-settings";
 import { LoginResponseDTO } from "~/data/dtos/loginResponseDTO";
+import { TvListService } from "~/services/tvlist.service";
 
 @Component({
     selector: "app-login",
@@ -15,17 +16,20 @@ import { LoginResponseDTO } from "~/data/dtos/loginResponseDTO";
 })
 export class LoginComponent {
 
-    isLoading:boolean = false;
-    loginModel : LoginDTO = {
-        email : "",
-        password : "",
-        rememberMe : false
-      }
+    isLoading: boolean = false;
+    loginModel: LoginDTO = {
+        email: "",
+        password: "",
+        rememberMe: false
+    }
     constructor(private router: RouterExtensions,
         private authService: AuthService,
         private miscService: MiscService,
+        private tvListService: TvListService,
         private page: Page) {
         page.actionBarHidden = true;
+
+       
     }
 
     ngOnInit(): void {

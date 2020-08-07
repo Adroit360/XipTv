@@ -8,6 +8,8 @@ import { filter } from "rxjs/operators";
 import { UniversalService } from "~/services/universal.service";
 import { TopsModel } from "~/data/models/topsModel";
 import * as appStorage from "tns-core-modules/application-settings";
+import { Subscription } from "~/data/models/subscriptions";
+import { PackageType } from "~/data/models/packagetype";
 
 @Component({
     selector: "ns-landing",
@@ -15,17 +17,29 @@ import * as appStorage from "tns-core-modules/application-settings";
     styleUrls: ["./landing.component.scss"]
 })
 export class LandingComponent implements OnInit, OnDestroy {
+    PackageType = PackageType;
+
     tvLinks: TvModel[];
 
     topsModel:TopsModel;
 
     showPlayer = true;
+
+    currentSubscription: Subscription;
+
     
     constructor(private routerExtensions: RouterExtensions,
         private activatedRoute: ActivatedRoute,
         private router: Router,
         private universalService:UniversalService,
         public tvListService: TvListService) {
+
+            this.tvListService.getTops()
+        .then(response => {
+            this.topsModel = response;
+        });
+
+        this.currentSubscription = this.tvListService.currentSubscription;
 
         this.router.events
             .pipe(filter((event: any) => event instanceof NavigationEnd))
@@ -65,13 +79,6 @@ export class LandingComponent implements OnInit, OnDestroy {
         }else{
             this.showPlayer=false;
         }
-
-        this.tvListService.getTops()
-        .then(response => {
-            this.topsModel = response;
-        });
-
-       
     }
 
     openPlayer(name, url) {

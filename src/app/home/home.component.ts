@@ -50,6 +50,10 @@ export class HomeComponent implements OnInit {
             .subscribe((event: NavigationEnd) => {
                 this._activatedUrl = event.urlAfterRedirects;
             });
+
+            this.tvListService.getAllLinks()
+                    .then(response => {
+            });
         //this.firstEightLinks = this.tvLinks.slice(0,8);
     }
 
@@ -65,9 +69,7 @@ export class HomeComponent implements OnInit {
 
         // });
 
-        this.tvListService.getAllLinks()
-                .then(response => {
-                });
+        
 
     }
 
