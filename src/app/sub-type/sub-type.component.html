@@ -10,7 +10,8 @@
 </GridLayout> -->
 
 <FlexboxLayout alignItems="center" justifyContent="center" flexDirection="column">
-    <Label class="sub" text="Choose Subscription To Watch"></Label>
+    <Label *ngIf="!userSubscriptions" class="sub" text="Loading subscriptions please wait .."></Label>
+    <Label *ngIf="userSubscriptions" class="sub" text="Choose Subscription To Watch"></Label>
     <StackLayout>
         <StackLayout *ngFor="let subscription of userSubscriptions;let i = index">
             <Label *ngIf="!subscription.package" text="not-found"></Label>
@@ -18,9 +19,11 @@
                 [text]="packageType[subscription.package.packageType]" height="50"
                 [ngClass]="{'primary':subscription.package.packageType != selectedPackageType,'secondary':subscription.package.packageType == selectedPackageType}"></Button>
         </StackLayout>
-        <ActivityIndicator row="1" *ngIf="!userSubscriptions"
-            color="black" width="20" height="20" [busy]="true">
+        <ActivityIndicator row="1" *ngIf="!userSubscriptions && !errorOcurred"
+            color="black" width="30" height="30" [busy]="true">
         </ActivityIndicator>
+        <Button *ngIf="errorOcurred" (tap)="getUserSubscriptions()" text="reload" class="secondary blue"
+            ></Button>
         <Button *ngIf="!userSubscriptions" (tap)="addSubscription()" text="Dont have a subscription? Get one now" class="trans blue"
             ></Button>
         <Button *ngIf="userSubscriptions" (tap)="addSubscription()" text="Add another subscription" class="trans blue"

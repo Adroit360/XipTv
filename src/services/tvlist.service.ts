@@ -5,7 +5,7 @@ import { settings } from "~/helpers/settings";
 import { HttpClient } from "@angular/common/http";
 import { timestamp, subscribeOn } from "rxjs/operators";
 import { UniversalService } from "./universal.service";
-import { Observable, Subject } from "rxjs";
+import { Observable, Subject, BehaviorSubject } from "rxjs";
 import { TopsModel } from "~/data/models/topsModel";
 import { Subscription } from "~/data/models/subscriptions";
 const currentAppFolder = knownFolders.currentApp();
@@ -13,16 +13,18 @@ const currentAppFolder = knownFolders.currentApp();
 @Injectable()
 export class TvListService {
 
-    currentSubscription:Subscription;
+    allLinksLoaded:BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-    oldSubscription:Subscription;
+    currentSubscription: Subscription;
+
+    oldSubscription: Subscription;
 
     tvListFile: File;
     tvLinks: TvModel[];
     allMovies: TvModel[];
     allSeries: TvModel[];
 
-    topsModel:TopsModel;
+    topsModel: TopsModel;
 
     // localTvLinks: TvModel[];
     // topTvLinks: TvModel[];
@@ -33,6 +35,7 @@ export class TvListService {
 
     constructor(private httpClient: HttpClient, private universalService: UniversalService) {
         //this.tvListFile = currentAppFolder.parent.getFolder('data').getFile("tvlist.txt");
+        // this.getAllLinks().then(response=>{});
     }
 
     generateLinks(rawLinksText: string): TvModel[] {
@@ -67,6 +70,10 @@ export class TvListService {
             let serverUri;
             let githubUri;
 
+            if (!this.currentSubscription) {
+                reject("subscription not found");
+            }
+
             if (this.currentSource.includes('server')) {
                 uri = `${settings.baseUri}/tvlist/all/${this.currentSubscription.package.packageType}`;
                 serverUri = uri;
@@ -97,6 +104,7 @@ export class TvListService {
                             this.tvLinks = response;
                             resolve(response);
                             this.oldSubscription = this.currentSubscription;
+                            this.allLinksLoaded.next(true);
                         });
                 }
             }
@@ -115,7 +123,7 @@ export class TvListService {
             if (this.allMovies)
                 resolve(this.allMovies);
             else {
-                resolve(this.tvLinks.filter(i=>i.url.includes("/movie")));
+                resolve(this.tvLinks.filter(i => i.url.includes("/movie")));
             }
         });
     }
@@ -130,15 +138,20 @@ export class TvListService {
             if (this.allSeries)
                 resolve(this.allSeries);
             else {
-                resolve(this.tvLinks.filter(i=>i.url.includes("/series")));
+                resolve(this.tvLinks.filter(i => i.url.includes("/series")));
             }
         });
     }
 
     async getTops(): Promise<TopsModel> {
         return new Promise((resolve, reject) => {
+
             if (this.topsModel && this.oldSubscription == this.currentSubscription)
                 resolve(this.topsModel);
+
+            if (!this.currentSubscription) {
+                reject("subscription not found");
+            }
 
             if (this.currentSource == 'server') {
                 this.httpClient.get<TopsModel>(`${settings.baseUri}/tvlist/tops/${this.currentSubscription.package.packageType}`)
@@ -147,7 +160,7 @@ export class TvListService {
                         resolve(response);
                         this.oldSubscription = this.currentSubscription;
                     });
-            } 
+            }
         });
     }
 

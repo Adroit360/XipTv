@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef, assertPlatform } from "@angular/core";
 import { Page } from "tns-core-modules/ui/page";
 import { TvModel } from "~/data/models/tvModel";
 import { TvListService } from "~/services/tvlist.service";
 import { RouterExtensions } from "nativescript-angular/router";
+import { MiscService } from "~/services/misc.service";
 @Component({
     selector: "ns-landing",
     templateUrl: "./search.component.html",
@@ -20,14 +21,23 @@ export class SearchComponent implements OnInit {
     showSearchCancel = false;
 
     constructor(page: Page, private tvListService: TvListService,
+        public misc: MiscService,
         private routerExtensions: RouterExtensions) {
         page.actionBarHidden = true;
 
-        tvListService.getAllLinks()
-            .then(response => {
-                this.tvLinks = response;
-                this.filteredTvLinks = response;
-            });
+        this.tvListService.allLinksLoaded.subscribe(response => {
+            if (!response)
+                return
+            this.tvLinks = this.tvListService.tvLinks;
+            this.filteredTvLinks = this.tvListService.tvLinks;
+
+        });
+
+        // tvListService.getAllLinks()
+        //     .then(response => {
+        //         this.tvLinks = response;
+        //         this.filteredTvLinks = response;
+        //     });
     }
 
     ngOnInit() {
@@ -74,4 +84,6 @@ export class SearchComponent implements OnInit {
             event.object.android.setFocusable(false);
         }
     }
+
+
 }

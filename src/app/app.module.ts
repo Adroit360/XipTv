@@ -25,6 +25,7 @@ import { MiscService } from "~/services/misc.service";
 import { ErrorInterceptor } from "~/interceptors/error.interceptor";
 import { SubscriptionService } from "~/services/subscription.service";
 import { PaymentModalComponent } from "./paymentplans/payment-modal/payment-modal.component";
+import { LiveSportsComponent } from "./livesports/livesports.component";
 // import { GifModule } from 'tns-ng-gif';
 
 @NgModule({
@@ -36,11 +37,13 @@ import { PaymentModalComponent } from "./paymentplans/payment-modal/payment-moda
         HomeModule,
         PlayerModule,
         AppRoutingModule,
-        NativeScriptHttpClientModule,
+        NativeScriptHttpClientModule
+       
         // GifModule
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        LiveSportsComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

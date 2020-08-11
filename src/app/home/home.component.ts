@@ -23,7 +23,7 @@ import { PackageType } from "~/data/models/packagetype";
 })
 export class HomeComponent implements OnInit {
     packageType = PackageType;
-    
+
     sideDrawerTransition: DrawerTransitionBase;
     private _activatedUrl: string;
 
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     route = 'landing';
     isAndroid = isAndroid;
 
-    currentSubscription:Subscription;
+    currentSubscription: Subscription;
 
     @ViewChild("sideDrawer", { static: true }) sideDrawer: RadSideDrawerComponent;
     //firstEightLinks:TvModel[];
@@ -50,6 +50,10 @@ export class HomeComponent implements OnInit {
             .subscribe((event: NavigationEnd) => {
                 this._activatedUrl = event.urlAfterRedirects;
             });
+
+            this.tvListService.getAllLinks()
+                    .then(response => {
+            });
         //this.firstEightLinks = this.tvLinks.slice(0,8);
     }
 
@@ -58,9 +62,15 @@ export class HomeComponent implements OnInit {
         this.sideDrawerTransition = new SlideInOnTopTransition();
         this.universalService.setSideDrawer(this.sideDrawer);
 
-        this.tvListService.getAllLinks()
-        .then(response=>{
-        });
+        // this.tvListService.allLinksLoaded.subscribe(response => {
+        //     if (!response)
+        //         return
+            
+
+        // });
+
+        
+
     }
 
     isComponentSelected(url: string): boolean {
@@ -114,11 +124,12 @@ export class HomeComponent implements OnInit {
         }
     }
 
-    gotoProfile(){
+    gotoProfile() {
         this.routerExtensions.navigate(["profile"]);
     }
 
-    switchSubscription(){
-        this.routerExtensions.navigate(["sub-type"])
+    switchSubscription() {
+        this.routerExtensions.navigate(["sub-type/false"])
     }
+
 }

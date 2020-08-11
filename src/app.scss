@@ -41,10 +41,13 @@ Button.-primary {
 
 .group-label {
     text-transform: uppercase;
-    margin: 10 20;
+    margin: 20 20;
     font-size: 15;
     color: #4b71db;
     font-weight: bold;
+    padding: 10;
+    border-bottom-width: 1;
+    border-color:#4b71db;
 }
 
 .fab {
@@ -172,11 +175,62 @@ TextField{
     border-radius: 6;
 }
 
-.newbtn{
-    width: 70%;
-    border-color: transparent;
-    background-color:#1E2E61;
-    border-radius: 20;
+ActivityIndicator{
+    width: 40;
+    height: 40;
+    background-color: rgba(0, 0, 0, 0.42);
+    border-radius: 50%;
     color:white;
+}
 
+ListView{
+    seperator-color:#b1b1b1;
+}
+
+Label{
+    //text-wrap:true;
+}
+
+.list-item{
+    // border-bottom-width: 1;
+    // border-color: #808080;
+    padding: 10;
+    .link-image{
+         border-radius: 20;
+         height: 90;
+        // height: 80;
+    }
+    StackLayout{
+        padding:10;
+        FlexboxLayout{
+            margin:5;
+        }
+        .name{
+            font-size: 17;
+            margin:5;
+        }
+        .category{
+            color:#808080;
+            font-size: 15;
+        }
+        .country{
+            color: green;
+        }
+    }
+}
+
+.roller-bg{
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.topnavstack{
+    color:var(--light-black-text);
+    .bloated{
+        padding: 10 12;
+        border-width: 1;
+        border-radius: 5;
+        margin: 10;
+        border-color: var(--border-color);
+        background-color: white;
+    }
 }

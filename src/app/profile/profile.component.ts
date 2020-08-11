@@ -31,7 +31,6 @@ export class ProfileComponent implements OnInit{
     }
 
     viewSubscriptions(){
-
-        this.routerExtensions.navigate(["sub-type"]);
+        this.routerExtensions.navigate(["sub-type","false"]);
     }
 }

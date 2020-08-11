@@ -7,9 +7,11 @@ import { PackageType } from "~/data/models/packagetype";
 import { RouterExtensions } from "nativescript-angular/router";
 import { TvListService } from "~/services/tvlist.service";
 import { Page } from "tns-core-modules/ui/page";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { ɵNgNoValidate } from "@angular/forms";
 import { HttpInterceptorService } from "~/interceptors/http.interceptor";
+import { MiscService } from "~/services/misc.service";
+import { API } from "~/helpers/API";
 
 @Component({
     selector: "app-sub-type",
@@ -25,13 +27,27 @@ export class SubTypeComponent implements OnInit {
 
     selectedPackageType;
 
+    errorOcurred = false;
+
+    shouldRedirect:string;
+
     constructor(private httpClient: HttpClient,
         private routerExtensions: RouterExtensions,
         private tvListService: TvListService,
-        private page: Page,
+        private activatedRoute:ActivatedRoute,
+        private page:Page,
+        private router:Router,
+        private miscService:MiscService,
         private authService: AuthService) {
         this.getUserSubscriptions();
-        let canGoBack = this.routerExtensions.canGoBackToPreviousPage();
+        let canGoBack = false;
+        //let canGoBack = this.routerExtensions.canGoBackToPreviousPage();
+        
+        miscService.getVolaToken();
+
+        this.activatedRoute.paramMap.subscribe(param=>{
+            this.shouldRedirect = param.get("redirect");
+        });
 
         if (!canGoBack) {
             page.actionBarHidden = true;
@@ -46,10 +62,20 @@ export class SubTypeComponent implements OnInit {
     }
 
     getUserSubscriptions() {
+        this.errorOcurred = false;
+        if (!this.authService.currentUser)
+            return;
         var userId = this.authService.currentUser.id;
         this.httpClient.get<Subscription[]>(`${settings.baseUri}/subscription/getsubscription/${userId}`)
             .subscribe(response => {
                 this.userSubscriptions = response;
+                this.errorOcurred = false;
+
+                if(this.shouldRedirect == "true" && this.userSubscriptions.length == 1){
+                    this.chooseSubscription(this.userSubscriptions[0]);
+                }
+            }, error => {
+                this.errorOcurred = true;
             });
     }
 
@@ -59,9 +85,12 @@ export class SubTypeComponent implements OnInit {
 
     chooseSubscription(subscription: Subscription) {
 
-        this.tvListService.currentSubscription = subscription;
-
-
-        this.routerExtensions.navigate(["home"]);
+        if(subscription.remainingDays > 0){
+            this.tvListService.currentSubscription = subscription;
+             this.routerExtensions.navigate(["home"]);
+        }else{
+            this.miscService.alert("Error","Your subscription has expired, please renew it to continue watching");
+        }
     }
+    
 }

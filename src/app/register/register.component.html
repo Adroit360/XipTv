@@ -1,12 +1,8 @@
 <GridLayout rows="auto,*,auto,auto" columns="30,*,30" backgroundColor="#EA5769">
-    <Image
-      row="0"
-      src="res://airtech_1"
-      width="25%"
-      col="1"
-    ></Image>
+  <Image margin="30 0 0 0" row="0" src="res://airtech_1" width="25%" col="1"></Image>
   <FlexboxLayout row="1" col="1">
-      <Gif width="100%" height="auto" src="https://cdn.dribbble.com/users/228367/screenshots/4142078/living-room-dribbble.gif"></Gif>
+    <Gif width="100%" height="auto"
+      src="https://cdn.dribbble.com/users/228367/screenshots/4142078/living-room-dribbble.gif"></Gif>
   </FlexboxLayout>
   <StackLayout row="3" col="1">
       <Label text="Sign Up" class="brand"></Label>
@@ -21,4 +17,8 @@
         </FormattedString>
     </Label>
   </StackLayout>
+  <GridLayout colSpan="3" rowSpan="4" *ngIf="isLoading">
+    <ActivityIndicator color="black" busy="true" class="activity-indicator">
+    </ActivityIndicator>
   </GridLayout>
+</GridLayout>

@@ -20,7 +20,9 @@ export class PaymentPlansComponent{
     PackageType = PackageType;
     defaultPackages : Package[];
 
+    isLoading = true;
 
+    canGoBack;
 
     constructor(private routerExtensions:RouterExtensions,
         private authService:AuthService,
@@ -31,44 +33,50 @@ export class PaymentPlansComponent{
         private tvListService:TvListService,
         private page:Page) {
         page.actionBarHidden = true;
-
         subscriptionService.getDefaultPackages().then(response=>{
             this.defaultPackages = response;
+            this.isLoading = false;
         });
+
+        this.canGoBack = this.routerExtensions.canGoBackToPreviousPage();
     }
 
-    try(){
-        this.routerExtensions.navigate(['home'],{
-            clearHistory:true
-        });
-    }
+   
 
 
     subscribe(packageType){
+        this.isLoading = true;
         this.modalDialogService.showModal(PaymentModalComponent,{
-            fullscreen:false,
+            fullscreen:true,
             context:packageType,
             viewContainerRef:this.universalService.rootViewContainerRef
         }).then(response=>{
             if(response && response.paid){
                 setTimeout(() => {
+                    this.isLoading = true;
                     let userId = this.authService.currentUser.id;
                     let packageId = this.defaultPackages.filter(i=>i.packageType == packageType)[0].packageId;
                     this.subscriptionService.addSubscripton(userId,packageId)
                     .subscribe(response=>{
                         this.tvListService.currentSubscription = response;
-                        this.routerExtensions.navigate(["sub-type"]);
+                        this.miscService.alert("Info",`You have ${response.remainingDays} days remaining for this subscription`)
+                        this.routerExtensions.navigate(["sub-type"],{
+                            clearHistory:true
+                        });
+                        this.isLoading = false;
                     },error=>{
                         this.miscService.alert("Error",error);
+                        this.isLoading = false;
                     });
                     
                 }, 0);
+            }else{
+                this.isLoading = false;
             }
         });
     }
 
     back(){
-        this.authService.logout();
         this.routerExtensions.back();
     }
 
