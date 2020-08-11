@@ -1,0 +1,17 @@
+<GridLayout rows="auto,*">
+    
+    <WebView rowSpan="2" #WebViewRef (loadFinished)="webViewLoaded($event)" (loadStarted)="webViewLoading($event)" [src]="websrc">
+
+    </WebView>
+    <StackLayout *ngIf="!isWebViewShown" backgroundColor="white" rowSpan="2">
+
+    </StackLayout>
+    <FlexboxLayout *ngIf="canGoBack" (tap)="back()" alignItems="center" class="topnavstack">
+        <Label class="fas bloated" text="&#xf053;"></Label>
+        <Label text="Previous Page"></Label>
+    </FlexboxLayout>
+    <GridLayout rowSpan="2" *ngIf="isLoading">
+        <ActivityIndicator color="black" busy="true" class="activity-indicator">
+        </ActivityIndicator>
+    </GridLayout>
+</GridLayout>
