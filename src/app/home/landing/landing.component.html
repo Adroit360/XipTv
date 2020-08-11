@@ -23,6 +23,8 @@
                     autoplay="true"></exoplayer> 
             </GridLayout>-->
 
+            <Button *ngIf="topsModel && topsModel.topSportsChannels" color="black" margin="10" nsRouterLink="/home/livesports" text="Live Sports Event"></Button>
+
             <StackLayout *ngIf="topsModel">
 
                 <Label *ngIf="topsModel.topSportsChannels" class="group-label" text="Top Sports Channels"></Label>

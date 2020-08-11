@@ -222,3 +222,15 @@ Label{
 .roller-bg{
     background-color: rgba(0, 0, 0, 0.4);
 }
+
+.topnavstack{
+    color:var(--light-black-text);
+    .bloated{
+        padding: 10 12;
+        border-width: 1;
+        border-radius: 5;
+        margin: 10;
+        border-color: var(--border-color);
+        background-color: white;
+    }
+}

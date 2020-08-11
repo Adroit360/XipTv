@@ -3,11 +3,12 @@ import { ActivatedRoute } from "@angular/router";
 import { TvModel } from "~/data/models/tvModel";
 import { settings } from "~/helpers/settings";
 import { TvListService } from "~/services/tvlist.service";
-import { Page } from "tns-core-modules/ui/page";
+import { Page, isAndroid } from "tns-core-modules/ui/page";
 import { keepAwake, allowSleepAgain } from "nativescript-insomnia";
 import { on } from "tns-core-modules/application";
 import * as statusBar from 'nativescript-status-bar'
 import { VideoFill } from "nativescript-exoplayer";
+import { API } from "~/helpers/API";
 
 
 var insomnia = require("nativescript-insomnia");
@@ -32,22 +33,26 @@ export class PlayerComponent implements OnInit, OnDestroy {
         page.actionBarHidden = false;
         on("orientationChanged", this.onOrientationChanged);
         this.activatedRoute.queryParams.subscribe(param => {
-            console.log(param.url);
+            let videoUrl = param.url;
+            //let videoUrl = "http://m3ulink.com:7899/live/justiceaddico91-restream/Ep4bpAVn/110412.m3u8";
+            console.log(videoUrl);
 
             this.videoName = param.name;
             this.videoSrc = param.url;
-            // let url = "";
-            // if (param.url)
-            //     url = param.url.toString().replace(/\//gi, "*");
-            // this.videoSrc = `${settings.baseUri}/tvlist/getstream/${url}`;
+            //  let url = "";
+            //  if (videoUrl)
+            //     url = videoUrl.toString().replace(/\//gi, "*");
+            //  this.videoSrc = `${settings.baseUri}/tvlist/getstream/${url}`;
             console.log(this.videoSrc);
         });
     }
 
     ngOnInit() {
+        
         insomnia.keepAwake().then(function () {
             console.log("Insomnia is active");
         });
+
     }
 
     public onOrientationChanged = (evt) => {
@@ -91,22 +96,24 @@ export class PlayerComponent implements OnInit, OnDestroy {
     }
 
     pageTapped() {
-
-        if (this.page.actionBarHidden) {
-            //Show action bar if its hidden
-            this.showDetails();
+        if(isAndroid){
+            if (this.page.actionBarHidden) {
+                //Show action bar if its hidden
+                this.showDetails();
+            }
+            else {
+                this.hideDetails();
+            }
+    
+            if (this.timeout) {
+                clearTimeout(this.timeout)
+            }
+    
+            this.timeout = setTimeout(() => {
+                this.hideDetails();
+            }, 5000);
         }
-        else {
-            this.hideDetails();
-        }
-
-        if (this.timeout) {
-            clearTimeout(this.timeout)
-        }
-
-        this.timeout = setTimeout(() => {
-            this.hideDetails();
-        }, 5000);
+        
     }
 
     showDetails(){
@@ -123,4 +130,5 @@ export class PlayerComponent implements OnInit, OnDestroy {
         this.videoplayer.nativeElement.scaleY = "1";
     }
 
+    
 }

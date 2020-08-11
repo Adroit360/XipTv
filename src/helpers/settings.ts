@@ -10,4 +10,5 @@ export const settings = {
     githubUrl:`https://iptv-org.github.io/iptv`,
     reddeCallbackUrlPrefix:"https://checkout.reddeonline.com?token=",
     tellerCallbackUrlPrefix:urls.tellerTest
+
 }

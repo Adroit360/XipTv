@@ -1,11 +1,11 @@
 {
   "nativescript": {
-    "id": "org.adroit.AirtechTv1",
-    "tns-ios": {
-      "version": "6.5.2"
-    },
+    "id": "org.adroit360.airtectv",
     "tns-android": {
       "version": "6.5.3"
+    },
+    "tns-ios": {
+      "version": "6.5.2"
     }
   },
   "description": "NativeScript Application",

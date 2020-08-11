@@ -11,6 +11,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { ɵNgNoValidate } from "@angular/forms";
 import { HttpInterceptorService } from "~/interceptors/http.interceptor";
 import { MiscService } from "~/services/misc.service";
+import { API } from "~/helpers/API";
 
 @Component({
     selector: "app-sub-type",
@@ -42,6 +43,7 @@ export class SubTypeComponent implements OnInit {
         let canGoBack = false;
         //let canGoBack = this.routerExtensions.canGoBackToPreviousPage();
         
+        miscService.getVolaToken();
 
         this.activatedRoute.paramMap.subscribe(param=>{
             this.shouldRedirect = param.get("redirect");
