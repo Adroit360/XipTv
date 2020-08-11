@@ -7,6 +7,10 @@ import { android, AndroidApplication, AndroidActivityBundleEventData } from "tns
 import { filter } from "rxjs/operators";
 import { UniversalService } from "~/services/universal.service";
 import { TopsModel } from "~/data/models/topsModel";
+import { Observable } from "rxjs";
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+
 @Component({
     selector: "ns-landing",
     templateUrl: "./landing.component.html",
@@ -18,10 +22,12 @@ export class LandingComponent implements OnInit, OnDestroy {
     topsModel:TopsModel;
 
     showPlayer = true;
-    
+    // http: any;
+
     constructor(private routerExtensions: RouterExtensions,
         private activatedRoute: ActivatedRoute,
         private router: Router,
+        private http: HttpClient,
         private universalService:UniversalService,
         public tvListService: TvListService) {
 
@@ -69,7 +75,7 @@ export class LandingComponent implements OnInit, OnDestroy {
             this.topsModel = response;
         });
 
-       
+
     }
 
     openPlayer(name, url) {
@@ -88,10 +94,10 @@ export class LandingComponent implements OnInit, OnDestroy {
     }
 
     isLogoPresent(item) {
-        if (item)
+        if (item){
             return item.logo.includes("http");
-
-        return false;
+        // return false;
+        }
     }
 
     viewAll(){
@@ -108,4 +114,41 @@ export class LandingComponent implements OnInit, OnDestroy {
         this.showPlayer = true;
     }
 
+    checkImage(logourl) : Promise<string>{
+
+        return new Promise((resolve,reject)=>{
+            console.log(logourl);
+            this.http.get(logourl).subscribe(response=> {
+                resolve(logourl);
+                console.log("actual");
+            },error=>{
+                console.log("Alternative");
+                resolve("https://www.oreilly.com/library/view/mastering-geospatial-analysis/9781788293334/assets/dcee7274-f35b-44f2-952c-4305f5475864.png");
+            });
+        });
+    }
+
+//     const observable = new Observable(subscriber => {
+//       subscriber.next(logourl);
+//     });
+
+//     console.log('just before subscribe');
+//     observable.subscribe({
+//       next(x) { console.log('got value ' + x); },
+//       error(err) { console.error('something wrong occurred: ' + err); },
+//       complete() { console.log('done'); }
+//     });
+//     console.log('just after subscribe');
+// }
+
+// ImageState:;
+
+// getImageStatus(logoUrl){
+//     this.ImageState = this.http.get(logoUrl)
+// }
+
+
+
 }
+
+

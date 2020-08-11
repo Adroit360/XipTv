@@ -9,10 +9,12 @@ import { HttpLoaderService } from "~/services/httploader.service";
 import * as appStorage from "tns-core-modules/application-settings";
 // import { registerElement } from 'nativescript-angular/element-registry';
 import { Gif } from 'nativescript-gif';
+import { LottieView } from 'nativescript-lottie';
 
 registerElement('Gif', () => Gif);
 registerElement("VideoPlayer", () => Video);
 registerElement("exoplayer", () => require("nativescript-exoplayer").Video);
+registerElement('LottieView', () => LottieView);
 
 @Component({
     selector: "ns-app",
@@ -40,7 +42,16 @@ export class AppComponent {
             this.routerExtensions.navigate(["login"]);
             console.log("This is reading the get started in ap.module.ts☹️ ");
         }
+
     }
+
+    public navigate(link: string): void {
+      this.routerExtensions.navigate([link], {
+        animated: true,
+        transition: { name: 'fade' }
+      });
 }
+}
+
 
 

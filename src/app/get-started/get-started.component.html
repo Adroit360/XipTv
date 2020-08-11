@@ -1,4 +1,4 @@
-<GridLayout rows="auto,150,*,auto,auto" columns="50,*">
+<GridLayout rows="auto,150,*,auto,auto" columns="50,*" backgroundColor="#1E1C26">
 
   <StackLayout height="20">
 
@@ -6,18 +6,18 @@
 
   <StackLayout row="1" orientation="horizontal" margin="20" colSpan="2">
     <!-- <Image height="120" src="res://getstart"></Image> -->
+
   </StackLayout>
 
-  <FlexboxLayout row="2" colSpan="2" justifyContent='center'>
-    <!-- <Label fontSize="50" color="white" class="fas" text="&#xf042;"></Label> -->
-    <LottieView width="100" height="150" [src]="src" [loop]="loop" [autoPlay]="autoPlay" (loaded)="lottieViewLoaded($event)">     </LottieView>
-
+  <FlexboxLayout row="2" colSpan="2" justifyContent='center' >
+    <Gif #block1 width="100%" height="auto" class="run" src="https://static.dribbble.com/users/285475/screenshots/4720919/channel_surfing.gif"></Gif>
   </FlexboxLayout>
 
   <StackLayout row="3" colSpan="2"
   margin="20"
   verticalAlignment="center"
-  horizontalAlignment="center">
+  horizontalAlignment="center"
+  #block2>
     <Label class="head" text="Get Started"></Label>
 
     <Label class="support" text="All of your favourite stations and more"></Label>
@@ -28,8 +28,7 @@
     <Label class="support-body-link" textWrap="true" text="Try Now for free"></Label>
   </StackLayout>
 
-  <StackLayout row="4" colSpan="2" padding="20">
-    <Button (tap)="login()" height="50" text="Get Started" class="primary"></Button>
+  <StackLayout #block3 row="4" colSpan="2" padding="20">
+    <Button #thebutton (tap)="login()" height="60"  text="Get Started" class="newbtn" backgroundColor="green"></Button>
   </StackLayout>
-  <!-- <Button class="support-body-link" text="Hello"></Button> -->
 </GridLayout>

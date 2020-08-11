@@ -4,34 +4,34 @@
     <GridLayout rows="200,*">
         <Image loadMode="async" stretch="aspectFill" loadMode="async" src="res://artwork"></Image>
         <StackLayout row="1">
-    
+
            <!--  <GridLayout height="280" background-color="red" style="margin: 0 0 0 0;">
                 <Image height="280" loadMode="async" stretch="aspectFill" loadMode="async" src="res://artwork"></Image>
                 <exoplayer [visibility]="showPlayer ? 'visible' : 'collapsed'" #videoplayer
                     src="http://lemlagroup.com/wp-content/uploads/2020/07/montage2.mp4" (finished)="playerFinished()"
                     (playbackReady)="playbackReady()" controls="false" fill="aspectFill" style="height: 300;" loop="false"
-                    autoplay="true"></exoplayer> 
+                    autoplay="true"></exoplayer>
             </GridLayout>-->
-    
+
             <StackLayout *ngIf="topsModel">
-    
+
                 <Label *ngIf="topsModel.topChannels" class="group-label" text="Top Channels"></Label>
                 <GridLayout *ngIf="topsModel.topChannels" height="200">
-                    
+
                     <RadListView class="link-container" orientation="horizontal" [items]="topsModel.topChannels">
                         <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
                         <ng-template tkListItemTemplate let-i="index" let-item="item">
                             <StackLayout (tap)="openPlayer(item.name,item.url)">
                                 <Image loadMode="async" class="link-item" *ngIf="isLogoPresent(item)"
-                                    stretch="aspectFit" [src]='item.logo'></Image>
+                                    stretch="aspectFit" [src]='checkImage(item.logo) | async'></Image>
                                 <Label [text]="item.name"></Label>
                             </StackLayout>
                         </ng-template>
                     </RadListView>
                 </GridLayout>
-    
-    
-    
+
+
+
                 <Label *ngIf="topsModel.localChannels" class="group-label" text="Local Channels"></Label>
                 <GridLayout *ngIf="topsModel.localChannels" height="200">
                     <RadListView class="link-container" orientation="horizontal" [items]="topsModel.localChannels">
@@ -45,7 +45,7 @@
                         </ng-template>
                     </RadListView>
                 </GridLayout>
-    
+
                 <Label *ngIf="topsModel.topMovies" class="group-label" text="Top Movies"></Label>
                 <GridLayout *ngIf="topsModel.topMovies" height="200">
                     <RadListView class="link-container" orientation="horizontal" [items]="topsModel.topMovies">
@@ -59,7 +59,7 @@
                         </ng-template>
                     </RadListView>
                 </GridLayout>
-    
+
                 <Label *ngIf="topsModel.topSeries" class="group-label" text="Top Series"></Label>
                 <GridLayout *ngIf="topsModel.topSeries" height="200">
                     <RadListView class="link-container" orientation="horizontal" [items]="topsModel.topSeries">
@@ -73,24 +73,24 @@
                         </ng-template>
                     </RadListView>
                 </GridLayout>
-    
+
                 <FlexboxLayout justifyContent="center">
                     <Button (tap)="viewAll()" class="action-btn" text="View all"></Button>
                 </FlexboxLayout>
-    
+
             </StackLayout>
-    
-    
+
+
             <FlexboxLayout *ngIf="!topsModel" flexDirection="column" justifyContent="center"
                     alignItems="center" style="padding: 70 20;width: 100%;">
                 <ActivityIndicator borderRadius="50%" backgroundColor="white" row="2" color="black"
                     width="20" height="20" [busy]="true">
                 </ActivityIndicator>
-    
+
                 <Label style="margin: 20;font-size: 14;" text="Please wait while we load your channels"></Label>
             </FlexboxLayout>
-    
-    
+
+
             <!-- <Image margin="20" src="res://banner"></Image> -->
         </StackLayout>
     </GridLayout>

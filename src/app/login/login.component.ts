@@ -21,6 +21,7 @@ export class LoginComponent {
         password : "",
         rememberMe : false
       }
+    routerExtensions: any;
     constructor(private router: RouterExtensions,
         private authService: AuthService,
         private miscService: MiscService,
@@ -43,7 +44,11 @@ export class LoginComponent {
                 this.isLoading = false;
                 this.miscService.showToast("Login Successful");
                 this.saveloginResponse(response.token, response.user);
-                this.router.navigate(["sub-type"]);
+                this.router.navigate(["sub-type"],
+                {
+                    animated: true,
+                    transition: { name: 'fade' }
+                  })
             }, error => {
                 this.isLoading = false;
                 this.miscService.alert("Error", error);
@@ -74,4 +79,11 @@ export class LoginComponent {
     gotoRegister() {
         this.router.navigate(['register']);
     }
+
+    public navigate(link: string): void {
+        this.routerExtensions.navigate([link], {
+          animated: true,
+          transition: { name: 'fade' }
+        });
+      }
 }
