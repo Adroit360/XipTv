@@ -1,11 +1,11 @@
 {
   "nativescript": {
     "id": "org.adroit360.airtectv",
-    "tns-android": {
-      "version": "6.5.3"
-    },
     "tns-ios": {
       "version": "6.5.2"
+    },
+    "tns-android": {
+      "version": "6.5.3"
     }
   },
   "description": "NativeScript Application",
@@ -28,9 +28,10 @@
     "nativescript-cardview": "^3.2.0",
     "nativescript-exoplayer": "^4.0.2",
     "nativescript-gif": "^4.0.6",
+    "nativescript-image": "^3.0.12",
     "nativescript-insomnia": "^1.2.3",
-    "nativescript-status-bar": "^1.2.0",
     "nativescript-rotate-3d": "^0.8.0",
+    "nativescript-status-bar": "^1.2.0",
     "nativescript-toasty": "^3.0.0-alpha.2",
     "nativescript-ui-listview": "^8.2.0",
     "nativescript-ui-sidedrawer": "^8.0.1",

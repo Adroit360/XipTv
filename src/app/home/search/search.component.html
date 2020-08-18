@@ -1,3 +1,4 @@
+
 <GridLayout rows="auto,*">
     <!-- *ngIf="filteredTvLinks" -->
     <FlexboxLayout [visibility]="filteredTvLinks ? 'visible' : 'collapsed'" alignItems="center" justifyContent="center">
@@ -17,7 +18,7 @@
         <ListViewLinearLayout tkListViewLayout></ListViewLinearLayout>
         <ng-template tkListItemTemplate let-i="index" let-item="item">
             <GridLayout class="list-item" (tap)="openPlayer(item.name,item.url)" columns="70,*">
-                <Image class="link-image" [stretch]="misc.stretch(item.url)" [src]='item.logo'></Image>
+                <NSImg class="link-image" [stretch]="misc.stretch(item.url)" [src]='item.logo'  failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png"></NSImg>
                 <StackLayout col="1">
                     <Label class="name" [text]="item.name"></Label>
                     <FlexboxLayout justifyContent="space-between">

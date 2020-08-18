@@ -4,13 +4,13 @@
     <StackLayout rows="200,*">
         <StackLayout *ngIf="currentSubscription">
             <Image *ngIf="currentSubscription.package.packageType == PackageType.Trial" loadMode="async"
-            stretch="aspectFill" loadMode="async" src="~/resources/trial.png"></Image>
+                stretch="aspectFill" loadMode="async" src="~/resources/trial.png"></Image>
             <Image *ngIf="currentSubscription.package.packageType == PackageType.Sports" loadMode="async"
-            stretch="aspectFill" loadMode="async" src="~/resources/sports.png"></Image>
+                stretch="aspectFill" loadMode="async" src="~/resources/sports.png"></Image>
             <Image *ngIf="currentSubscription.package.packageType == PackageType.Entertainment" loadMode="async"
-            stretch="aspectFill" loadMode="async" src="~/resources/entertainment.png"></Image>
+                stretch="aspectFill" loadMode="async" src="~/resources/entertainment.png"></Image>
             <Image *ngIf="currentSubscription.package.packageType == PackageType.Premium" loadMode="async"
-            stretch="aspectFill" loadMode="async" src="~/resources/premium.png"></Image>
+                stretch="aspectFill" loadMode="async" src="~/resources/premium.png"></Image>
         </StackLayout>
 
         <StackLayout row="1">
@@ -23,7 +23,8 @@
                     autoplay="true"></exoplayer>
             </GridLayout>-->
 
-            <Button *ngIf="topsModel && topsModel.topSportsChannels" color="black" margin="10" nsRouterLink="/home/livesports" text="Live Sports Event"></Button>
+            <Button *ngIf="topsModel && topsModel.topSportsChannels" backgroundColor="white" color="black" margin="10"
+                nsRouterLink="/home/livesports" text="Live Sports Event"></Button>
 
             <StackLayout *ngIf="topsModel">
 
@@ -34,8 +35,9 @@
                         <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
                         <ng-template tkListItemTemplate let-i="index" let-item="item">
                             <StackLayout (tap)="openPlayer(item.name,item.url)">
-                                <Image loadMode="async" class="link-item" *ngIf="isLogoPresent(item)"
-                                    stretch="aspectFit" [src]='checkImage(item.logo) | async'></Image>
+                                <NSImg class="link-item" *ngIf="isLogoPresent(item)" stretch="aspectFit" row="0" col="0" failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png"
+                                    [src]="item.logo">
+                                </NSImg>
                                 <Label [text]="item.name"></Label>
                             </StackLayout>
                         </ng-template>
@@ -50,8 +52,9 @@
                         <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
                         <ng-template tkListItemTemplate let-i="index" let-item="item">
                             <StackLayout class="entertainment" (tap)="openPlayer(item.name,item.url)">
-                                <Image loadMode="async" class="link-item" *ngIf="isLogoPresent(item)"
-                                    stretch="aspectFill" [src]='item.logo'></Image>
+                                <NSImg class="link-item" *ngIf="isLogoPresent(item)" stretch="aspectFit" failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png"
+                                    [src]="item.logo">
+                                </NSImg>
                                 <Label [text]="item.name"></Label>
                             </StackLayout>
                         </ng-template>
@@ -65,8 +68,9 @@
                         <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
                         <ng-template tkListItemTemplate let-i="index" let-item="item">
                             <StackLayout class="entertainment" (tap)="openPlayer(item.name,item.url)">
-                                <Image loadMode="async" class="link-item" *ngIf="isLogoPresent(item)"
-                                    stretch="aspectFill" [src]='item.logo'></Image>
+                                <NSImg class="link-item" *ngIf="isLogoPresent(item)" stretch="aspectFit" failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png"
+                                    [src]="item.logo">
+                                </NSImg>
                                 <Label [text]="item.name"></Label>
                             </StackLayout>
                         </ng-template>
@@ -80,8 +84,9 @@
                         <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
                         <ng-template tkListItemTemplate let-i="index" let-item="item">
                             <StackLayout (tap)="openPlayer(item.name,item.url)">
-                                <Image loadMode="async" class="link-item" *ngIf="isLogoPresent(item)"
-                                    stretch="aspectFit" [src]='item.logo'></Image>
+                                <NSImg class="link-item" *ngIf="isLogoPresent(item)" stretch="aspectFit" failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png"
+                                    [src]="item.logo">
+                                </NSImg>
                                 <Label [text]="item.name"></Label>
                             </StackLayout>
                         </ng-template>
@@ -94,8 +99,9 @@
                         <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
                         <ng-template tkListItemTemplate let-i="index" let-item="item">
                             <StackLayout (tap)="openPlayer(item.name,item.url)">
-                                <Image loadMode="async" class="link-item" *ngIf="isLogoPresent(item)"
-                                    stretch="aspectFit" [src]='item.logo'></Image>
+                                <NSImg class="link-item" *ngIf="isLogoPresent(item)" stretch="aspectFit" failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png"
+                                    [src]="item.logo">
+                                </NSImg>
                                 <Label [text]="item.name"></Label>
                             </StackLayout>
                         </ng-template>

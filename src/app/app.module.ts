@@ -27,6 +27,8 @@ import { SubscriptionService } from "~/services/subscription.service";
 import { PaymentModalComponent } from "./paymentplans/payment-modal/payment-modal.component";
 import { LiveSportsComponent } from "./livesports/livesports.component";
 // import { GifModule } from 'tns-ng-gif';
+import * as application from "tns-core-modules/application";
+//var imageCache = require("nativescript-web-image-cache");
 
 @NgModule({
     bootstrap: [
@@ -57,4 +59,13 @@ import { LiveSportsComponent } from "./livesports/livesports.component";
 /*
 Pass your application module to the bootstrapModule function located in main.ts to start your app
 */
-export class AppModule { }
+export class AppModule {
+
+    constructor(){
+        // if (application.android) {
+        //     application.on("launch", function () {
+        //         imageCache.initialize();
+        //     });
+        // }
+    }
+ }

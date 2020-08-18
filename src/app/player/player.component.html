@@ -15,17 +15,20 @@
          height="50" width="100%">
             <Label style="margin: 0 10;" [text]="infoText"></Label>
         </FlexboxLayout>
-    
-        <exoplayer #videoplayer
-        controls="true"
-        [src]="videoSrc"
-        (playbackReady)="playbackReady()"
-        (error)="onPlayerError()"
+        <!-- (error)="onPlayerError()"
         (paused)="onPlayerPaused()"
-        fill="aspect"
-        autoplay="true"
-        backroundColor="blue"
-        row="1"
+        [observeCurrentTime]="true"
+        (currentTimeUpdated)="currentTimeUpdated()" -->
+        <exoplayer #videoplayer
+            controls="true"
+            [src]="videoSrc"
+            (playbackReady)="playbackReady()"
+            (playbackStart)="playbackStartEvent()"
+            
+            fill="aspect"
+            autoplay="true"
+            backroundColor="blue"
+            row="1"
         ></exoplayer>
     
         <!-- <exoplayer row="2" #videoplayer

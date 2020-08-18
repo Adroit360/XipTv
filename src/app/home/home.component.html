@@ -1,5 +1,5 @@
 
-<RadSideDrawer #sideDrawer >
+<!-- <RadSideDrawer #sideDrawer >
     <GridLayout tkDrawerContent rows="auto, *" class="nt-drawer__content">
         <StackLayout row="0" class="nt-drawer__header">
             <Image class="nt-drawer__header-image fas t-36" src="font://&#xf2bd;"></Image>
@@ -22,8 +22,15 @@
                 </GridLayout>
             </StackLayout>
         </ScrollView>
-    </GridLayout>
-    <GridLayout rows="auto,60,*,auto" class="root" tkMainContent>
+    </GridLayout> -->
+    <!-- tkMainContent -->
+    <!-- <ActionBar>
+        <NavigationButton [visibility]="'collapsed'"></NavigationButton>
+        <NavigationButton *ngIf="isAndroid">
+
+        </NavigationButton>
+    </ActionBar> -->
+    <GridLayout rows="auto,60,*,auto" class="root" >
             <StackLayout height="35" *ngIf='isAndroid'></StackLayout>
         
             <Flexboxlayout row="1" justifyContent="space-between" class="navbar">
@@ -77,4 +84,4 @@
                 </FlexboxLayout>
             </FlexboxLayout>
     </GridLayout>
-</RadSideDrawer>
+<!-- </RadSideDrawer> -->

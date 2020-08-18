@@ -20,6 +20,6 @@ import { SearchRoutingModule } from "./search.routing.module";
         NO_ERRORS_SCHEMA
     ]
 })
-export class LandingModule{
+export class SearchModule{
 
 }

@@ -25,6 +25,7 @@ export class SearchComponent implements OnInit {
         private routerExtensions: RouterExtensions) {
         page.actionBarHidden = true;
 
+        
         this.tvListService.allLinksLoaded.subscribe(response => {
             if (!response)
                 return

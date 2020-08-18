@@ -13,49 +13,51 @@
         <Label (tap)="viewAll()" text="View All" textAlign="right"></Label>
       </FlexboxLayout>
 
-<<<<<<< HEAD
-      <GridLayout columns="auto,auto,auto" rows="auto,auto,auto">
+<!-- <<<<<<< HEAD -->
+      <!-- <GridLayout columns="auto,auto,auto" rows="auto,auto,auto">
         <Card:CardView class="cardStyle">
-        <Image class="cardContent" src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,674,1000_AL_.jpg" col="0" row="0" rowSpan="2" width="40%" borderRadius="10" class="image"></Image>
+        <NSImg  failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png" class="cardContent" src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,674,1000_AL_.jpg" col="0" row="0" rowSpan="2" width="40%" borderRadius="10" class="image"></NSImg>
       </Card:CardView>
-        <Image src="https://d3j2s6hdd6a7rg.cloudfront.net/v2/uploads/media/default/0002/02/thumb_101951_default_news_size_5.jpeg" borderRadius="10" width="40%" col="1" row="0"></Image>
-        <Image src="https://upload.wikimedia.org/wikipedia/en/d/d4/Top_Gear_Series_17_Promo_2011.jpg"  col="2" row="0" width="40%"></Image>
-        <Image src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/toohottohandle-season1-episode7-00-38-13-17r-1587495746.jpg?crop=1.00xw:0.752xh;0,0.0337xh&resize=1200:*" class="image" col="1" row="1" width="40%"></Image>
-        <Image src="https://post.healthline.com/wp-content/uploads/2019/04/Weed_Orange_732x549-thumbnail.jpg"  class="image" col="2" row="1" width="40%"></Image>
-      </GridLayout>
-=======
+        <NSImg  failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png" src="https://d3j2s6hdd6a7rg.cloudfront.net/v2/uploads/media/default/0002/02/thumb_101951_default_news_size_5.jpeg" borderRadius="10" width="40%" col="1" row="0"></NSImg>
+        <NSImg  failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png" src="https://upload.wikimedia.org/wikipedia/en/d/d4/Top_Gear_Series_17_Promo_2011.jpg"  col="2" row="0" width="40%"></NSImg>
+        <NSImg  failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/toohottohandle-season1-episode7-00-38-13-17r-1587495746.jpg?crop=1.00xw:0.752xh;0,0.0337xh&resize=1200:*" class="image" col="1" row="1" width="40%"></NSImg>
+        <NSImg  failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png" src="https://post.healthline.com/wp-content/uploads/2019/04/Weed_Orange_732x549-thumbnail.jpg"  class="image" col="2" row="1" width="40%"></NSImg>
+      </GridLayout> -->
+<!-- ======= -->
       <ScrollView  orientation="horizontal">
         <GridLayout columns="auto,auto,auto" rows="auto,auto,auto">
-          <!-- <Card:CardView class="cardStyle"> -->
-            <Image class="cardContent" 
-              [src]="getSrc(1)" (tap)="imageTapped(1)" stretch="aspectFill" backgroundColor="black"
-              col="0" row="0" width="150" rowSpan="2" height="310" borderRadius="10" class="image"></Image>
-          <!-- </Card:CardView> -->
-          <Image backgroundColor="black"
+          <Card:CardView class="cardStyle">
+            <NSImg class="cardContent" 
+              [src]="getSrc(1)"  failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png" (tap)="imageTapped(1)" stretch="aspectFill" backgroundColor="black"
+              col="0" row="0" width="150" rowSpan="2" height="310" borderRadius="10" class="image"></NSImg>
+          </Card:CardView> 
+          <NSImg backgroundColor="black"
           stretch="aspectFill"
+          failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png"
           margin="5"
           [src]="getSrc(2)" (tap)="imageTapped(2)"
-            borderRadius="10" width="250" height="150" col="1" row="0"></Image>
+            borderRadius="10" width="250" height="150" col="1" row="0"></NSImg>
 
-          <Image backgroundColor="black" stretch="aspectFill" [src]="getSrc(3)" 
-          (tap)="imageTapped(3)"
+          <NSImg backgroundColor="black" stretch="aspectFill" [src]="getSrc(3)" 
+          (tap)="imageTapped(3)"  failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png"
           col="2" row="0" margin="0" margin="5" borderRadius="10"
-          width="250" height="150"></Image>
+          width="250" height="150"></NSImg>
 
-          <Image stretch="aspectFill"
+          <NSImg stretch="aspectFill"
           backgroundColor="black" borderRadius="10"
           margin="5" (tap)="imageTapped(4)"
+          failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png"
             [src]="getSrc(4)"
-            class="image" col="1" row="1" width="250" height="150"></Image>
+            class="image" col="1" row="1" width="250" height="150"></NSImg>
 
-          <Image backgroundColor="black" margin="5" stretch="aspectFill" [src]="getSrc(5)"
+          <NSImg  failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png" backgroundColor="black" margin="5" stretch="aspectFill" [src]="getSrc(5)"
           (tap)="imageTapped(5)"
-            class="image" col="2" row="1" width="250" height="150" borderRadius="10"></Image>
+            class="image" col="2" row="1" width="250" height="150" borderRadius="10"></NSImg>
   
         </GridLayout>
       </ScrollView>
       
->>>>>>> 791df1c1628be7f6732e882366ab80a7aeb5b73e
+<!-- >>>>>>> 791df1c1628be7f6732e882366ab80a7aeb5b73e -->
     </StackLayout>
 
     <StackLayout row="2" col="1">
@@ -64,10 +66,10 @@
         <Label (tap)="viewAll()" text="View All" textAlign="right"></Label>
       </FlexboxLayout>
       <GridLayout *ngIf="tvs && tvs.length == imagesLength" class="space" rows="100,auto" columns="*,20,*">
-        <Image stretch="aspectFill" backgroundColor="black" col="0" width="100%" (tap)="imageTapped(6)" [src]="getSrc(6)" margin="5" borderRadius="10">
-        </Image>
-        <Image stretch="aspectFill" backgroundColor="black" width="100%" (tap)="imageTapped(7)" [src]="getSrc(7)" col="2" margin="5"
-          borderRadius="10"></Image>
+        <NSImg  failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png" stretch="aspectFill" backgroundColor="black" col="0" width="100%" (tap)="imageTapped(6)" [src]="getSrc(6)" margin="5" borderRadius="10">
+        </NSImg>
+        <NSImg  failureImageUri="~/img/defaultImage.png" placeholderImageUri="~/img/defaultImage.png" stretch="aspectFill" backgroundColor="black" width="100%" (tap)="imageTapped(7)" [src]="getSrc(7)" col="2" margin="5"
+          borderRadius="10"></NSImg>
         <Label class="support-light" text="Too Hot To Handle" col="0" row="1" textAlign="center"></Label>
         <Label class="support-light" text="Bodied" col="2" row="1" textAlign="center"></Label>
       </GridLayout>

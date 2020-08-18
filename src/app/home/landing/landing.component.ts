@@ -117,6 +117,10 @@ export class LandingComponent implements OnInit, OnDestroy {
         this.showPlayer = true;
     }
 
+    checkImage(logourl){
+        
+    }
+
     //checkImage(logourl) : Promise<string>{
 
         // return new Promise((resolve,reject)=>{

@@ -36,7 +36,7 @@ export class ExploreComponent implements OnInit {
         if (!tv)
             return "";
 
-        console.log(tv);
+        // console.log(tv);
         return tv.logo;
     }
 

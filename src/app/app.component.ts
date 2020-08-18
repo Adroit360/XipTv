@@ -17,6 +17,7 @@ registerElement("VideoPlayer", () => Video);
 registerElement("exoplayer", () => require("nativescript-exoplayer").Video);
 //registerElement('LottieView', () => LottieView);
 
+
 @Component({
     selector: "ns-app",
     templateUrl: "./app.component.html"
@@ -30,13 +31,16 @@ export class AppComponent {
         private tvListService: TvListService,
         private authService: AuthService,
         private vcRef: ViewContainerRef, router: Router) {
+        
+        
         universalService.rootViewContainerRef = vcRef;
         router.events
             .pipe(filter((event: any) => event instanceof NavigationEnd))
             .subscribe((event: NavigationEnd) => {
                 console.log(event.urlAfterRedirects);
-            });
+        });
 
+        
 
         if (appStorage.getBoolean(this.isNew, true)) {
             this.routerExtensions.navigate(["get-started"]);
@@ -46,7 +50,7 @@ export class AppComponent {
             this.authService.getCurrentUser();
             if (this.authService.currentUser) {
                 this.routerExtensions.navigate(["sub-type"]);
-            }else{
+            } else {
                 this.routerExtensions.navigate(["login"]);
             }
         }
@@ -54,11 +58,11 @@ export class AppComponent {
     }
 
     public navigate(link: string): void {
-      this.routerExtensions.navigate([link], {
-        animated: true,
-        transition: { name: 'fade' }
-      });
-}
+        this.routerExtensions.navigate([link], {
+            animated: true,
+            transition: { name: 'fade' }
+        });
+    }
 }
 
 

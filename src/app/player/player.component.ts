@@ -9,6 +9,8 @@ import { on } from "tns-core-modules/application";
 import * as statusBar from 'nativescript-status-bar'
 import { VideoFill } from "nativescript-exoplayer";
 import { API } from "~/helpers/API";
+import { AuthService } from "~/services/auth.service";
+import { MiscService } from "~/services/misc.service";
 
 
 var insomnia = require("nativescript-insomnia");
@@ -28,7 +30,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
     timeout;
     @ViewChild("videoplayer", { static: true }) videoplayer: ElementRef;
 
-    constructor(private activatedRoute: ActivatedRoute
+    constructor(private activatedRoute: ActivatedRoute,
+        private authService:AuthService,
+        private miscService:MiscService
         , private tvListService: TvListService, private page: Page) {
         page.actionBarHidden = false;
         on("orientationChanged", this.onOrientationChanged);
@@ -39,12 +43,26 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
             this.videoName = param.name;
             this.videoSrc = param.url;
+            //this.videoSrc = "www.man/mango.mp4";
             //  let url = "";
             //  if (videoUrl)
             //     url = videoUrl.toString().replace(/\//gi, "*");
             //  this.videoSrc = `${settings.baseUri}/tvlist/getstream/${url}`;
             console.log(this.videoSrc);
         });
+
+        var interval = setInterval(()=>{
+            this.authService.getRemoteDeviceIdentifier(this.authService.currentUser.id)
+            .subscribe(response=>{
+                if(!this.authService.isDeviceAllowed(response.deviceIdentifier)){
+                    this.authService.logout();
+                    this.miscService.alert("logged Out","Logged Out by another device");
+                    clearInterval(interval);
+                    console.log("Interval Cleared");
+                }
+            });
+        },120000);
+        
     }
 
     ngOnInit() {
@@ -53,6 +71,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
             console.log("Insomnia is active");
         });
 
+    }
+
+    currentTimeUpdated(){
+        console.log("currentTimeUpdated");
     }
 
     public onOrientationChanged = (evt) => {
@@ -76,13 +98,18 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
     playbackReady() {
         this.showLoader = false;
+        console.log("playbackReady");
     }
 
-    onPlayerError() {
+    playbackStartEvent(){
+        console.log("playbackStartEvent")
+    }
+
+    onPlayerError(event) {
+        console.log("PLAYER ERROR OCCURRED");
         this.showInfo = true;
         this.showLoader = false;
         this.loaderText = "could not play video";
-        console.log("PLAYER ERROR OCCURRED");
     }
 
     onPlayerPaused() {
@@ -119,16 +146,14 @@ export class PlayerComponent implements OnInit, OnDestroy {
     showDetails(){
         this.page.actionBarHidden = false;
         statusBar.show();
-        this.videoplayer.nativeElement.scaleX = "1";
-        this.videoplayer.nativeElement.scaleY = "1";
+        // this.videoplayer.nativeElement.scaleX = "1";
+        // this.videoplayer.nativeElement.scaleY = "1";
     }
 
     hideDetails(){
         this.page.actionBarHidden = true;
         statusBar.hide();
-        this.videoplayer.nativeElement.scaleX = "1.3";
-        this.videoplayer.nativeElement.scaleY = "1";
+        // this.videoplayer.nativeElement.scaleX = "1.3";
+        // this.videoplayer.nativeElement.scaleY = "1";
     }
-
-    
 }

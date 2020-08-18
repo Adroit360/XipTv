@@ -8,6 +8,7 @@ import { PlayerComponent } from "../player/player.component";
 import { LandingModule } from "./landing/landing.module";
 import { SharedModule } from "../shared/shared.module";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
+import { SearchComponent } from "./search/search.component";
 
 @NgModule({
     declarations:[
