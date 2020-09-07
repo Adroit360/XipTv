@@ -6,6 +6,7 @@ import { HomeComponent } from "./home/home.component";
 import {PlayerComponent} from "./player/player.component";
 import { GetStartedComponent } from "./get-started/get-started.component";
 import { LiveSportsComponent } from "./livesports/livesports.component";
+import { UpcomingSportsModule } from "./upcoming-sports/upcoming-sports.component.module"
 
 const routes: Routes = [
     // {path:"",redirectTo:"home",pathMatch:'full'},
@@ -18,6 +19,8 @@ const routes: Routes = [
     {path:"sub-expired",loadChildren:()=>import("~/app/sub-expired/sub-expired.module").then(m=>m.SubExpiredModule)},
     {path:"profile",loadChildren:()=>import("~/app/profile/profile.module").then(m=>m.ProfileModule)},
     {path:"sub-type",redirectTo:"sub-type/true"},
+    {path:"upcoming-sports",loadChildren:()=>import("~/app//upcoming-sports/upcoming-sports.component.module").then(m=>m.UpcomingSportsModule)},
+
     {path:"sub-type/:redirect",loadChildren:()=>import("~/app/sub-type/sub-type.module").then(m=>m.SubTypeModule)},
     {path:"home/livesports",component:LiveSportsComponent}
 ];

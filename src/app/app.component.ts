@@ -37,9 +37,8 @@ export class AppComponent {
                 console.log(event.urlAfterRedirects);
             });
 
-
         if (appStorage.getBoolean(this.isNew, true)) {
-            this.routerExtensions.navigate(["get-started"]);
+            this.routerExtensions.navigate(["upcoming-sports"]);
             //this.routerExtensions.navigate(["home"]);
         } else {
 
