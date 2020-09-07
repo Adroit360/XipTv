@@ -51,17 +51,17 @@ export class PlayerComponent implements OnInit, OnDestroy {
             console.log(this.videoSrc);
         });
 
-        var interval = setInterval(()=>{
-            this.authService.getRemoteDeviceIdentifier(this.authService.currentUser.id)
-            .subscribe(response=>{
-                if(!this.authService.isDeviceAllowed(response.deviceIdentifier)){
-                    this.authService.logout();
-                    this.miscService.alert("logged Out","Logged Out by another device");
-                    clearInterval(interval);
-                    console.log("Interval Cleared");
-                }
-            });
-        },120000);
+        // var interval = setInterval(()=>{
+        //     this.authService.getRemoteDeviceIdentifier(this.authService.currentUser.id)
+        //     .subscribe(response=>{
+        //         if(!this.authService.isDeviceAllowed(response.deviceIdentifier)){
+        //             this.authService.logout();
+        //             this.miscService.alert("logged Out","Logged Out by another device");
+        //             clearInterval(interval);
+        //             console.log("Interval Cleared");
+        //         }
+        //     });
+        // },120000);
         
     }
 
@@ -71,6 +71,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
             console.log("Insomnia is active");
         });
 
+        this.videoplayer.nativeElement.on("onPlayerError",function(){
+            console.log("The Error is working yaaah !!!!!!!!!!!!!!!!!!!!");
+        })
     }
 
     currentTimeUpdated(){

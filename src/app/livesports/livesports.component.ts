@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, AfterViewCheck
 import { MiscService } from "~/services/misc.service";
 import { RouterExtensions } from "nativescript-angular/router";
 import { isAndroid, isIOS } from "tns-core-modules/ui/page";
+import { HttpLoaderService } from "~/services/httploader.service";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
     selector: "live-sport",
@@ -17,13 +19,25 @@ export class LiveSportsComponent implements OnInit, AfterViewChecked {
     isWebViewShown = true;
     @ViewChild("WebViewRef", { static: true }) WebViewRef: ElementRef;
     isPlayingVideo = false;
-    constructor(private miscService: MiscService, private routerExtensions: RouterExtensions) {
+    constructor(private miscService: MiscService,
+        private http: HttpClient,
+        private routerExtensions: RouterExtensions) {
 
     }
 
     ngOnInit() {
         this.websrc = `http://flysohigh.xyz/data_4w/data_3w/streamsPNA.php?${this.miscService.getVolaToken()}`;
-        console.log("ONInitcalled");
+
+        this.http.get(this.websrc, { responseType: 'text' }).subscribe(response => {
+            var parseString = require('nativescript-xml2js').parseString;
+            var response = `
+            `;
+            parseString(response, function (err, result) {
+                console.log("result",result);
+                console.log("Error",err);
+                console.log("Done");
+            });
+        });
     }
 
     ngAfterViewChecked() {
@@ -82,7 +96,7 @@ export class LiveSportsComponent implements OnInit, AfterViewChecked {
     }
 
     back() {
-        console.log("canWebViewGoBack",this.WebViewRef.nativeElement.canGoBack);
+        console.log("canWebViewGoBack", this.WebViewRef.nativeElement.canGoBack);
         if (this.WebViewRef.nativeElement.canGoBack)
             this.WebViewRef.nativeElement.goBack();
         else

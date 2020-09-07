@@ -19,7 +19,7 @@ import { MiscService } from '~/services/misc.service';
     styleUrls: ['../login/login.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
+    @ViewChild("emailField",{static:true}) emailField:ElementRef;
     selections = { admin: true, manager: false };
     isLoading = false;
     constructor(private router: RouterExtensions,
@@ -80,6 +80,10 @@ export class RegisterComponent implements OnInit {
             return false;
         } else if (!this.email) {
             this.miscService.alert("error","Please provide an email address");
+            return false;
+        }else if (!this.miscService.ValidateEmail(this.email)) {
+            this.miscService.alert("error","Please provide a valid email address");
+            this.emailField.nativeElement.focus();
             return false;
         } else if (!this.password) {
             this.miscService.alert("error","Please provide a password");

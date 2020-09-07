@@ -1,6 +1,6 @@
 {
   "nativescript": {
-    "id": "org.adroit360.airtectv",
+    "id": "org.adroit360gh.airtectv1",
     "tns-ios": {
       "version": "6.5.2"
     },
@@ -36,6 +36,7 @@
     "nativescript-ui-listview": "^8.2.0",
     "nativescript-ui-sidedrawer": "^8.0.1",
     "nativescript-videoplayer": "^4.2.1",
+    "nativescript-xml2js": "^0.5.2",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.4.0",
     "tns-core-modules": "~6.5.0",

@@ -1,6 +1,6 @@
 import { Toasty, ToastDuration, ToastPosition } from "nativescript-toasty";
 import { Color } from "tns-core-modules/color/color";
-import { alert,confirm } from "tns-core-modules/ui/dialogs/dialogs";
+import { alert, confirm } from "tns-core-modules/ui/dialogs/dialogs";
 import { API } from "../helpers/API";
 import { JsonPipe } from "@angular/common";
 require('../helpers/base64');
@@ -23,14 +23,14 @@ export class MiscService {
     });
   }
 
-  confirm(title, message){
-      let options = {
-        title,
-        message,
-        okButtonText: "Yes",
-        cancelButtonText: "No"
+  confirm(title, message) {
+    let options = {
+      title,
+      message,
+      okButtonText: "Yes",
+      cancelButtonText: "No"
     };
-    
+
     return confirm(options);
   }
 
@@ -45,7 +45,7 @@ export class MiscService {
   }
 
 
-  getVolaToken(){
+  getVolaToken() {
 
     var api = new API();
 
@@ -54,6 +54,13 @@ export class MiscService {
     var encodedBase64 = encodeURIComponent(base64);
 
     return `&token=${encodedBase64}`;
+  }
+
+  ValidateEmail(mail) : boolean {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return (true)
+    }
+    return (false)
   }
 
 }

@@ -7,7 +7,7 @@
   <StackLayout row="3" col="1">
       <Label text="Sign Up" class="brand"></Label>
       <TextField [(ngModel)]="username" hint="Name" class="new-input" style="placeholder-color:rgba(255, 255, 255, 0.507); color:white";></TextField>
-      <TextField [(ngModel)]="email" autocapitalizationtype="none" hint="Email Address" class="new-input" style="placeholder-color:rgba(255, 255, 255, 0.507); color:white";></TextField>
+      <TextField #emailField [(ngModel)]="email" autocapitalizationtype="none" hint="Email Address" class="new-input" style="placeholder-color:rgba(255, 255, 255, 0.507); color:white;"></TextField>
       <TextField [(ngModel)]="password" secure="true" hint="Password" class="new-input" style="placeholder-color:rgba(255, 255, 255, 0.507); color:white"></TextField>
       <Button  (tap)="register()" text="Contine" class="newbtn"></Button>
       <Label margin="20" textAlignment="center" height="30" (tap)="gotoLogin()">
