@@ -40,12 +40,13 @@ import * as application from "tns-core-modules/application";
         PlayerModule,
         AppRoutingModule,
         NativeScriptHttpClientModule
-       
+
         // GifModule
     ],
     declarations: [
         AppComponent,
-        LiveSportsComponent
+        LiveSportsComponent,
+        // UpcomingSportsComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

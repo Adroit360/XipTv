@@ -43,9 +43,13 @@ export class AppComponent {
         
 
         if (appStorage.getBoolean(this.isNew, true)) {
-            this.routerExtensions.navigate(["get-started"]);
-            //this.routerExtensions.navigate(["home"]);
+            // this.routerExtensions.navigate(["upcoming-sports"]);
+            // return;
+
+            this.routerExtensions.navigate(["home"]);
         } else {
+            // this.routerExtensions.navigate(["upcoming-sports"]);
+            // return;
 
             this.authService.getCurrentUser();
             if (this.authService.currentUser) {

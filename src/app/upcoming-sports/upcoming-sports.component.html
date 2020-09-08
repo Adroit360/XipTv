@@ -1,0 +1,29 @@
+<ScrollView>
+
+<GridLayout *ngIf="BJ" backgroundColor="#F3F3F3" columns="30,*,30" rows="auto,auto">
+    <StackLayout col="1" row="0">
+        <Label class="heading" text="Matches"></Label>
+
+        <GridLayout *ngFor="let item of BJ">
+            <GridLayout *ngIf="item.name==='matches'"  class="sport-item" rows="auto,auto" columns="*,2*">
+                <!-- <Image src='~/img/matchUp.png' width="100%"></Image> -->
+                <Label col="1" class="sport-item-title" row="0" [text]="item.matches"></Label>
+                <Label col="1" class="sport-item-time" row="1" [text]="item.link"></Label>
+            </GridLayout>
+        </GridLayout>
+
+
+    </StackLayout>
+    <StackLayout col="1" row="1">
+        <Label class="heading" text="Highlights"></Label>
+        <GridLayout *ngFor="let item of BJ">
+        <GridLayout *ngIf="item.name==='highlights'" class="sport-item" rows="auto,auto,auto" columns="*,3*">
+            <Label col="1" class="sport-item-title" row="0" [text]="item.highlights"></Label>
+            <!-- <Label col="1" class="sport-item-time" row="1" text="24/07/2020"></Label>
+            <Label col="1" class="sport-item-score" row="2" text="8-2"></Label> -->
+        </GridLayout>
+    </GridLayout>
+    </StackLayout>
+</GridLayout>
+
+</ScrollView>
