@@ -26,8 +26,6 @@ import { ErrorInterceptor } from "~/interceptors/error.interceptor";
 import { SubscriptionService } from "~/services/subscription.service";
 import { PaymentModalComponent } from "./paymentplans/payment-modal/payment-modal.component";
 import { LiveSportsComponent } from "./livesports/livesports.component";
-// import { GifModule } from 'tns-ng-gif';
-// import { UpcomingSportsComponent } from "./upcoming-sports/upcoming-sports.component";
 
 @NgModule({
     bootstrap: [
@@ -44,8 +42,7 @@ import { LiveSportsComponent } from "./livesports/livesports.component";
     ],
     declarations: [
         AppComponent,
-        LiveSportsComponent,
-        // UpcomingSportsComponent
+        LiveSportsComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

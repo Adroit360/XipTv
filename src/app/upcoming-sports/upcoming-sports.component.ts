@@ -15,7 +15,11 @@ export class UpcomingSportsComponent implements OnInit {
     highlightsLinkRegex = /((oak_secure_play_1)\.(php)\?(id=)(\d+))/gm;
     highLightsreg = /\w+\s\d+\s-\s\d+\s\w+/gm;
 
+    Json = JSON;
+
     BJ: any[];
+    Time = {};
+    days: number;
 
     str = `<html>
 <h5 style="margin-bottom:0px;margin-top:2px;">
@@ -911,8 +915,81 @@ export class UpcomingSportsComponent implements OnInit {
         this.BJ = bj;
     }
 
+    contest_id = "4094";
+    time_seconds = "28509";
+
+
+timer(upgradeTime, contest_id, container) {
+    //
+
+    if (!container[contest_id]) {
+        container[contest_id] = {
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+            upgradeTime : upgradeTime,
+        };
+    }
+
+    let context = container[contest_id];
+
+
+    let x = setInterval(()=> {
+
+        if (upgradeTime == 0){
+            clearInterval(x);
+        }
+
+        var days = Math.floor(upgradeTime / 24 / 60 / 60);
+        var hoursLeft = Math.floor((upgradeTime) - (days * 86400));
+        var hours = Math.floor(hoursLeft / 3600);
+        var minutesLeft = Math.floor((hoursLeft) - (hours * 3600));
+        var minutes = Math.floor(minutesLeft / 60);
+        var remainingSeconds = upgradeTime % 60;
+
+        context.days = days;
+        context.hours = hours;
+        context.minutes = minutes;
+        context.seconds = remainingSeconds;
+
+
+        upgradeTime = upgradeTime - 1;
+
+        context.upgradeTime = upgradeTime
+        // console.log(context);
+
+    }, 1000);
+
+}
+
+
 
     ngOnInit() {
         this.runAlgo();
+        this.timer(this.time_seconds, this.contest_id, this.Time);
+        var context:TimingClass = this.Time[this.contest_id];
+        this.days = context.days;
+    }
+
+    getTime(contest_id){
+        let obj = this.Time[contest_id];
+        if(+obj.upgradeTime > 0)
+            return `Starts in ${obj.days}d : ${obj.hours}h : ${obj.minutes}m : ${obj.seconds}s `
+        else if(obj)
+            return "LIVE"
+    }
+
+}
+
+
+class TimingClass{
+    days: number;
+    hours:number;
+    minutes: number;
+      seconds: number;
+
+    constructor(init?:Partial<TimingClass>){
+        Object.assign(this,init);
     }
 }

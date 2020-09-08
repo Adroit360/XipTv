@@ -4,10 +4,10 @@
         <Label class="heading" text="Matches"></Label>
 
         <GridLayout *ngFor="let item of BJ">
-        <GridLayout *ngIf="item.name==='matches'"  class="sport-item" rows="auto,auto" columns="*,2*">
+        <GridLayout *ngIf="item.name==='matches'"  class="sport-item" rows="auto,auto" columns="*,3*">
             <!-- <Image src='~/img/matchUp.png' width="100%"></Image> -->
             <Label col="1" class="sport-item-title" row="0" [text]="item.matches"></Label>
-            <Label col="1" class="sport-item-time" row="1" text="Today 09:00pm"></Label>
+            <Label col="1" class="sport-item-time" row="1" [text]="getTime('4094')"></Label>
         </GridLayout>
         </GridLayout>
 

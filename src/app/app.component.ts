@@ -38,15 +38,15 @@ export class AppComponent {
             });
 
         if (appStorage.getBoolean(this.isNew, true)) {
-            this.routerExtensions.navigate(["upcoming-sports"]);
+            this.routerExtensions.navigate(["link-page"]);
             //this.routerExtensions.navigate(["home"]);
         } else {
 
             this.authService.getCurrentUser();
             if (this.authService.currentUser) {
-                this.routerExtensions.navigate(["sub-type"]);
+                this.routerExtensions.navigate(["link-page"]);
             }else{
-                this.routerExtensions.navigate(["login"]);
+                this.routerExtensions.navigate(["link-page"]);
             }
         }
 
