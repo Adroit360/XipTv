@@ -16,24 +16,37 @@ The following CSS rule changes the font size of all Buttons that have the
     --grey-background: #e5e5e5;
 
     --violet: #491887;
+
 }
 .br-icon{
     color:var(--violet);
 }
 $primary-color: rgb(70, 70, 189);
+$red: #EA5769;
 Button.-primary {
     font-size: 18;
 }
 
-.mybtn {
-    background-color: #3ce261;
+.primaryButton {
+    background-color: #EA5769;
     border-radius: 20;
     color: white;
     font-weight: bold;
-    font-size: larger;
-    height: 50;
+    border-color: #EA5769;
     margin: 10;
 }
+
+.secondaryButton{
+    background-color: white;
+    border-radius: 20;
+    border-color:transparent;
+    color: #EA5769;
+}
+
+.options{
+background-color: #353434;
+}
+
 
 .bg-trans{
     background-color: transparent;
@@ -49,6 +62,8 @@ Button.-primary {
     border-bottom-width: 1;
     border-color:#4b71db;
 }
+
+
 
 .fab {
     font-family: "Font Awesome 5 Brands", "fa-brands-400";

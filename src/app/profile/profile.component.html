@@ -1,35 +1,43 @@
-<GridLayout rows="200,*,auto,20" columns="*" backgroundColor="#EEEFF3">
-<StackLayout row="0" col="1">
-    <GridLayout row="auto,auto,auto" col="*" backgroundColor="white" borderRadius="30" class="m-b-1">
-       <StackLayout width="90%">
-        <Label text="caret-down"></Label>
-        <Image src="res://Group 19" class="profilePicture" row="0" col="0" width="50" horizontalAlignment="left" class="profilePicture"></Image>
-           <Label class="info" text="Nana Kweku Adumatta" ></Label>
-           <Label class="info-support"   text="Date Joined: 20/01/2019"></Label>
-        </StackLayout>
+<GridLayout rows="200,*,auto" columns="*" backgroundColor="#EEEFF3">
+  <StackLayout row="0" col="1">
+    <GridLayout
+      rows="auto"
+      columns="100,*"
+      backgroundColor="white"
+    >
+    <Image
+    src="https://lh3.googleusercontent.com/proxy/EIN4zPvsmd8-mOiC6iUUYeIJFMak72EiVoLi6pkDx3FPaKs05girELM8pAeeuPD5rQCSBJJU0sLifnuuXayDUDV0NGh_CScbx0XinZioMvyQNyzAuOZRtgzoiwcmqXFh9iU-4A6QtDftKl6B8WphIlW4csnHQKmMh2IZjU4v8YSwrQs4"
+    row="0"
+    col="0"
+    margin="20"
+    horizontalAlignment="left"
+    backgroundColor="#EA5769"
+    borderRadius="50%"
+    ></Image>
+
+    <StackLayout width="90%" row="0" col="1" margin="20">
+        <Label class="info" fontWeight="bold" text="Nana Kweku Adumatta"></Label>
+        <Label class="info-support" text="Date Joined: 20/01/2019"></Label>
+      </StackLayout>
     </GridLayout>
-</StackLayout>
-    <StackLayout row="0" col="1">
-        <GridLayout row="auto,auto,auto" col="*" backgroundColor="white" borderRadius="0 0 30 30">
-            <StackLayout *ngIf="currentUser" width="90%">
-                <!-- <Label text="caret-down"></Label> -->
-                <Label class="fas br-icon" fontSize="40" margin="10 0" text="&#xf4fd;"></Label>
-                <!-- <Image src="res://Group 19" class="profilePicture" row="0" col="0" width="50" horizontalAlignment="left" class="profilePicture"></Image> -->
-                <Label class="info" [text]="currentUser.name"></Label>
-                <Label class="email" [text]="currentUser.email"></Label>
-                <Label class="info-support" text="Date Joined: 20/01/2019"></Label>
-            </StackLayout>
-        </GridLayout>
-    </StackLayout>
-
-    <StackLayout row="1" col="1" width="90%">
-        <!-- <Button text="Favourites" class="btn disabled"></Button> -->
-        <!-- <Button text="Request Help" class="btn disabled"></Button> -->
-        <Button (tap)="viewSubscriptions()" text="Subscriptions" class="btn"></Button>
-        <!-- <Button text="Rate Us" class="btn disabled"></Button> -->
-    </StackLayout>
-    <StackLayout row="2" col="1">
-        <Button (tap)="logout()" class="btn-sign" width="90%" text="Sign Out"></Button>
-    </StackLayout>
-
+  </StackLayout>
+  <StackLayout row="1" col="1" width="90%" height="100%">
+    <!-- <Button text="Favourites" class="btn disabled"></Button> -->
+    <!-- <Button text="Request Help" class="btn disabled"></Button> -->
+    <Label backgroundColor="red" text="hello"></Label>
+    <!-- <Button text="Rate Us" class="btn disabled"></Button> -->
+  </StackLayout>
+  <StackLayout row="2" col="1">
+    <Button
+    (tap)="viewSubscriptions()"
+    text="Subscriptions"
+    class="primaryButton"
+  ></Button>
+    <Button
+      (tap)="logout()"
+      class="secondaryButton"
+      width="90%"
+      text="Sign Out"
+    ></Button>
+  </StackLayout>
 </GridLayout>
