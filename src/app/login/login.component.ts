@@ -84,7 +84,7 @@ export class LoginComponent {
     }
 
     public navigate(link: string): void {
-        this.routerExtensions.navigate([link], {
+        this.router.navigate([link], {
           animated: true,
           transition: { name: 'fade' }
         });

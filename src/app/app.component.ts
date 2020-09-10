@@ -37,7 +37,6 @@ export class AppComponent {
                 console.log(event.urlAfterRedirects);
             });
 
-
         if (appStorage.getBoolean(this.isNew, true)) {
             this.routerExtensions.navigate(["get-started"]);
             //this.routerExtensions.navigate(["home"]);
@@ -45,12 +44,11 @@ export class AppComponent {
 
             this.authService.getCurrentUser();
             if (this.authService.currentUser) {
-                this.routerExtensions.navigate(["sub-type"]);
+                this.routerExtensions.navigate(["home"]);
             }else{
-                this.routerExtensions.navigate(["login"]);
+                this.routerExtensions.navigate(["link-page"]);
             }
         }
-
     }
 
     public navigate(link: string): void {
