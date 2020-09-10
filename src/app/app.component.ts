@@ -37,16 +37,30 @@ export class AppComponent {
                 console.log(event.urlAfterRedirects);
             });
 
+        // if (appStorage.getBoolean(this.isNew, true)) {
+        //     this.routerExtensions.navigate(["home"]);
+        // } else {
+
+        //     this.authService.getCurrentUser();
+        //     if (this.authService.currentUser) {
+        //         this.routerExtensions.navigate(["home"]);
+        //     }else{
+        //         this.routerExtensions.navigate(["link-page"]);
+        //     }
+        // }
+
+        // If this is the users first time, they get to see the landing page
         if (appStorage.getBoolean(this.isNew, true)) {
-            this.routerExtensions.navigate(["home"]);
+            this.routerExtensions.navigate(["get-started"]);
             //this.routerExtensions.navigate(["home"]);
         } else {
-
+            // If Authentication is successful,
             this.authService.getCurrentUser();
             if (this.authService.currentUser) {
-                this.routerExtensions.navigate(["home"]);
+                this.routerExtensions.navigate(["sub-type"]);
             }else{
-                this.routerExtensions.navigate(["link-page"]);
+                // If Authentication fails
+                this.routerExtensions.navigate(["login"]);
             }
         }
     }

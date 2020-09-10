@@ -35,7 +35,7 @@
                         <ng-template tkListItemTemplate let-i="index" let-item="item">
                             <StackLayout (tap)="openPlayer(item.name,item.url)">
                                 <Image loadMode="async" class="link-item" *ngIf="isLogoPresent(item)"
-                                    stretch="aspectFit" [src]='checkImage(item.logo) | async'></Image>
+                                    stretch="aspectFit"></Image>
                                 <Label [text]="item.name"></Label>
                             </StackLayout>
                         </ng-template>

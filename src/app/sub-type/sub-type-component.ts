@@ -42,7 +42,7 @@ export class SubTypeComponent implements OnInit {
         this.getUserSubscriptions();
         let canGoBack = false;
         //let canGoBack = this.routerExtensions.canGoBackToPreviousPage();
-        
+
         miscService.getVolaToken();
 
         this.activatedRoute.paramMap.subscribe(param=>{
@@ -63,7 +63,7 @@ export class SubTypeComponent implements OnInit {
 
     getUserSubscriptions() {
         this.errorOcurred = false;
-        if (!this.authService.currentUser)
+        if (this.authService.currentUser)
             return;
         var userId = this.authService.currentUser.id;
         this.httpClient.get<Subscription[]>(`${settings.baseUri}/subscription/getsubscription/${userId}`)
@@ -92,5 +92,5 @@ export class SubTypeComponent implements OnInit {
             this.miscService.alert("Error","Your subscription has expired, please renew it to continue watching");
         }
     }
-    
+
 }
