@@ -1,4 +1,30 @@
-<StackLayout>
-    <Label text="Links"></Label>
-    <Label text="Follow the following links"></Label>
-</StackLayout>
+<!-- This file has its styling from "upcoming-sports.component.scss" -->
+<GridLayout columns="30,*,30" rows="auto,*,auto">
+    <Label col="1" text="Links" class="heading"></Label>
+    <Label col="1" row="1"  backgroundColor="#5348BF" borderRadius="20"></Label>
+    <StackLayout col="1" row="2" class="popup">
+        <Label text="Please pick a streaming link" fontWeight="bold" fontSize="21" marginTop="20"></Label>
+        <Label text="For an effective streaming experience, hd is recommended"class="support" paddingBottom="10" textWrap="true"></Label>
+        <Button class="btn">
+            <FormattedString>
+                <Span text="HD " marginRight="auto"></Span>
+                <Span text="High "></Span>
+                <Span text="Quality" class="light"></Span>
+
+              </FormattedString>
+        </Button>
+        <!-- <Button>
+            <FormattedString>
+              <Span text="12345&#x0000;&#x000a;"></Span>
+              <Span text="Line 2"></Span>
+            </FormattedString>
+          </Button> -->
+        <Button class="btn-support">
+            <FormattedString>
+                <Span text="SD "></Span>
+                <Span text="Standard "></Span>
+                <Span text="Definition" class="light"></Span>
+            </FormattedString>
+        </Button>
+    </StackLayout>
+</GridLayout>

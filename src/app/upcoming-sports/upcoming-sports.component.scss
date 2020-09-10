@@ -25,4 +25,45 @@
     font-weight: bold;
 }
 
+.btn{
+    padding: 20;
+    border-radius: 20;
+    background-color: #5348BF;
+    color:white;
+    font-weight: bold;
+    border-color: #5348BF;
+    text-align:left;
+
+    .light{
+        font-weight: 300;
+        padding-right: 0;
+    }
+
+}
+.btn-support{
+    padding: 20;
+    border-radius: 20;
+    background-color: transparent;
+    color:#5348BF;
+    font-weight: bold;
+    border-color: #5348BF;
+    text-align:left;
+
+    .light{
+        font-weight: 300;
+        padding-right: 0;
+    }
+
+
+}
+
+.popup{
+    bottom: 0;
+}
+
+.support{
+    color: #BFBFBF;
+    font-size: 16;
+    padding-top: 5;
+}
 

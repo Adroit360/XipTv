@@ -12,7 +12,7 @@ const routes :Route[] = [
 @NgModule({
         declarations:[
             LinkPagesComponent
-        ],
+    ],
         imports:[
             SharedModule,
             NativeScriptRouterModule.forChild(routes)

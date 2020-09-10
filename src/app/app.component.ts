@@ -38,18 +38,17 @@ export class AppComponent {
             });
 
         if (appStorage.getBoolean(this.isNew, true)) {
-            this.routerExtensions.navigate(["link-page"]);
+            this.routerExtensions.navigate(["home"]);
             //this.routerExtensions.navigate(["home"]);
         } else {
 
             this.authService.getCurrentUser();
             if (this.authService.currentUser) {
-                this.routerExtensions.navigate(["link-page"]);
+                this.routerExtensions.navigate(["home"]);
             }else{
                 this.routerExtensions.navigate(["link-page"]);
             }
         }
-
     }
 
     public navigate(link: string): void {
