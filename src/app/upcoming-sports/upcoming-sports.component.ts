@@ -19,7 +19,8 @@ export class UpcomingSportsComponent implements OnInit {
     highlightsLinkRegex = /((oak_secure_play_1)\.(php)\?(id=)(\d+))/gm;
     highLightsreg = /\w+\s\d+\s-\s\d+\s\w+/gm;
 
-    highlightsBaseUri = `https://flysohigh.xyz/data_4w/data_3w/`;
+    matchBaseUri = `https://flysohigh.xyz/data_4w/data_3w`;
+    
     timers = [];
     Json = JSON;
 
@@ -121,7 +122,7 @@ export class UpcomingSportsComponent implements OnInit {
 
 
     ngOnInit() {
-        let websrc = `https://flysohigh.xyz/data_4w/data_3w/streamsPNA.php?${this.miscService.getVolaToken()}`;
+        let websrc = `${this.matchBaseUri}/streamsPNA.php?${this.miscService.getVolaToken()}`;
 
         this.http.get(websrc, { responseType: 'text', observe: 'response' }).subscribe(response => {
 
@@ -285,8 +286,9 @@ export class UpcomingSportsComponent implements OnInit {
 
 
     openLink(item) {
-        console.log("Tapped","XXXXXXXXX");
+        console.log(item.link,"XXXXXXXXX");
         var time = this.Time[item.contextId];
+
         if (time && time.upgradeTime > 0) {
             this.SelectedMatch = item;
             this.page.actionBarHidden = true;
@@ -294,9 +296,20 @@ export class UpcomingSportsComponent implements OnInit {
         }
 
         if (item.name == 'matches') {
+            let liveMatchUrl = `${this.matchBaseUri}/${item.link}${this.miscService.getVolaToken()}`
 
+            this.http.get(liveMatchUrl, { responseType: 'text', observe: 'response' })
+            .subscribe(response => {
+
+                //The html text is in the response variable
+    
+            }, error => {
+                this.miscService.alert("Try Again","Couldn't load live events, try again later");
+                
+                console.log(error);
+            });
         } else {
-            let url = `${this.highlightsBaseUri}/${item.link}${this.miscService.getVolaToken()}`;
+            let url = `${this.matchBaseUri}${item.link}/${this.miscService.getVolaToken()}`;
             this.openPlayer(item.competitionName, url);
             //this.miscService.alert("FF","This one dier you go open");
         }
