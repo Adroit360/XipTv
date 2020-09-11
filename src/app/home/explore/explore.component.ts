@@ -15,7 +15,6 @@ export class ExploreComponent implements OnInit {
     ngOnInit() {
 
         this.tvListService.allLinksLoaded.subscribe(response => {
-            console.log("allLinksLoaded1");
             if (!response)
                 return;
             console.log(this.tvListService.tvLinks.length);

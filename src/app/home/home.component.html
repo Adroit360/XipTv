@@ -1,35 +1,5 @@
 
-<!-- <RadSideDrawer #sideDrawer >
-    <GridLayout tkDrawerContent rows="auto, *" class="nt-drawer__content">
-        <StackLayout row="0" class="nt-drawer__header">
-            <Image class="nt-drawer__header-image fas t-36" src="font://&#xf2bd;"></Image>
-            <Label class="nt-drawer__header-brand" [text]="'mandarin'"></Label>
-            <Label class="nt-drawer__header-footnote" [text]="'email@email.com'"></Label>
-        </StackLayout>
-    
-        <ScrollView row="1" class="nt-drawer__body">
-            <StackLayout>
-                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/home')" (tap)="onNavItemTap('home')">
-                    <Label col="0" text="&#xf015;" class="nt-icon fas"></Label>
-                    <Label col="1" text="Home" class="p-r-10"></Label>
-                </GridLayout>
 
-                <StackLayout class="hr"></StackLayout>
-
-                <GridLayout columns="auto, *" class="nt-drawer__list-item" (tap)="logout()">
-                    <Label col="0" text="&#xf2f5;" class="nt-icon fas"></Label>
-                    <Label col="1" text="Logout" class="p-r-10"></Label>
-                </GridLayout>
-            </StackLayout>
-        </ScrollView>
-    </GridLayout> -->
-    <!-- tkMainContent -->
-    <!-- <ActionBar>
-        <NavigationButton [visibility]="'collapsed'"></NavigationButton>
-        <NavigationButton *ngIf="isAndroid">
-
-        </NavigationButton>
-    </ActionBar> -->
     <GridLayout rows="auto,60,*,auto" class="root" >
             <StackLayout height="35" *ngIf='isAndroid'></StackLayout>
         
@@ -50,38 +20,59 @@
             </FlexboxLayout>
             
         
-            <!-- <GridLayout rows="*,auto,*" rowSpan="2" class="error-page" *ngIf="hasError">
-                <Image rowSpan="3" src="res://player" stretch="aspectFill"></Image>
-                <StackLayout row="1">
-                    <Image height="500" src="res://applogo"></Image>
-                    <Label text="Please check your internet"></Label>
-                    <Button class="action-btn" (tap)="reload()" text="reload"></Button>
-                </StackLayout>
-            </GridLayout> -->
-        
-            <!-- ActivityIndicator -->
-            <!-- <ActivityIndicator borderRadius="50%" backgroundColor="white" *ngIf="isLoading" row="2" color="black"
-                width="100" height="100" [busy]="true">
-            </ActivityIndicator> -->
-         
             <FlexboxLayout row="3" class="footer-nav">
-                <FlexboxLayout [ngClass]="{active:isComponentSelected('landing')}" (tap)="navigate('landing')" class="nav-box">
-                    <Label class="fas icon" text="&#xf015;"></Label>
+                 <!-- <FlexboxLayout [ngClass]="{active:isComponentSelected('landing')}" (tap)="navigate('landing')" class="nav-box">
+                    <Label class="fas icon" text="&#xf0ac;"></Label>
                     <Label class="text" text="Home"></Label>
                 </FlexboxLayout>
-                <FlexboxLayout [ngClass]="{active:isComponentSelected('search')}" (tap)="navigate('search')" class="nav-box">
+                 <FlexboxLayout [ngClass]="{active:isComponentSelected('search')}" (tap)="navigate('search')" class="nav-box">
                     <Label class="fas icon" text="&#xf002;"></Label>
                     <Label class="text" text="Search"></Label>
                 </FlexboxLayout>
-                <FlexboxLayout [ngClass]="{active:isComponentSelected('explore')}" (tap)="navigate('explore')" class="nav-box">
+                 <FlexboxLayout [ngClass]="{active:isComponentSelected('explore')}" (tap)="navigate('explore')" class="nav-box">
                     <Label class="fas icon" text="&#xf0ac;"></Label>
                     <Label class="text" text="Explore"></Label>
                 </FlexboxLayout>
-        
-                <FlexboxLayout [ngClass]="{active:isComponentSelected('categories')}" (tap)="navigate('categories')" class="nav-box">
+                 <FlexboxLayout [ngClass]="{active:isComponentSelected('categories')}" (tap)="navigate('categories')" class="nav-box">
                     <Label class="fas icon" text="&#xf03a;"></Label>
                     <Label class="text" text="Categories"></Label>
-                </FlexboxLayout>
+                </FlexboxLayout> -->
+                
+                <Button class="nav-box" [ngClass]="{active:isComponentSelected('landing')}" (tap)="navigate('landing')"
+                 backgroundColor="white" text="text button">
+                    <FormattedString backgroundColor="transparent">
+                        <!-- <FlexboxLayout > -->
+                            <Span class="fas icon" text="&#xf015;"></Span>
+                            <!-- <Label class="text" text="Home"></Label> -->
+                        <!-- </FlexboxLayout> -->
+                    </FormattedString>
+                </Button>
+                <Button class="nav-box" [ngClass]="{active:isComponentSelected('search')}" (tap)="navigate('search')"
+                backgroundColor="white" text="text button">
+                    <FormattedString backgroundColor="transparent">
+                        <!-- <FlexboxLayout > -->
+                            <Span class="fas icon" text="&#xf002;"></Span>
+                            <!-- <Label class="text" text="Home"></Label> -->
+                        <!-- </FlexboxLayout> -->
+                    </FormattedString>
+                </Button>
+                <Button class="nav-box" [ngClass]="{active:isComponentSelected('explore')}" (tap)="navigate('explore')"
+                backgroundColor="white" text="text button">
+                    <FormattedString backgroundColor="transparent">
+                        <!-- <FlexboxLayout > -->
+                            <Span class="fas icon" text="&#xf0ac;"></Span>
+                            <!-- <Label class="text" text="Home"></Label> -->
+                        <!-- </FlexboxLayout> -->
+                    </FormattedString>
+                </Button>
+                <Button class="nav-box" [ngClass]="{active:isComponentSelected('categories')}" (tap)="navigate('categories')"
+                 backgroundColor="white" text="text button">
+                   <FormattedString backgroundColor="transparent">
+                       <!-- <FlexboxLayout > -->
+                           <Span class="fas icon" text="&#xf03a;"></Span>
+                           <!-- <Label class="text" text="Home"></Label> -->
+                       <!-- </FlexboxLayout> -->
+                   </FormattedString>
+               </Button>
             </FlexboxLayout>
     </GridLayout>
-<!-- </RadSideDrawer> -->

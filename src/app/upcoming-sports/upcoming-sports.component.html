@@ -1,29 +1,60 @@
-<ScrollView>
+<GridLayout>
+    <ScrollView>
+        <GridLayout *ngIf="BJ && !SelectedMatch" backgroundColor="#F3F3F3" columns="30,*,30" rows="auto,auto">
 
-<GridLayout *ngIf="BJ" backgroundColor="#F3F3F3" columns="30,*,30" rows="auto,auto">
-    <StackLayout col="1" row="0">
-        <Label class="heading" text="Matches"></Label>
+            <StackLayout col="1" row="0">
+                <Label class="heading" text="Matches"></Label>
 
-        <GridLayout *ngFor="let item of BJ">
-            <GridLayout *ngIf="item.name==='matches'"  class="sport-item" rows="auto,auto" columns="*,2*">
-                <!-- <Image src='~/img/matchUp.png' width="100%"></Image> -->
-                <Label col="1" class="sport-item-title" row="0" [text]="item.matches"></Label>
-                <Label col="1" class="sport-item-time" row="1" [text]="item.link"></Label>
-            </GridLayout>
+                <GridLayout *ngFor="let item of BJ">
+                    <GridLayout (tap)="openLink(item)" *ngIf="item.name==='matches'"
+                        class="sport-item" rows="auto,auto" columns="auto,*">
+                        <Image height="80" marginRight="20"
+                            [src]="'https://tse4.explicit.bing.net/th?id=OIP.5j3kazj7Uh5wON2TBclb-AHaEg&pid=Api&P=0&w=311&h=190'"
+                            rowSpan="2"></Image>
+                        <Label col="1" class="sport-item-title" row="0" [text]="item.competitionName"></Label>
+                        <Label col="1" class="sport-item-time" row="1" [text]="'' + getTime(item.contextId)"></Label>
+
+                    </GridLayout>
+                </GridLayout>
+
+
+            </StackLayout>
+
+            <StackLayout col="1" row="1">
+                <Label class="heading" text="Highlights"></Label>
+                <FlexboxLayout *ngIf="hightlightsCount == 0">
+                    <Label text="No Highlights Available"></Label>
+                </FlexboxLayout>
+                <GridLayout (tap)="openLink(item)" *ngFor="let item of BJ">
+                    <GridLayout *ngIf="item.name==='highlights'" class="sport-item" rows="auto,auto,auto"
+                        columns="auto,*">
+                        <Image height="80" marginRight="20"
+                            [src]="'https://tse4.explicit.bing.net/th?id=OIP.5j3kazj7Uh5wON2TBclb-AHaEg&pid=Api&P=0&w=311&h=190'"
+                            rowSpan="2"></Image>
+                        <Label col="1" class="sport-item-title" row="0" [text]="item.competitionName"></Label>
+                        <!-- <Label col="1" class="sport-item-time" row="1" text="24/07/2020"></Label>
+                    <Label col="1" class="sport-item-score" row="2" text="8-2"></Label> -->
+                    </GridLayout>
+                </GridLayout>
+            </StackLayout>
+
         </GridLayout>
+    </ScrollView>
 
 
-    </StackLayout>
-    <StackLayout col="1" row="1">
-        <Label class="heading" text="Highlights"></Label>
-        <GridLayout *ngFor="let item of BJ">
-        <GridLayout *ngIf="item.name==='highlights'" class="sport-item" rows="auto,auto,auto" columns="*,3*">
-            <Label col="1" class="sport-item-title" row="0" [text]="item.highlights"></Label>
-            <!-- <Label col="1" class="sport-item-time" row="1" text="24/07/2020"></Label>
-            <Label col="1" class="sport-item-score" row="2" text="8-2"></Label> -->
-        </GridLayout>
+    <FlexboxLayout *ngIf="!BJ" backgroundColor="transparent" justifyContent="center" alignItems="center" height="50"
+        width="100%">
+        <ActivityIndicator busy="true" class="activity-indicator"></ActivityIndicator>
+        <Label style="margin: 0 10;" text="Loading Live Event"></Label>
+    </FlexboxLayout>
+
+    <GridLayout rows="*,auto,*" *ngIf="SelectedMatch" backgroundColor="white" rowSpan="2" colSpan="3">
+        <StackLayout row="1">
+            <Label textAlignment="center" margin="10" textWrap="true" fontSize="20%" fontWeight="700" color="blue"
+                class="underline" [text]="SelectedMatch.competitionName"></Label>
+            <Label textAlignment="center" margin="10" fontSize="20" fontWeight="500" text="Match Starts In "></Label>
+            <Label textAlignment="center" margin="10" fontSize="40" [text]="getTime(SelectedMatch.contextId)"></Label>
+            <Button fontSize="20" text="Close" (tap)="closeTimeCounter()" class="trans blue"></Button>
+        </StackLayout>
     </GridLayout>
-    </StackLayout>
 </GridLayout>
-
-</ScrollView>

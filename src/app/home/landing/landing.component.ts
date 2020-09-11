@@ -10,6 +10,7 @@ import { TopsModel } from "~/data/models/topsModel";
 import * as appStorage from "tns-core-modules/application-settings";
 import { Subscription } from "~/data/models/subscriptions";
 import { PackageType } from "~/data/models/packagetype";
+import { toPublicName } from "@angular/compiler/src/i18n/serializers/xmb";
 
 @Component({
     selector: "ns-landing",
@@ -33,11 +34,22 @@ export class LandingComponent implements OnInit, OnDestroy {
         private router: Router,
         private universalService:UniversalService,
         public tvListService: TvListService) {
-
-            this.tvListService.getTops()
+        
+        this.tvListService.getTops()
         .then(response => {
             this.topsModel = response;
         });
+        
+        this.tvListService.topLinksLoaded.subscribe(response=>{
+            if(response){
+                console.log("TopLinksLoaded");
+                this.topsModel = tvListService.topsModel;
+                //console.log(this.topsModel);
+                
+            }
+        });
+
+        this.tvListService.getCredentials();
 
         this.currentSubscription = this.tvListService.currentSubscription;
 

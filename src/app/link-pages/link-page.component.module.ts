@@ -1,19 +1,17 @@
 import { NgModel } from "@angular/forms";
-import { UpcomingSportsComponent } from "./upcoming-sports.component"
 import { SharedModule } from "../shared/shared.module";
 import { Route } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import { LinkPagesComponent } from "./link-page.component";
 
 const routes :Route[] = [
-    {path:"", component:UpcomingSportsComponent},
-
+    {path:"", component:LinkPagesComponent},
 ]
 
 @NgModule({
         declarations:[
-            UpcomingSportsComponent,
-
+            LinkPagesComponent
         ],
         imports:[
             SharedModule,
@@ -26,5 +24,5 @@ const routes :Route[] = [
             NO_ERRORS_SCHEMA
         ]
 })
-export class UpcomingSportsModule{
+export class LinkPageModule{
 }

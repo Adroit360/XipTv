@@ -26,6 +26,8 @@ import { ErrorInterceptor } from "~/interceptors/error.interceptor";
 import { SubscriptionService } from "~/services/subscription.service";
 import { PaymentModalComponent } from "./paymentplans/payment-modal/payment-modal.component";
 import { LiveSportsComponent } from "./livesports/livesports.component";
+import { NativeScriptMaterialButtonModule } from "nativescript-material-button/angular";
+
 // import { GifModule } from 'tns-ng-gif';
 import * as application from "tns-core-modules/application";
 //var imageCache = require("nativescript-web-image-cache");
@@ -39,14 +41,14 @@ import * as application from "tns-core-modules/application";
         HomeModule,
         PlayerModule,
         AppRoutingModule,
-        NativeScriptHttpClientModule
+        NativeScriptHttpClientModule,
+        NativeScriptMaterialButtonModule
 
         // GifModule
     ],
     declarations: [
         AppComponent,
-        LiveSportsComponent,
-        // UpcomingSportsComponent
+        LiveSportsComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

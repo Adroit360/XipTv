@@ -3,6 +3,7 @@
     --myblack: rgb(31, 31, 31);
     --primary-color: rgb(70, 70, 189);
 }
+
 .navbar {
     background-color: white;
     align-items: center;
@@ -34,6 +35,7 @@
     }
 }
 
+
 .nav-box {
     flex-direction: column;
     justify-content: center;
@@ -42,20 +44,30 @@
     padding: 15 0;
     color: var(--myblack);
     transition: transform 0.2s ease-in-out;
+    margin:0;
+    border-radius: 0;
+    elevation:0;
+    ripple-color:rgb(185, 185, 185);
+    border:none;
+    border-width: 0;
+    background-color: white;
     &.active {
         color: var(--primary-color);
         transform: scale(1.2);
         .icon {
         }
         .text {
+           
         }
     }
     .icon {
-        font-size: 15%;
+        font-size: 20;
         margin-bottom: 5;
+        color:black;
     }
     .text {
         font-size: 10%;
+        color:black;
     }
 }
 

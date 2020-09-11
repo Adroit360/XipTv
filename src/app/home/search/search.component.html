@@ -1,15 +1,14 @@
 
 <GridLayout rows="auto,*">
     <!-- *ngIf="filteredTvLinks" -->
-    <FlexboxLayout [visibility]="filteredTvLinks ? 'visible' : 'collapsed'" alignItems="center" justifyContent="center">
-        <SearchBar #SearchBar (textChange)="searchStringChanged($event)" 
+    <FlexboxLayout [visibility]="filteredTvLinks ? 'visible' : 'collapsed'" alignItems="center" justifyContent="space-between">
+        <SearchBar flexGrow="1" margin="2" #SearchBar (textChange)="searchStringChanged($event)" 
         hint="Search all streams" (loaded)="onSearchBarLoaded($event)"
         ></SearchBar>
         
-        <Label (tap)="cancelSearchBar()" margin="0 10 0 0"
-            color="#444" textAlignment="center"
-            padding="0 5"
-         width="120" text="cancel"></Label>
+        
+         <Label (tap)="cancelSearchBar()" margin="0 10 0 0" color="#444" width="110" text="cancel"></Label>
+
     </FlexboxLayout>
     <ActivityIndicator row="1"  borderRadius="50%" backgroundColor="white" 
         *ngIf="!filteredTvLinks" row="2" color="black" [busy]="true">

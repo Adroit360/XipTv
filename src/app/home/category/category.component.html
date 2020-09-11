@@ -1,7 +1,7 @@
 <GridLayout rows="auto,*">
     <FlexboxLayout [visibility]="filteredTvGroups ? 'visible' : 'collapsed'" alignItems="center"
         justifyContent="space-between">
-        <SearchBar flexGrow="1" #SearchBar (textChange)="searchStringChanged($event)" hint="Search categories">
+        <SearchBar #SearchBar (textChange)="searchStringChanged($event)" hint="Search categories">
         </SearchBar>
 
         <Label (tap)="cancelSearchBar()" margin="0 10 0 0" color="#444" width="110" text="cancel"></Label>

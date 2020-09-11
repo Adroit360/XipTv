@@ -12,6 +12,7 @@ import { Gif } from 'nativescript-gif';
 import { TvListService } from "~/services/tvlist.service";
 import { AuthService } from "~/services/auth.service";
 
+
 registerElement('Gif', () => Gif);
 registerElement("VideoPlayer", () => Video);
 registerElement("exoplayer", () => require("nativescript-exoplayer").Video);
@@ -46,7 +47,7 @@ export class AppComponent {
             // this.routerExtensions.navigate(["upcoming-sports"]);
             // return;
 
-            this.routerExtensions.navigate(["home"]);
+            this.routerExtensions.navigate(["get-started"]);
         } else {
             // this.routerExtensions.navigate(["upcoming-sports"]);
             // return;

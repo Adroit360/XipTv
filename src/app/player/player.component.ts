@@ -11,6 +11,8 @@ import { VideoFill } from "nativescript-exoplayer";
 import { API } from "~/helpers/API";
 import { AuthService } from "~/services/auth.service";
 import { MiscService } from "~/services/misc.service";
+import { HttpClient } from "@angular/common/http";
+import { RouterExtensions } from "nativescript-angular";
 
 
 var insomnia = require("nativescript-insomnia");
@@ -32,7 +34,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
     constructor(private activatedRoute: ActivatedRoute,
         private authService:AuthService,
-        private miscService:MiscService
+        private miscService:MiscService,
+        private http:HttpClient,
+        private routerExtensions:RouterExtensions
         , private tvListService: TvListService, private page: Page) {
         page.actionBarHidden = false;
         on("orientationChanged", this.onOrientationChanged);
@@ -49,19 +53,20 @@ export class PlayerComponent implements OnInit, OnDestroy {
             //     url = videoUrl.toString().replace(/\//gi, "*");
             //  this.videoSrc = `${settings.baseUri}/tvlist/getstream/${url}`;
             console.log(this.videoSrc);
+            this.checkVideoUrl(this.videoSrc);
         });
 
-        // var interval = setInterval(()=>{
-        //     this.authService.getRemoteDeviceIdentifier(this.authService.currentUser.id)
-        //     .subscribe(response=>{
-        //         if(!this.authService.isDeviceAllowed(response.deviceIdentifier)){
-        //             this.authService.logout();
-        //             this.miscService.alert("logged Out","Logged Out by another device");
-        //             clearInterval(interval);
-        //             console.log("Interval Cleared");
-        //         }
-        //     });
-        // },120000);
+        var interval = setInterval(()=>{
+            this.authService.getRemoteDeviceIdentifier(this.authService.currentUser.id)
+            .subscribe(response=>{
+                if(!this.authService.isDeviceAllowed(response.deviceIdentifier)){
+                    this.authService.logout();
+                    this.miscService.alert("logged Out","Logged Out by another device");
+                    clearInterval(interval);
+                    console.log("Interval Cleared");
+                }
+            });
+        },120000);
         
     }
 
@@ -73,7 +78,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
         this.videoplayer.nativeElement.on("onPlayerError",function(){
             console.log("The Error is working yaaah !!!!!!!!!!!!!!!!!!!!");
-        })
+        });
+        
     }
 
     currentTimeUpdated(){
@@ -158,5 +164,15 @@ export class PlayerComponent implements OnInit, OnDestroy {
         statusBar.hide();
         // this.videoplayer.nativeElement.scaleX = "1.3";
         // this.videoplayer.nativeElement.scaleY = "1";
+    }
+
+    checkVideoUrl(url){
+        this.http.get(url,{responseType:"text",observe:'response'}).subscribe(response=>{
+           
+        },error => {
+            this.miscService.alert("Try Again later","Video not available at the the moment");
+            //this.miscService.alert("Error",error);
+            this.routerExtensions.back();
+        });
     }
 }

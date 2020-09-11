@@ -1,6 +1,6 @@
 {
   "nativescript": {
-    "id": "org.adroit360gh.airtectv1",
+    "id": "org.adroit360gh.airtectv2",
     "tns-ios": {
       "version": "6.5.2"
     },
@@ -30,6 +30,7 @@
     "nativescript-gif": "^4.0.6",
     "nativescript-image": "^3.0.12",
     "nativescript-insomnia": "^1.2.3",
+    "nativescript-material-button": "^2.5.4",
     "nativescript-rotate-3d": "^0.8.0",
     "nativescript-status-bar": "^1.2.0",
     "nativescript-toasty": "^3.0.0-alpha.2",

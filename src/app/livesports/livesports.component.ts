@@ -56,6 +56,19 @@ export class LiveSportsComponent implements OnInit, AfterViewChecked {
             this.isWebViewShown = true;
         }
 
+        let webView = this.WebViewRef.nativeElement;
+        if (webView.ios) {
+            var webHeader = webView.ios.stringByEvaluatingJavaScriptFromString("document.head.innerHTML").trim();
+            console.log(webHeader);
+        
+            var webBody = webView.ios.stringByEvaluatingJavaScriptFromString("document.body.innerHTML").trim();
+            console.log(webBody);
+        
+        } else if (webView.android) {
+            let  webTitle = webView.android.getTitle(); //getting the title title
+            console.log(webTitle)
+        }
+
     }
 
     webViewLoading(event) {
