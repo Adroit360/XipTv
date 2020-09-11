@@ -12,6 +12,7 @@ import { ɵNgNoValidate } from "@angular/forms";
 import { HttpInterceptorService } from "~/interceptors/http.interceptor";
 import { MiscService } from "~/services/misc.service";
 import { API } from "~/helpers/API";
+import * as appStorage from "tns-core-modules/application-settings";
 
 @Component({
     selector: "app-sub-type",
@@ -52,8 +53,6 @@ export class SubTypeComponent implements OnInit {
         if (!canGoBack) {
             page.actionBarHidden = true;
         }
-
-
     }
 
     ngOnInit() {
@@ -63,12 +62,19 @@ export class SubTypeComponent implements OnInit {
 
     getUserSubscriptions() {
         this.errorOcurred = false;
-        if (this.authService.currentUser)
+        if (!this.authService.currentUser)
             return;
         var userId = this.authService.currentUser.id;
+
+        var subcriptionString = appStorage.getString('userSubscriptions');
+        if(subcriptionString){
+            this.userSubscriptions = JSON.parse(subcriptionString);
+        }
+
         this.httpClient.get<Subscription[]>(`${settings.baseUri}/subscription/getsubscription/${userId}`)
             .subscribe(response => {
                 this.userSubscriptions = response;
+                appStorage.setString('userSubscriptions',JSON.stringify(response));
                 this.errorOcurred = false;
 
                 if(this.shouldRedirect == "true" && this.userSubscriptions.length == 1){

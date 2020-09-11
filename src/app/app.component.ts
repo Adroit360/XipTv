@@ -12,6 +12,8 @@ import { Gif } from 'nativescript-gif';
 import { TvListService } from "~/services/tvlist.service";
 import { AuthService } from "~/services/auth.service";
 
+
+
 registerElement('Gif', () => Gif);
 registerElement("VideoPlayer", () => Video);
 registerElement("exoplayer", () => require("nativescript-exoplayer").Video);
@@ -57,7 +59,7 @@ export class AppComponent {
             // If Authentication is successful,
             this.authService.getCurrentUser();
             if (this.authService.currentUser) {
-                this.routerExtensions.navigate(["sub-type"]);
+                this.routerExtensions.navigate(["explore"]);
             }else{
                 // If Authentication fails
                 this.routerExtensions.navigate(["login"]);

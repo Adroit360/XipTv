@@ -24,12 +24,7 @@
       class="new-input"
       style="placeholder-color: rgba(255, 255, 255, 0.507); color: white"
     ></TextField>
-    <Button
-
-      nsRouterLink="/sub-type"
-      text="Login"
-      class="newbtn"
-    ></Button>
+    <Button (tap)="login()" text="Login" class="newbtn"></Button>
     <!-- <Label textAlignment="center" text="New user?" color="white"></Label> -->
     <Label textAlignment="center" height="30" (tap)="gotoRegister()">
       <FormattedString>

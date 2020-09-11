@@ -30,6 +30,7 @@
                 <Label *ngIf="topsModel.topSportsChannels" class="group-label" text="Top Sports Channels"></Label>
                 <GridLayout *ngIf="topsModel.topSportsChannels">
 
+                    <!-- checkImage() function has been removed -->
                     <RadListView class="link-container" orientation="horizontal" [items]="topsModel.topSportsChannels">
                         <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
                         <ng-template tkListItemTemplate let-i="index" let-item="item">
