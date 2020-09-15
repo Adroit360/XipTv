@@ -1,4 +1,35 @@
-<StackLayout>
-    <Label text="Links"></Label>
-    <Label text="Follow the following links"></Label>
-</StackLayout>
+<!-- This file has its styling from "upcoming-sports.component.scss" -->
+<GridLayout columns="30,*,30" rows="auto,*,auto">
+    <Label col="1" text="Links" class="heading"></Label>
+    <Label col="1" row="1"  backgroundColor="red" borderRadius="20"></Label>
+    <!-- <Gif #block1 width="100%" height="auto" class="run" src="https://static.dribbble.com/users/285475/screenshots/4720919/channel_surfing.gif"></Gif> -->
+    <!-- <FlexboxLayout row="1" col="1">
+        <Gif
+          width="100%"
+          height="auto"
+          borderRadius="20"
+          src="https://cdn.dribbble.com/users/228367/screenshots/4142078/living-room-dribbble.gif"
+        ></Gif>
+      </FlexboxLayout> -->
+    <Image src="https://www.instagram.com/p/BpjuZ6tFnfL/"></Image>
+    <StackLayout col="1" row="2" class="popup">
+        <Label text="Please pick a streaming link" class="heading" textWrap="true" marginBottom="0"></Label>
+
+        <Label text="For an effective streaming experience, hd is recommended"class="support" paddingBottom="10" textWrap="true"></Label>
+        <Button class="primaryButton">
+            <FormattedString>
+                <Span text="HD " marginRight="auto"></Span>
+                <Span text="High "></Span>
+                <Span text="Quality" class="light"></Span>
+              </FormattedString>
+        </Button>
+
+        <Button class="secondaryButton">
+            <FormattedString>
+                <Span text="SD "></Span>
+                <Span text="Standard "></Span>
+                <Span text="Definition" class="light"></Span>
+            </FormattedString>
+        </Button>
+    </StackLayout>
+</GridLayout>
