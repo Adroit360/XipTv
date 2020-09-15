@@ -1,101 +1,103 @@
-<ScrollView backgroundColor="black" >
-<StackLayout margin="0" padding="0" >
-    <FlexboxLayout margin="0" padding="0" width="50%" >
-        <Image src="https://m.media-amazon.com/images/M/MV5BMWU2NDgyNTEtY2NhOS00NTgwLWEzZDYtOTY1YjU3YmUwZjZlXkEyXkFqcGdeQXVyODc0OTEyNDU@._V1_.jpg" borderRadius="20" marginTop="-20%" borderRadius="20"></Image>
+<ScrollView backgroundColor="black">
+  <StackLayout margin="0" padding="0">
+    <FlexboxLayout margin="0" padding="0" width="200">
+      <Image
+        src="https://m.media-amazon.com/images/M/MV5BMWU2NDgyNTEtY2NhOS00NTgwLWEzZDYtOTY1YjU3YmUwZjZlXkEyXkFqcGdeQXVyODc0OTEyNDU@._V1_.jpg"
+        borderRadius="20"
+        marginTop="-20%"
+        borderRadius="20"
+        stretch="aspectFill"
+      ></Image>
     </FlexboxLayout>
 
     <GridLayout columns="10,*,10" rows="auto,auto,*">
-        <StackLayout col="1" >
-            <Label class="heading " color="white" text="Cobra Kai" color="white" ></Label>
-            <Button class="primaryButton" textAlign="left" textAlign="left" text="Watch Now"></Button>
-            <FlexboxLayout justifyContent="space-between" paddingRight="150%" color="white">
+      <StackLayout col="1">
+        <Label
+          class="heading"
+          color="white"
+          text="Cobra Kai"
+          color="white"
+        ></Label>
+        <Button
+          class="watchButton"
+          textAlign="left"
+          textAlign="left"
+          text="Watch Now"
+        ></Button>
+        <!-- <FlexboxLayout justifyContent="space-between" paddingRight="150%" color="white">
                 <Label text="Year    |"></Label>
                 <Label text="1 Season     |"></Label>
                 <Label text="18⚠️"></Label>
-            </FlexboxLayout>
-            <Label textWrap="true" text="Decades after their 1984 All Valley Karate Tournament bout, a middle-aged Daniel LaRusso and Johnny Lawrence find themselves martial-arts rivals again." color="white" marginTop="30"></Label>
+            </FlexboxLayout> -->
+        <Label
+          textWrap="true"
+          text="Decades after their 1984 All Valley Karate Tournament bout, a middle-aged Daniel LaRusso and Johnny Lawrence find themselves martial-arts rivals again."
+          color="white"
+          marginTop="30"
+        ></Label>
 
-            <Label text="Episodes" marginBottom="0" color="white" class="heading" fontSize="20" ></Label>
+        <Label
+          text="Episodes"
+          marginBottom="0"
+          color="white"
+          class="heading"
+          fontSize="20"
+        ></Label>
 
+          <ScrollView orientation="horizontal">
+        <StackLayout orientation="horizontal" marginTop="10">
+          <Image
+            src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,674,1000_AL_.jpg"
+            borderRadius="10"
+            width="100"
+            marginRight="20"
+          ></Image>
 
-        <GridLayout col="1" row="2" columns="auto,auto,auto,auto" rows="*">
-            <Image
-              src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,674,1000_AL_.jpg"
-              width="100"
-              col="0"
-              row="0"
-              borderRadius="10"
-              margin="10"
-            ></Image>
+          <Image
+            src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,674,1000_AL_.jpg"
+            borderRadius="10"
+            width="100"
+            marginRight="20"
+          ></Image>
 
-            <Image
-              src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,674,1000_AL_.jpg"
-              width="100"
-              col="1"
-              row="0"
-              borderRadius="10"
-              margin="10"
-            ></Image>
+          <Image
+          src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,674,1000_AL_.jpg"
+          borderRadius="10"
+          width="100"
+          marginRight="20"
+        ></Image>
 
-            <Image
-              src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,674,1000_AL_.jpg"
-              width="100"
-              col="2"
-              row="0"
-              borderRadius="10"
-              margin="10"
-            ></Image>
+        <Image
+        src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,674,1000_AL_.jpg"
+        borderRadius="10"
+        width="100"
+        marginRight="20"
+      ></Image>
 
-            <Image
-              src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,674,1000_AL_.jpg"
-              width="100"
-              col="3"
-              row="0"
-              borderRadius="10"
-              margin="10"
-            ></Image>
-          </GridLayout>
-
-          <Label text="Seasons" marginBottom="0" color="white" class="heading" fontSize="20" ></Label>
-
-          <GridLayout col="1" row="2" columns="auto,auto,auto,auto" rows="*">
-            <Image
-              src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,674,1000_AL_.jpg"
-              width="100"
-              col="0"
-              row="0"
-              borderRadius="10"
-              margin="10"
-            ></Image>
-
-            <Image
-              src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,674,1000_AL_.jpg"
-              width="100"
-              col="1"
-              row="0"
-              borderRadius="10"
-              margin="10"
-            ></Image>
-
-            <Image
-              src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,674,1000_AL_.jpg"
-              width="100"
-              col="2"
-              row="0"
-              borderRadius="10"
-              margin="10"
-            ></Image>
-
-            <Image
-              src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,674,1000_AL_.jpg"
-              width="100"
-              col="3"
-              row="0"
-              borderRadius="10"
-              margin="10"
-            ></Image>
-          </GridLayout>
+      <Image
+      src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,674,1000_AL_.jpg"
+      borderRadius="10"
+      width="100"
+      marginRight="20"
+    ></Image>
         </StackLayout>
+      </ScrollView>
+
+        <Label
+          text="Seasons"
+          marginBottom="0"
+          color="white"
+          class="heading"
+          fontSize="20"
+        ></Label>
+
+
+        <Label class="seasons" text="Season 1"></Label>
+        <Label class="seasons" text="Season 2"></Label>
+        <Label class="seasons" text="Season 3"></Label>
+
+
+      </StackLayout>
     </GridLayout>
-</StackLayout>
+  </StackLayout>
 </ScrollView>
