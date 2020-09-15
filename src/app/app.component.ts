@@ -53,16 +53,16 @@ export class AppComponent {
 
         // If this is the users first time, they get to see the landing page
         if (appStorage.getBoolean(this.isNew, true)) {
-            this.routerExtensions.navigate(["get-started"]);
+            this.routerExtensions.navigate(["movie-preview"]);
             //this.routerExtensions.navigate(["home"]);
         } else {
             // If Authentication is successful,
             this.authService.getCurrentUser();
             if (this.authService.currentUser) {
-                this.routerExtensions.navigate(["explore"]);
+                this.routerExtensions.navigate(["movie-preview"]);
             }else{
                 // If Authentication fails
-                this.routerExtensions.navigate(["login"]);
+                this.routerExtensions.navigate(["profile"]);
             }
         }
     }

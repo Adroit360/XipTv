@@ -1,4 +1,4 @@
-
+<ActionBar title="Hello"></ActionBar>
 <RadSideDrawer #sideDrawer >
     <GridLayout tkDrawerContent rows="auto, *" class="nt-drawer__content">
         <StackLayout row="0" class="nt-drawer__header">
@@ -6,7 +6,7 @@
             <Label class="nt-drawer__header-brand" [text]="'mandarin'"></Label>
             <Label class="nt-drawer__header-footnote" [text]="'email@email.com'"></Label>
         </StackLayout>
-    
+
         <ScrollView row="1" class="nt-drawer__body">
             <StackLayout>
                 <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/home')" (tap)="onNavItemTap('home')">
@@ -25,24 +25,82 @@
     </GridLayout>
     <GridLayout rows="auto,60,*,auto" class="root" tkMainContent>
             <StackLayout height="35" *ngIf='isAndroid'></StackLayout>
-        
-            <Flexboxlayout row="1" justifyContent="space-between" class="navbar">
+
+            <!-- <Flexboxlayout row="1" justifyContent="space-between" class="navbar">
                 <FlexboxLayout (tap)="switchSubscription()" alignItems="center">
                     <Label class="fas arrow"
                         text="&#xf362;"></Label>
-                    
+
                     <Label *ngIf="currentSubscription" [text]="packageType[currentSubscription.package.packageType]"></Label>
                 </FlexboxLayout>
                 <Image class="brand" src=""></Image>
                 <Label [ngClass]="{active:route == 'profile'}" (tap)="gotoProfile()" class="fas navicon"
                     text="&#xf007;"></Label>
-            </Flexboxlayout>
-        
+            </Flexboxlayout> -->
+            <!-- </ActionBar> -->
+
+            <!-- <StackLayout orientation="horizontal"
+                ios:horizontalAlignment="left"
+                android:horizontalAlignment="left"> -->
+
+
+                <!-- <ActionBar>
+            <FlexboxLayout width="90%" justifyContent="space-between" >
+                <Label (tap)="switchSubscription()" TextAlignment="left" class="fas arrow"
+                text="&#xf362;"></Label>
+                <Label [ngClass]="{active:route == 'profile'}" (tap)="gotoProfile()" class="fas navicon"
+                text="&#xf007;"></Label>
+            </FlexboxLayout> -->
+            <ActionBar>
+                <NavigationButton text="&#xf007;" class="fas navicon" android.systemIcon="ic_menu_back"></NavigationButton>
+                <ActionItem ios.systemIcon="2" text="Edit" ios.position="right">
+                    <Label [ngClass]="{active:route == 'profile'}" (tap)="gotoProfile()" class="fas navicon"
+                text="&#xf007;"></Label>
+            </ActionItem>
+
+            <!-- <ios> -->
+                <!-- <ActionItem ios.systemIcon="2" text="Edit" ios.position="right">
+                    <Label [ngClass]="{active:route == 'profile'}" (tap)="gotoProfile()" class="fas navicon"
+                text="&#xf007;"></Label>
+                </ActionItem> -->
+            <!-- </ios> -->
+
+              </ActionBar>
+
+            <!-- <ActionBar>
+                <android>
+                  <NavigationButton text="red" ></NavigationButton>
+                </android>
+                <ios>
+                  <ActionItem text="Next" ios.position="left" ></ActionItem>
+                </ios>
+              </ActionBar> -->
+
+              <!-- </StackLayout> -->
+                 <!-- <ActionItem ios.position="left"></ActionItem> -->
+                 <!-- <NavigationButton text="lol" ></NavigationButton> -->
+                 <!-- <FlexboxLayout horizontalAlignment="left"> -->
+                    <!-- <Label (tap)="switchSubscription()" TextAlignment="left" class="fas arrow"
+                        text="&#xf362;"></Label> -->
+                    <!-- </FlexboxLayout> -->
+                    <!-- <Label *ngIf="currentSubscription" [text]="packageType[currentSubscription.package.packageType]"></Label> -->
+                <!-- </FlexboxLayout> -->
+                <!-- <Image class="brand" src=""></Image> -->
+                <!-- <FlexboxLayout>
+                <Label [ngClass]="{active:route == 'profile'}" marginLeft="10"(tap)="gotoProfile()" class="fas navicon"
+                    text="&#xf007;"></Label>
+                </FlexboxLayout> -->
+             <!-- </ActionBar> -->
+
             <FlexboxLayout row="2">
+            <!-- <ActionBar backgroundColor="green">
+
+            </ActionBar> -->
+
                 <router-outlet></router-outlet>
             </FlexboxLayout>
-            
-        
+
+
             <!-- <GridLayout rows="*,auto,*" rowSpan="2" class="error-page" *ngIf="hasError">
                 <Image rowSpan="3" src="res://player" stretch="aspectFill"></Image>
                 <StackLayout row="1">
@@ -51,12 +109,12 @@
                     <Button class="action-btn" (tap)="reload()" text="reload"></Button>
                 </StackLayout>
             </GridLayout> -->
-        
+
             <!-- ActivityIndicator -->
             <!-- <ActivityIndicator borderRadius="50%" backgroundColor="white" *ngIf="isLoading" row="2" color="black"
                 width="100" height="100" [busy]="true">
             </ActivityIndicator> -->
-         
+
             <FlexboxLayout row="3" class="footer-nav">
                 <FlexboxLayout [ngClass]="{active:isComponentSelected('landing')}" (tap)="navigate('landing')" class="nav-box">
                     <Label class="fas icon" text="&#xf015;"></Label>
@@ -70,7 +128,7 @@
                     <Label class="fas icon" text="&#xf0ac;"></Label>
                     <Label class="text" text="Explore"></Label>
                 </FlexboxLayout>
-        
+
                 <FlexboxLayout [ngClass]="{active:isComponentSelected('categories')}" (tap)="navigate('categories')" class="nav-box">
                     <Label class="fas icon" text="&#xf03a;"></Label>
                     <Label class="text" text="Categories"></Label>

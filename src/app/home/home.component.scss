@@ -4,14 +4,20 @@
     --primary-color: rgb(70, 70, 189);
 }
 .navbar {
-    background-color: white;
+    background-color: #333041;
     align-items: center;
+    // display: flex;
+    // justify-content: left;
     .brand {
+        justify-content: left;
+        text-align: left;
+        margin-left: 0;
+
     }
     .navicon {
         margin: 10;
         font-size: 20;
-        color: black;
+        color: white;
         &.active {
             color: var(--primary-color);
             transform: scale(1.2);
@@ -20,7 +26,7 @@
 }
 
 .footer-nav {
-    background-color: white;
+    background-color: #333041;
     justify-content: space-between;
 }
 
@@ -40,10 +46,10 @@
     align-items: center;
     flex-grow: 1;
     padding: 15 0;
-    color: var(--myblack);
+    color: var(white);
     transition: transform 0.2s ease-in-out;
     &.active {
-        color: var(--primary-color);
+        color: var(#333041);
         transform: scale(1.2);
         .icon {
         }

@@ -22,6 +22,7 @@ const routes: Routes = [
     {path:"upcoming-sports",loadChildren:()=>import("~/app//upcoming-sports/upcoming-sports.component.module").then(m=>m.UpcomingSportsModule)},
     {path:"game-timer",loadChildren:()=>import("~/app/game-timer/game-timer.component.module").then(m=>m.GameTimerModule)},
     {path:"link-page",loadChildren:()=>import("~/app/link-pages/link-page.component.module").then(m=>m.LinkPageModule)},
+    {path:"movie-preview",loadChildren:()=>import("~/app/movie-preview/movie-preview.module").then(m=>m.MoviePreviewModule)},
 
     {path:"sub-type/:redirect",loadChildren:()=>import("~/app/sub-type/sub-type.module").then(m=>m.SubTypeModule)},
     {path:"home/livesports",component:LiveSportsComponent}

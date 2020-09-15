@@ -17,6 +17,8 @@ The following CSS rule changes the font size of all Buttons that have the
 
     --violet: #491887;
 
+
+
 }
 .br-icon{
     color:var(--violet);
@@ -41,6 +43,13 @@ Button.-primary {
     border-radius: 20;
     border-color:transparent;
     color: #EA5769;
+}
+
+.heading{
+    font-weight: bold;
+    font-size: 30;
+    margin: 20 0;
+    // border-bottom-width: 10%;
 }
 
 .options{

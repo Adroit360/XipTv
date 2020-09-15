@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
         private router: Router,
         private page: Page,
         private tvListService: TvListService) {
-        page.actionBarHidden = true;
+        page.actionBarHidden = false;
         this.router.events
             .pipe(filter((event: any) => event instanceof NavigationEnd))
             .subscribe((event: NavigationEnd) => {
@@ -65,11 +65,11 @@ export class HomeComponent implements OnInit {
         // this.tvListService.allLinksLoaded.subscribe(response => {
         //     if (!response)
         //         return
-            
+
 
         // });
 
-        
+
 
     }
 
