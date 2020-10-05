@@ -1,0 +1,39 @@
+$cPurple: #491887;
+
+.emphasis{
+    font-weight:bold;
+    color: $cPurple;
+    font-size:40;
+}
+
+.support-body{
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.521);
+    font-size: small;
+}
+
+.profilePicture{
+    margin-top: 30;
+    // margin-bottom: 20;
+}
+
+
+.mybtn{
+    background-color: #3CE261;
+    border-radius: 20;
+    color: white;
+    font-weight: bold;
+    font-size: larger;
+    margin: 100%;
+    padding: 20 10;
+
+}
+
+.mybtn-empty{
+    color: #3CE261;
+    font-weight: bold;
+    margin-top: 10;
+    margin-bottom: 10;
+    font-size: 20;
+}
+

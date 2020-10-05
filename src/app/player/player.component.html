@@ -1,0 +1,47 @@
+<GridLayout (tap)="pageTapped()" rows="auto,0,*">
+    <ns-action-bar [showBackButton]="true" [header]="videoName"></ns-action-bar>
+    <Webview [src]="WebSrc" (loadStarted)="webViewLoading($event)" #WebViewRef row="1"></Webview>
+    <!-- rows="auto,*" -->
+    <GridLayout rows="auto,*" row="2" >
+        
+    
+        <FlexboxLayout row="1" *ngIf="showLoader" justifyContent="center" alignItems="center"
+         height="50" width="100%">
+            <ActivityIndicator  busy="true" class="activity-indicator"></ActivityIndicator>
+            <Label style="margin: 0 10;" [text]="loaderText"></Label>
+        </FlexboxLayout>
+    
+
+        
+        <FlexboxLayout *ngIf="infoText" justifyContent="center" alignItems="center"
+         height="50" width="100%">
+            <Label style="margin: 0 10;" [text]="infoText"></Label>
+        </FlexboxLayout>
+        <!-- (error)="onPlayerError()"
+        (paused)="onPlayerPaused()"
+        [observeCurrentTime]="true"
+        (currentTimeUpdated)="currentTimeUpdated()" -->
+        <exoplayer #videoplayer
+            style="background-color: black;"
+            controls="true"
+            [src]="videoSrc"
+            (playbackReady)="playbackReady()"
+            (playbackStart)="playbackStartEvent()"
+            
+            fill="aspect"
+            autoplay="true"
+            backroundColor="blue"
+            row="1"
+        ></exoplayer>
+    
+        <!-- <exoplayer row="2" #videoplayer
+        [src]="videoSrc" 
+        (playbackReady)="playbackReady()"
+        (error)="onPlayerError()"
+        (paused)="onPlayerPaused()"
+        autoplay="true"
+        ></exoplayer> -->
+    
+    </GridLayout>
+
+</GridLayout>

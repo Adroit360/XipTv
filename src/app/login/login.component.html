@@ -1,0 +1,24 @@
+<GridLayout (loaded)="miscService.elementLoaded($event)" rows="auto,*,auto,auto" columns="30,*,30" backgroundColor="#EA5769">
+    <Image row="0" margin="40" src="res://airtech_1" width="25%" col="1"></Image>
+<FlexboxLayout row="1" col="1">
+    <Gif width="100%" height="auto" src="https://cdn.dribbble.com/users/228367/screenshots/4142078/living-room-dribbble.gif"></Gif>
+</FlexboxLayout>
+<StackLayout row="3" col="1">
+    <Label text="Sign In" class="brand"></Label>
+    <TextField (loaded)="miscService.elementLoaded($event)" (returnPress)="hideExtender()" [(ngModel)]="loginModel.email" hint="Email Address" autocapitalizationType="none" class="new-input focusable" style="placeholder-color:rgba(255, 255, 255, 0.507); color:white";></TextField>
+    <TextField (loaded)="miscService.elementLoaded($event)"  (focus)="showExtender()" (returnPress)="hideExtender()" [(ngModel)]="loginModel.password" hint="Password" secure="true" class="new-input focusable" style="placeholder-color:rgba(255, 255, 255, 0.507); color:white"></TextField>
+    <Button class="focusable b" (tap)="login()" (loaded)="miscService.elementLoaded($event)" text="Login" class="newbtn"></Button>
+    <!-- <Label textAlignment="center" text="New user?" color="white"></Label> -->
+    <Label class="focusable" (loaded)="miscService.elementLoaded($event)" margin="20" textAlignment="center" height="30"  (tap)="gotoRegister()">
+        <FormattedString>
+            <Span text="Are you a new user?" class="fas t-18"></Span>
+            <Span text="  Sign Up Here " fontWeight="bold" color="white"></Span>
+        </FormattedString>
+    </Label>
+    <StackLayout [height]="extenderHeight"></StackLayout>
+</StackLayout>
+<GridLayout colSpan="3" rowSpan="4" *ngIf="isLoading">
+    <ActivityIndicator color="black" busy="true" class="activity-indicator">
+    </ActivityIndicator>
+  </GridLayout>
+</GridLayout>

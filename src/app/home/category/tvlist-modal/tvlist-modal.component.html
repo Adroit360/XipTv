@@ -1,0 +1,36 @@
+<GridLayout rows="auto,*">
+    <StackLayout>
+        <StackLayout height="35" *ngIf='isAndroid'></StackLayout>
+        <GridLayout verticalAlignment="center" columns="auto,*,auto">
+            <Label width="60" flexGrow="1" (tap)="closeModal()" margin="15 0 0 20" class="fas bloated md" text="&#xf053;"></Label>
+    
+                <SearchBar #SearchBar col="1" (textChange)="searchStringChanged($event)" [hint]="'Search ' + category" textFieldHintColor="whitesmoke">
+                </SearchBar>
+            
+            <Label col="3" (tap)="cancelSearchBar()" margin="15 10 0 0"
+            color="#444" padding="0" class="md"
+             text="cancel"></Label>
+        </GridLayout>
+    </StackLayout>
+    
+
+    <ActivityIndicator row="1" borderRadius="50%" backgroundColor="white" *ngIf="!filteredTvLinks" row="2" color="black"
+       [busy]="true">
+    </ActivityIndicator>
+
+    <ListView row="1" class="link-container" orientation="horizontal" [items]="filteredTvLinks">
+        <ListViewLinearLayout tkListViewLayout></ListViewLinearLayout>
+        <ng-template tkListItemTemplate let-i="index" let-item="item">
+            <GridLayout (loaded)="misc.elementLoaded($event)" class="list-item focusable b" (tap)="openPlayer(item)" columns="70,*">
+                <Image class="link-image" [stretch]="misc.stretch(item.url)" [src]='item.logo'  style="background:black;"></Image>
+                <StackLayout col="1">
+                    <Label class="name" *ngIf="item" [text]="item.name"></Label>
+                    <FlexboxLayout justifyContent="space-between">
+                        <Label class="category" [text]="item.category"></Label>
+                        <Label class="country" *ngIf="item.country" [text]="item.country.name"></Label>
+                    </FlexboxLayout>
+                </StackLayout>
+            </GridLayout>
+        </ng-template>
+    </ListView>
+</GridLayout>

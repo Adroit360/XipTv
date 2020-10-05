@@ -1,0 +1,81 @@
+$cPurple: #491887;
+$blue: #1E2E61;
+
+.emphasis{
+    font-weight:bold;
+    color: $cPurple;
+    font-size:40;
+}
+
+.support-body{
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.521);
+    font-size: small;
+}
+
+.profilePicture{
+    margin-top: 50;
+    margin-bottom: 50;
+}
+
+.mybtn{
+     border-radius: 10;
+}
+
+.mybtn-empty{
+    color: #3CE261;
+    font-weight: bold;
+    margin-top: 10;
+    margin-bottom: 10;
+    font-size: 20;
+}
+
+// backgroundColor="blue" borderRadius="30" color="white" fontWeight="bold"
+.btn{
+    background:#1E2E61;
+    border-radius:25;
+    color: white;
+    font-weight: bold;
+    border-color: transparent;
+    width: 70%;
+}
+
+.auth-input{
+    height: 20%;
+    border-radius: 10;
+    border-color:#979797;
+}
+
+.banner{
+    background-color: #ED1C1F;
+    height: 500;
+    border-radius: 50;
+    transform: rotate(110deg) translate(20%,-380%);
+    // margin:0 0 800 0;
+}
+
+.new-input{
+    border-color: transparent;
+    border-bottom: rgba(255, 255, 255, 0.329);
+    border-bottom-color: rgba(255, 255, 255, 0.329);
+    height: 70;
+    color:white;
+    font-weight: bold;
+
+}
+
+.newbtn{
+    width: 70%;
+    border-color: transparent;
+    background-color:#1E2E61;
+    border-radius: 20;
+    color:white;
+
+}
+
+.brand{
+    font-weight:bold;
+    color: white;
+    font-size: 30;
+    // margin-left: 10%;
+}

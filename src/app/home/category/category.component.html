@@ -1,0 +1,35 @@
+<GridLayout (loaded)="misService.elementLoaded($event)" rows="auto,*">
+    <FlexboxLayout [visibility]="filteredTvGroups ? 'visible' : 'collapsed'" alignItems="center"
+        justifyContent="space-between">
+
+        <SearchBar (loaded)="misService.elementLoaded($event)" flexGrow="1" margin="2" #SearchBar (textChange)="searchStringChanged($event)" 
+        hint="Search categories" class="focusable"
+        ></SearchBar>
+
+        <Label class="focusable" style="text-align: center;" (loaded)="misService.elementLoaded($event)" (tap)="cancelSearchBar()" margin="0 10 0 0" color="#444" width="110" text="cancel"></Label>
+
+
+    </FlexboxLayout>
+
+    <GridLayout row="2" *ngIf="!filteredTvGroups">
+        <ActivityIndicator
+            color="black" [busy]="true">
+        </ActivityIndicator>
+    </GridLayout>
+
+
+    <ListView *ngIf="filteredTvGroups" row="1" class="link-container" orientation="horizontal"
+        [items]="filteredTvGroups">
+        <ListViewLinearLayout tkListViewLayout></ListViewLinearLayout>
+        <ng-template tkListItemTemplate let-i="index" let-i="index" let-item="item">
+            <GridLayout (loaded)="misService.elementLoaded($event)" class="list-item focusable v pad" (tap)="showDialog(item)" columns="70,*">
+                <FlexboxLayout [backgroundColor]="bgColors[i]" height="60" width="60" class="link-image auto-image">
+                    <Label *ngIf="item" [text]="item.substring(0,1)"></Label>
+                </FlexboxLayout>
+                <StackLayout col="1">
+                    <Label class="name" [text]="item"></Label>
+                </StackLayout>
+            </GridLayout>
+        </ng-template>
+    </ListView>
+</GridLayout>

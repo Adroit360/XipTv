@@ -1,0 +1,34 @@
+<!-- <GridLayout rows="30,auto,30,*" columns="30,*,30">
+    <Flexbox col="1" row="1">
+        <Label text="Choose Subscription" class=""></Label>
+    </Flexbox>
+    <StackLayout row="4" col="1">
+        <Button text="Trial" class="btn btn-primary"></Button>
+        <Button text="Subscription"></Button>
+        <Button text=""></Button>
+    </StackLayout>
+</GridLayout> -->
+
+<FlexboxLayout alignItems="center" justifyContent="center" flexDirection="column">
+    <Label *ngIf="!userSubscriptions && !errorOcurred" class="sub" text="Loading subscriptions please wait .."></Label>
+    <Label *ngIf="!userSubscriptions && errorOcurred" class="sub" text="Coult not load subscriptions"></Label>
+    <Label *ngIf="userSubscriptions" class="sub" text="Choose Subscription To Watch"></Label>
+    <StackLayout>
+        <StackLayout *ngFor="let subscription of userSubscriptions;let i = index">
+            <Label *ngIf="!subscription.package" text="not-found"></Label>
+            <Button (loaded)="miscService.elementLoaded($event)" *ngIf="subscription.package" (tap)="chooseSubscription(subscription)"
+                [text]="packageType[subscription.package.packageType]" height="50"
+                class="focusable v"
+                [ngClass]="{'primary':subscription.package.packageType != selectedPackageType,'secondary':subscription.package.packageType == selectedPackageType}"></Button>
+        </StackLayout>
+        <ActivityIndicator row="1" *ngIf="!userSubscriptions && !errorOcurred" color="black" width="30" height="30"
+            [busy]="true">
+        </ActivityIndicator>
+        <Button (loaded)="miscService.elementLoaded($event)" *ngIf="errorOcurred" (tap)="getUserSubscriptions()" text="reload" class="secondary blue focusable b"></Button>
+        <Button (loaded)="miscService.elementLoaded($event)" *ngIf="!userSubscriptions" (tap)="addSubscription()" text="Dont have a subscription? Get one now"
+            class="trans blue focusable v"></Button>
+        <Button (loaded)="miscService.elementLoaded($event)" *ngIf="userSubscriptions" (tap)="addSubscription()" text="Add another subscription"
+            class="trans blue focusable v"></Button>
+
+    </StackLayout>
+</FlexboxLayout>

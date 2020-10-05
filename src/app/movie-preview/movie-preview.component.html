@@ -1,0 +1,56 @@
+<ns-action-bar [showBackButton]="true"></ns-action-bar>
+<ScrollView #scrollView backgroundColor="black">
+  <StackLayout margin="0" padding="0">
+    <FlexboxLayout justifyContent="center" margin="0" padding="0">
+      <Image class="link-item" width="60%"  stretch="aspectFill" failureImageUri="~/img/defaultImage.png"
+        placeholderImageUri="~/img/defaultImage.png" [src]="currentMovieLogoUrl">
+      </Image>
+    </FlexboxLayout>
+
+    <GridLayout columns="10,*,10" rows="auto,auto,*">
+      
+      <GridLayout backgroundColor="white" rowSpan="3" colSpan="3" *ngIf="isLoading">
+        <ActivityIndicator color="black" busy="true" class="activity-indicator">
+        </ActivityIndicator>
+      </GridLayout>
+
+      <StackLayout *ngIf="!isLoading" col="1">
+        <Label class="heading" color="white" [text]="currentMovieName" textWrap="true" color="white"></Label>
+        <Button (tap)="playCurrent()" class="watchButton" textAlign="left" textAlign="left" text="Watch Now"></Button>
+
+        <!-- <FlexboxLayout justifyContent="space-between" paddingRight="150%" color="white">
+                <Label text="Year    |"></Label>
+                <Label text="1 Season     |"></Label>
+                <Label text="18⚠️"></Label>
+            </FlexboxLayout> -->
+        <!-- <Label textWrap="true"
+          text="Decades after their 1984 All Valley Karate Tournament bout, a middle-aged Daniel LaRusso and Johnny Lawrence find themselves martial-arts rivals again."
+          color="white" marginTop="30"></Label> -->
+
+        <Label text="Episodes" marginBottom="0" color="white" class="heading" fontSize="20"></Label>
+
+        <ScrollView  orientation="horizontal">
+          <FlexboxLayout orientation="horizontal" class="link-container box entertainment">
+            <StackLayout class="entertainment" *ngFor="let item of seasonEpisodes"
+              (tap)="openPlayer(item)">
+              <Image class="link-item" stretch="aspectFill" failureImageUri="~/img/defaultImage.png"
+                placeholderImageUri="~/img/defaultImage.png" *ngIf="item" [src]="item.logo">
+              </Image>
+              <Label *ngIf="item" [text]="item.name"></Label>
+            </StackLayout>
+          </FlexboxLayout>
+
+        </ScrollView>
+
+        <Label text="Seasons" marginBottom="0" color="white" class="heading" fontSize="20"></Label>
+
+
+        <Label *ngFor="let item of seasons" class="seasons" (tap)="openSeason(item)" [text]="item.name"></Label>
+
+
+      </StackLayout>
+
+      
+    </GridLayout>
+  </StackLayout>
+</ScrollView>

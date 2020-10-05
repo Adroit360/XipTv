@@ -1,0 +1,34 @@
+<GridLayout (loaded)="miscService.elementLoaded($event)" rows="auto,150,*,auto,auto" columns="50,*" backgroundColor="#1E1C26">
+
+  <StackLayout height="20">
+
+  </StackLayout>
+
+  <StackLayout row="1" orientation="horizontal" margin="20" colSpan="2">
+    <!-- <Image height="120" src="res://getstart"></Image> -->
+
+  </StackLayout>
+
+  <FlexboxLayout row="2" colSpan="2" justifyContent='center' >
+    <Gif #block1 width="100%" height="auto" class="run" src="https://static.dribbble.com/users/285475/screenshots/4720919/channel_surfing.gif"></Gif>
+  </FlexboxLayout>
+
+  <StackLayout row="3" colSpan="2"
+  margin="20"
+  verticalAlignment="center"
+  horizontalAlignment="center"
+  #block2>
+    <Label  class="head" text="Get Started"></Label>
+
+    <Label class="support" text="All of your favourite stations and more"></Label>
+
+    <Label class="support-body" textWrap="true"
+      text="From the very best content developers from around the world"></Label>
+
+    <!-- <Label class="support-body-link" textWrap="true" text="Try Now for free"></Label> -->
+  </StackLayout>
+
+  <StackLayout #block3 row="4" colSpan="2" padding="20">
+    <Button (loaded)="miscService.elementLoaded($event)" #thebutton (tap)="login()" height="60"  text="Get Started" class="newbtn focusable b" backgroundColor="green"></Button>
+  </StackLayout>
+</GridLayout>

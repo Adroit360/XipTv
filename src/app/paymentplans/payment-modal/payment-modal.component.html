@@ -1,0 +1,22 @@
+<GridLayout class="wrapper" rows="auto,*,auto" alignItems="center" justifyContent="center" flexDirection="column">
+    <Label *ngIf="packageType != packages.Trial" textAlignment="center" margin="10"  class="sub" text="Pay for your subscription"></Label>
+    <WebView *ngIf="packageType != packages.Trial" row="1" (loadFinished)="webViewLoaded($event)" (loadStarted)="webViewLoading($event)" [src]="checkoutUrl">
+
+    </WebView>
+
+    <StackLayout height="100%" *ngIf="packageType == packages.Trial" verticalAlignment="center"  row="1">
+        <Label textAlignment="center" margin="10"  class="sub" text="Enjoy your free trial"></Label>
+
+        <Button (tap)="pay()" text="Subscribe" height="50" class="primary"></Button>
+        <Button (tap)="closeModal()" text="Close" height="50" class="secondary"></Button>
+        <!-- <Button text="Dont have a subscription? Get one now" height="50" color="blue" fontWeight="bold"></Button> -->
+    </StackLayout>
+
+    <ActivityIndicator *ngIf="isLoading" row="1" [busy]="true">
+    </ActivityIndicator>
+
+    <StackLayout  *ngIf="packageType != packages.Trial" row="2">
+        <Button (tap)="closeModal()" text="Close" height="50" class="secondary"></Button>
+        <!-- <Button text="Dont have a subscription? Get one now" height="50" color="blue" fontWeight="bold"></Button> -->
+    </StackLayout>
+</GridLayout>

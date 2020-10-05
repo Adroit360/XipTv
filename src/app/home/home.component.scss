@@ -1,0 +1,80 @@
+/* Add mobile styles for the component here.  */
+.root {
+    --myblack: rgb(31, 31, 31);
+    --primary-color: rgb(70, 70, 189);
+}
+
+.navbar {
+    background-color: white;
+    align-items: center;
+    .brand {
+    }
+    .navicon {
+        margin: 10;
+        font-size: 20;
+        color: black;
+        &.active {
+            color: var(--primary-color);
+            transform: scale(1.2);
+        }
+    }
+}
+
+.footer-nav {
+    background-color: white;
+    justify-content: space-between;
+}
+
+.error-page {
+    color: white;
+    font-size: 20%;
+    font-weight: bold;
+    StackLayout {
+        horizontal-alignment: center;
+        text-align: center;
+    }
+}
+
+
+.nav-box {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 15 0;
+    color: var(--myblack);
+    transition: transform 0.2s ease-in-out;
+    margin:0;
+    border-radius: 0;
+    elevation:0;
+    ripple-color:rgb(185, 185, 185);
+    border:none;
+    border-width: 0;
+    background-color: white;
+    &.active {
+        color: var(--primary-color);
+        transform: scale(1.2);
+        .icon {
+        }
+        .text {
+           
+        }
+    }
+    .icon {
+        font-size: 20;
+        margin-bottom: 5;
+        color:black;
+    }
+    .text {
+        font-size: 10%;
+        color:black;
+    }
+}
+
+.arrow {
+    padding: 10;
+    font-size: 15;
+    border-radius: 3;
+    margin: 5;
+    color: var(--myblack);
+}

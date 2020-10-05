@@ -1,0 +1,154 @@
+<!-- <ns-action-bar header="Home"></ns-action-bar> -->
+<!-- <Label text="na waa o"></Label> -->
+<GridLayout (loaded)="miscService.elementLoaded($event)">
+    <ScrollView>
+        <StackLayout rows="200,*">
+            <StackLayout *ngIf="currentSubscription">
+                <Image *ngIf="currentSubscription.package.packageType == PackageType.Trial" loadMode="async"
+                    stretch="aspectFill" loadMode="async"  src="~/resources/trial.png"></Image>
+                <Image *ngIf="currentSubscription.package.packageType == PackageType.Sports" loadMode="async"
+                    stretch="aspectFill" loadMode="async"  src="~/resources/sports.png"></Image>
+                <Image *ngIf="currentSubscription.package.packageType == PackageType.Entertainment" loadMode="async"
+                    stretch="aspectFill" loadMode="async"  src="~/resources/entertainment.png"></Image>
+                <Image *ngIf="currentSubscription.package.packageType == PackageType.Premium" loadMode="async"
+                    stretch="aspectFill" loadMode="async"  src="~/resources/premium.png"></Image>
+            </StackLayout>
+    
+            <StackLayout row="1">
+    
+                <!--  <GridLayout height="280" background-color="red" style="margin: 0 0 0 0;">
+                    <Image height="280" loadMode="async" stretch="aspectFill" loadMode="async" src="res://artwork"></Image>
+                    <exoplayer [visibility]="showPlayer ? 'visible' : 'collapsed'" #videoplayer
+                        src="http://lemlagroup.com/wp-content/uploads/2020/07/montage2.mp4" (finished)="playerFinished()"
+                        (playbackReady)="playbackReady()" controls="false" fill="aspectFill" style="height: 300;" loop="false"
+                        autoplay="true"></exoplayer>
+                </GridLayout>-->
+    
+                <!-- <Button (loaded)="miscService.elementLoaded($event)" *ngIf="topsModel && topsModel.topSportsChannels" backgroundColor="white" color="black" margin="10"
+                    nsRouterLink="/home/livesports" text="Live Sports Event"></Button> -->
+                
+                
+                <Button (loaded)="miscService.elementLoaded($event)" *ngIf="topsModel && topsModel.topSportsChannels" backgroundColor="white" color="black" margin="10"
+                    class="focusable v" nsRouterLink="/upcoming-sports" text="Live Sports Event"></Button>
+    
+                <StackLayout *ngIf="topsModel">
+    
+                    <Label *ngIf="topsModel.topSportsChannels" class="group-label" text="Top Sports Channels"></Label>
+                    <GridLayout *ngIf="topsModel.topSportsChannels">
+    
+    
+    
+                        <RadListView class="link-container box" orientation="horizontal" [items]="topsModel.topSportsChannels">
+                            <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
+                            <ng-template tkListItemTemplate let-i="index" let-item="item">
+                                <StackLayout (loaded)="miscService.elementLoaded($event)" class="focusable b" (tap)="openPlayer(item)">
+                                    <!-- <Image class="link-item" loadMode="async"   stretch="aspectFit" row="0" col="0" style="background:black;"
+                                        *ngIf="item" [src]="item.logo">
+                                    </Image> -->
+                                    <Image class="link-item" *ngIf="item" [src]="item.logo" loadMode="async" 
+                                    stretch="aspectFit"></Image>
+                                    <Label *ngIf="item" [text]="item.name"></Label>
+                                </StackLayout>
+                            </ng-template>
+                        </RadListView>
+                    </GridLayout>
+    
+    
+                    <Label *ngIf="topsModel.topMovies" class="group-label" text="Top Movies"></Label>
+                    <GridLayout *ngIf="topsModel.topMovies">
+                        <RadListView class="link-container box entertainment" orientation="horizontal"
+                            [items]="topsModel.topMovies">
+                            <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
+                            <ng-template tkListItemTemplate let-i="index" let-item="item">
+                                <StackLayout (loaded)="miscService.elementLoaded($event)" class="entertainment focusable b" (tap)="openPlayer(item)">
+                                    <!-- <Image loadMode="async"  class="link-item"  stretch="aspectFill" style="background:black;"
+                                        *ngIf="item" [src]="item.logo">
+                                    </Image> -->
+                                    <Image class="link-item" *ngIf="item" [src]="item.logo" loadMode="async" 
+                                    stretch="aspectFill"></Image>
+                                    <Label *ngIf="item" [text]="item.name"></Label>
+                                </StackLayout>
+                            </ng-template>
+                        </RadListView>
+                    </GridLayout>
+    
+                    <Label *ngIf="topsModel.topSeries" class="group-label" text="Top Series"></Label>
+                    <GridLayout *ngIf="topsModel.topSeries">
+                        <RadListView class="link-container box entertainment" orientation="horizontal"
+                            [items]="topsModel.topSeries">
+                            <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
+                            <ng-template style="border-width: 0;border-color: transparent;" tkListItemTemplate let-i="index" let-item="item">
+                                <StackLayout (loaded)="miscService.elementLoaded($event)" class="entertainment focusable b" (tap)="openPlayer(item)">
+                                    <!-- <Image loadMode="async"  class="link-item" stretch="aspectFill" style="background:black;"
+                                        *ngIf="item" [src]="item.logo">
+                                    </Image> -->
+                                    <Image class="link-item" *ngIf="item" [src]="item.logo" loadMode="async" 
+                                    stretch="aspectFill"></Image>
+                                    <Label *ngIf="item" [text]="item.name"></Label>
+                                </StackLayout>
+                            </ng-template>
+                        </RadListView>
+                    </GridLayout>
+    
+                    <Label *ngIf="topsModel.topChannels" class="group-label" text="Top Channels"></Label>
+                    <GridLayout *ngIf="topsModel.topChannels">
+    
+                        <RadListView class="link-container box" orientation="horizontal" [items]="topsModel.topChannels">
+                            <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
+                            <ng-template tkListItemTemplate let-i="index" let-item="item">
+                                <StackLayout class="focusable b" (loaded)="miscService.elementLoaded($event)" (tap)="openPlayer(item)">
+                                    <!-- <Image loadMode="async"  class="link-item" stretch="aspectFit" style="background:black;"
+                                        *ngIf="item" [src]="item.logo">
+                                    </Image> -->
+                                    <Image class="link-item" *ngIf="item" [src]="item.logo" loadMode="async" 
+                                    stretch="aspectFit"></Image>
+                                    <Label *ngIf="item" [text]="item.name"></Label>
+                                </StackLayout>
+                            </ng-template>
+                        </RadListView>
+                    </GridLayout>
+    
+                    <Label *ngIf="topsModel.localChannels" class="group-label" text="Local Channels"></Label>
+                    <GridLayout *ngIf="topsModel.localChannels">
+                        <RadListView class="link-container box" orientation="horizontal" [items]="topsModel.localChannels">
+                            <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
+                            <ng-template tkListItemTemplate let-i="index" let-item="item">
+                                <StackLayout class="focusable b" (loaded)="miscService.elementLoaded($event)" (tap)="openPlayer(item)">
+                                    <!-- <Image loadMode="async"  class="link-item" stretch="aspectFit" style="background:black;"
+                                        *ngIf="item" [src]="item.logo">
+                                    </Image> -->
+                                    <Image class="link-item" *ngIf="item" [src]="item.logo" loadMode="async" 
+                                    stretch="aspectFit"></Image>
+                                    <Label *ngIf="item" [text]="item.name"></Label>
+                                </StackLayout>
+                            </ng-template>
+                        </RadListView>
+                    </GridLayout>
+    
+    
+    
+                    <FlexboxLayout justifyContent="center">
+                        <Button (loaded)="miscService.elementLoaded($event)" (tap)="viewAll()" class="action-btn" text="View all"></Button>
+                    </FlexboxLayout>
+    
+                </StackLayout>
+    
+    
+                <FlexboxLayout *ngIf="!topsModel && !errorOccured" flexDirection="column" justifyContent="center" alignItems="center"
+                    style="padding: 70 20;width: 100%;">
+                    <ActivityIndicator borderRadius="50%" backgroundColor="white" row="2" color="black" [busy]="true">
+                    </ActivityIndicator>
+    
+                    <Label textWrap="true" style="margin: 20;font-size: 14;" text="Please wait while your channel list is being set up"></Label>
+                </FlexboxLayout>
+    
+    
+                <FlexboxLayout *ngIf="errorOccured" justifyContent="center">
+                    <Button (loaded)="miscService.elementLoaded($event)" (tap)="viewAll()" class="action-btn" text="Reload"></Button>
+                </FlexboxLayout>
+    
+                <!-- <Image margin="20" src="res://banner"></Image> -->
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</GridLayout>

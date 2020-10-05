@@ -1,0 +1,36 @@
+GridLayout{
+    background-color: #491887;
+    // padding: 30%;
+}
+
+Label{
+    margin: 5;
+}
+
+
+.head{
+    color: white;
+    font-weight: bold;
+    font-size: 20;
+}
+
+.support{
+    // margin-top: 60%;
+    color: white;
+    font-size: 20;
+}
+
+.support-body{
+    // margin-top: 70%;
+    color: rgba(255, 255, 255, 0.473);
+    font-size: 20;
+}
+
+.support-body-link{
+    // margin-top: 80%;
+    color: rgba(255, 255, 255, 0.473);
+    font-size: 16;
+    font-weight: bold;
+    text-decoration: underline;
+
+}

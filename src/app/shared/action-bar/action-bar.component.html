@@ -1,0 +1,27 @@
+<ActionBar flat="true">
+    <!-- 
+    Use the NavigationButton as a side-drawer button in Android
+    because ActionItems are shown on the right side of the ActionBar
+    -->
+    <NavigationButton *ngIf="!showBackButton" ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <NavigationButton *ngIf="showBackButton && canGoBack" android.systemIcon="ic_menu_back"
+     (tap)="onBackPressed()"></NavigationButton>
+    <!-- 
+    Use the ActionItem for IOS with position set to left. Using the
+    NavigationButton as a side-drawer button in iOS is not possible,
+    because its function is to always navigate back in the application.
+    -->
+    <ActionItem *ngIf="!showBackButton" icon="res://menu" (tap)="onDrawerButtonTap()"
+        ios.position="left" android:visibility="collapsed">
+    </ActionItem>
+
+    <!-- <ActionItem  ios.position="right">
+        <AbsoluteLayout class="badge-icon">
+            <Label class="fas icon" text="&#xf0f3;"></Label>
+            <Label class="badge" text="2"></Label>
+        </AbsoluteLayout>
+    </ActionItem> -->
+
+    <Label [text]="header"></Label>
+
+</ActionBar>

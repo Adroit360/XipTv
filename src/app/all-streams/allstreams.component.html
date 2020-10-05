@@ -1,0 +1,7 @@
+<GridLayout backgroundColor="white" rows="*,auto">
+    <FlexboxLayout (loaded)="miscService.elementLoaded($event)" alignItems="center" justifyContent="center" flexWrap="wrap">
+        <Button  fontSize="17" margin="5%" width="40%" *ngFor="let stream of streams" (tap)="openPlayer(stream[0])"
+         height="50" [text]="stream[1]" class="secondary"></Button>
+    </FlexboxLayout>
+    <Button (loaded)="miscService.elementLoaded($event)" margin="10" row="1" fontSize="20" text="Close" (tap)="close()" class="trans blue"></Button>
+</GridLayout>
