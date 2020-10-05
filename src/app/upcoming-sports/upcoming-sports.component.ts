@@ -338,7 +338,6 @@ export class UpcomingSportsComponent implements OnInit {
         }
     }
 
-
     closeTimeCounter() {
         this.SelectedMatch = null;
         this.page.actionBarHidden = false;
