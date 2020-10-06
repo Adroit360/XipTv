@@ -1,0 +1,145 @@
+$base-color: #0E40BF;
+$background:#1E1C26;
+
+.HomeScreen{
+    background-color: $background;
+    padding: 35 35 0 35;
+    text-align: left;
+}
+
+.fab {
+    font-family: "Font Awesome 5 Brands", "fa-brands-400";
+    font-weight: 400;
+}
+
+.fas {
+    font-family: "Font Awesome 5 Free", "fa-solid-900";
+    font-weight: 900;
+}
+
+.far {
+    font-family: "Font Awesome 5 Free", "fa-regular-400";
+    font-weight: 400;
+}
+
+.tvNavIcon{
+    padding: 10;
+    background-color: white;
+    margin-bottom: 20;
+
+}
+
+.tvPlayButton{
+    border: 1px;
+}
+
+.mid-bold{
+    font-weight: bold;
+    font-size: 10;
+    color: rgb(255, 255, 255);
+    // padding-bottom:-10;
+
+}
+
+
+.movieTitle{
+    color: white;
+    font-size: 30;
+    font-weight: bold;
+    margin-top:0;
+    padding-top: 0;
+    font-family: 'Poppins', 'Poppins-Bold';
+
+}
+
+.tvDescription{
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 10;
+    padding-right: 50;
+    // width: 50%;
+}
+
+.tvHeading2{
+    color: white;
+    font-family: 'Poppins', 'Poppins-Bold';
+    padding-bottom: 10;
+
+}
+
+Label{
+    font-family: "Poppins", "Poppins-Regular";
+}
+
+.SideBar{
+    background-color: $base-color;
+
+    .navLink{
+        padding: 20 10;
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+
+
+}
+
+.play{
+    color: $base-color;
+    padding-right: 10%;
+}
+
+.mainImage{
+    border-radius: 10;
+    // padding-left: 50;
+}
+
+.subImage{
+    width: 15%;
+    border-radius: 10;
+    margin-right: 15;
+    // margin-bottom: 10;
+}
+
+.cardImage{
+    background-color: white;
+    border-radius: 10;
+    margin-right: 15;
+    width: 15%;
+    padding: 0 10;
+    margin-bottom: 20;
+
+}
+
+.search
+{
+    padding: 10;
+
+    .resultsImage{
+        width: 20%;
+        padding-right: 10;
+        // border-radius: 5;
+    }
+
+    .searchItem{
+        padding-left: 10;
+        font-family: 'Poppins','Poppins-Bold';
+        font-weight: bold;
+
+        .support{
+            font-family: 'Poppins','Poppins-Regular';
+            font-weight: lighter;
+        }
+    }
+}
+
+.tvTextField{
+    border-color: white;
+    border-width: 0 0 1 0;
+    border-radius: 0;
+    color: white;
+    placeholder-color: white;
+    font-family: 'Poppins', "Poppins-Bold";
+}
+
+.searchItem{
+    color: white;
+}
